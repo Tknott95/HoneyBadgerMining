@@ -15,7 +15,7 @@ void testing() async {
 
 void nvidia_get_temp() async {
   // List all files in the current directory in UNIX-like systems.
-  var result = await Process.run('./nvidia_smi.sh', [' temp']); /* second arr takes flags and params? */
+  var result = await Process.run('./nvidia_smi.sh', ['-t']); /* second arr takes flags and params? */
   print(result.stdout);
 }
 
