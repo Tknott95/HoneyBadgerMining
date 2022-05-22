@@ -25,6 +25,14 @@ void nvidia_get_temp() async {
   print("\n gpu_one: " + gpu_one.toString() + "C");
 }
 
+Future<int> nvidia_get_temp_alt() async {
+  var result = await Process.run('./nvidia_smi.sh', ['-t']); /* second arr takes flags and params? */
+  var gpu_one = int.parse(""+result.stdout[0]+result.stdout[1]+"");
+
+  print("\n gpu_one: " + gpu_one.toString() + "C");
+  return gpu_one;
+}
+
 void nvidia_get_fans() async {
   // List all files in the current directory in UNIX-like systems.
   var result = await Process.run('./nvidia_smi.sh', ['-f']); /* second arr takes flags and params? */
