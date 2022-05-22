@@ -18,11 +18,11 @@ void testing() async {
 void nvidia_get_temp() async {
   // List all files in the current directory in UNIX-like systems.
   var result = await Process.run('./nvidia_smi.sh', ['-t']); /* second arr takes flags and params? */
-  var gpu_one = ""+result.stdout[0]+result.stdout[1]+"";
+  var gpu_one = int.parse(""+result.stdout[0]+result.stdout[1]+"");
   var gpu_two = ""+result.stdout[2]+result.stdout[3]+"";
 
   print(result.stdout);
-  print("\n gpu_one: " + gpu_one + "C");
+  print("\n gpu_one: " + gpu_one.toString() + "C");
 }
 
 void nvidia_get_fans() async {
