@@ -9,7 +9,13 @@ void main() {
 
 void testing() async {
   // List all files in the current directory in UNIX-like systems.
-  var result = await Process.run('nvidia-smi', ['']); /* second arr takes flags and params? */
+  var result = await Process.run('./run_smi.sh', ['']); /* second arr takes flags and params? */
+  print(result.stdout);
+}
+
+void nvidia_get_temp() async {
+  // List all files in the current directory in UNIX-like systems.
+  var result = await Process.run('./nvidia_smi.sh', [' temp']); /* second arr takes flags and params? */
   print(result.stdout);
 }
 
