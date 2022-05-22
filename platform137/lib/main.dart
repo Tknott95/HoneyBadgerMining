@@ -1,7 +1,16 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 
 void main() {
   runApp(const MyApp());
+  testing();
+}
+
+void testing() async {
+  // List all files in the current directory in UNIX-like systems.
+  var result = await Process.run('nvidia-smi', ['']); /* second arr takes flags and params? */
+  print(result.stdout);
 }
 
 class MyApp extends StatelessWidget {
@@ -96,7 +105,7 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             const Text(
-              'You have pushed the button this many times:',
+              'fetching some curls then running them - this many times:',
             ),
             Text(
               '$_counter',
