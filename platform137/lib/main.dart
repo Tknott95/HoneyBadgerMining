@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 void main() {
   runApp(const MyApp());
   testing();
+  nvidia_get_temp();
+  nvidia_get_fans();
 }
 
 void testing() async {
@@ -16,6 +18,12 @@ void testing() async {
 void nvidia_get_temp() async {
   // List all files in the current directory in UNIX-like systems.
   var result = await Process.run('./nvidia_smi.sh', ['-t']); /* second arr takes flags and params? */
+  print(result.stdout);
+}
+
+void nvidia_get_fans() async {
+  // List all files in the current directory in UNIX-like systems.
+  var result = await Process.run('./nvidia_smi.sh', ['-f']); /* second arr takes flags and params? */
   print(result.stdout);
 }
 
