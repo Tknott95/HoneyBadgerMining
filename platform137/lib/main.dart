@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:process_run/shell.dart';
 
 import 'package:flutter/material.dart';
 
@@ -7,6 +8,8 @@ void main() {
   testing();
   nvidia_get_temp();
   nvidia_get_fans();
+
+  nvidia_set_sudo_fans();
 }
 
 void testing() async {
@@ -23,6 +26,20 @@ void nvidia_get_temp() async {
 
   print(result.stdout);
   print("\n gpu_one: " + gpu_one.toString() + "C");
+}
+
+void nvidia_set_sudo_fans() {
+  var shell = Shell();
+
+  shell.run("""
+    #!/bin/bash
+    ls -la
+    """).then((result){
+      print('Shell script done!');
+    }).catchError((onError) {
+      print('Shell.run error!');
+      print(onError);
+    });
 }
 
 Future<int> nvidia_get_temp_alt() async {
@@ -94,6 +111,7 @@ class _MyHomePageState extends State<MyHomePage> {
       // called again, and so nothing would appear to happen.
       _counter++;
       nvidia_get_fans();
+      nvidia_set_sudo_fans();
     });
   }
 
