@@ -4,7 +4,7 @@
 while getopts 'pfa:' OPTION; do
   case "$OPTION" in
     p)
-      nvidia-smi -pl 110
+      sudo nvidia-smi -i 0 -pl 110;  sudo nvidia-smi -i 1 -pl 105 
       ;;
     f)
       nvidia-smi -q | grep -i fan
