@@ -53,7 +53,7 @@ void nvidia_set_sudo_fans() async {
     throwOnError: false
   );
 
-  await shell.run('./nvidia_set.sh -p');
+  await shell.run('sudo ./nvidia_set.sh -p');
   await stdinForShell.terminate();
 }
 
