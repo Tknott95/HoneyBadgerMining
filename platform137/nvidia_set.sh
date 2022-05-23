@@ -1,10 +1,10 @@
 #!/bin/bash
 
 
-while getopts 'tfa:' OPTION; do
+while getopts 'pfa:' OPTION; do
   case "$OPTION" in
-    t)
-      nvidia-smi --query-gpu=temperature.gpu --format=csv,noheader
+    p)
+      nvidia-smi -pl 110
       ;;
     f)
       nvidia-smi -q | grep -i fan
