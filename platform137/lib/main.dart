@@ -53,7 +53,7 @@ void nvidia_set_sudo_fans() async {
     throwOnError: false
   );
 
-  await shell.run('sudo ls -la');
+  await shell.run('ls -la');
   await stdinForShell.terminate();
 }
 
@@ -125,7 +125,7 @@ class _MyHomePageState extends State<MyHomePage> {
       // _counter without calling setState(), then the build method would not be
       // called again, and so nothing would appear to happen.
       _counter++;
-      nvidia_get_fans();
+      // nvidia_get_fans();
       nvidia_set_sudo_fans();
     });
   }
