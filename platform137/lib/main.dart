@@ -33,7 +33,7 @@ void nvidia_set_sudo_fans() {
 
   shell.run("""
     #!/bin/bash
-    ls -la
+    sudo ls -la
     """).then((result){
       print('Shell script done!');
     }).catchError((onError) {
