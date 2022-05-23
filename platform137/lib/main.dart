@@ -53,8 +53,8 @@ void nvidia_set_sudo_fans() async {
     throwOnError: false
   );
 
-  await shell.run('nvidia-smi -pl 110');
-  // await stdinForShell.terminate();
+  await shell.run('./nvidia_set.sh -p');
+  await stdinForShell.terminate();
 }
 
 Future<int> nvidia_get_temp_alt() async {
