@@ -1,4 +1,6 @@
 import 'dart:io';
+
+// import 'package:process_run/which.dart';
 import 'package:process_run/shell.dart';
 
 import 'package:flutter/material.dart';
@@ -9,7 +11,7 @@ void main() {
   nvidia_get_temp();
   nvidia_get_fans();
 
-  nvidia_set_sudo_fans();
+  // nvidia_set_sudo_fans();
 }
 
 void testing() async {
@@ -28,7 +30,7 @@ void nvidia_get_temp() async {
   print("\n gpu_one: " + gpu_one.toString() + "C");
 }
 
-void nvidia_set_sudo_fans() {
+void non_sudo_procs_alt_way() {
   var shell = Shell();
 
   shell.run("""
@@ -40,6 +42,19 @@ void nvidia_set_sudo_fans() {
       print('Shell.run error!');
       print(onError);
     });
+}
+
+void nvidia_set_sudo_fans() async {
+  var stdinForShell = sharedStdIn;
+  var shellEnv = ShellEnvironment()..aliases['sudo'] = 'sudo ---stdin';
+  var shell = Shell(
+    stdin: sharedStdIn,
+    environment: shellEnv,
+    throwOnError: false
+  );
+
+  await shell.run('sudo ls -la');
+  await stdinForShell.terminate();
 }
 
 Future<int> nvidia_get_temp_alt() async {
