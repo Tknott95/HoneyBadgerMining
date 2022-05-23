@@ -46,7 +46,7 @@ void non_sudo_procs_alt_way() {
 
 void nvidia_set_sudo_fans() async {
   var stdinForShell = sharedStdIn;
-  var shellEnv = ShellEnvironment()..aliases['sudo'] = 'sudo ---stdin';
+  var shellEnv = ShellEnvironment()..aliases['sudo'] = 'sudo --stdin';
   var shell = Shell(
     stdin: sharedStdIn,
     environment: shellEnv,
