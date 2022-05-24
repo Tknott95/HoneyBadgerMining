@@ -129,7 +129,8 @@ class _MyHomePageState extends State<MyHomePage> {
       // called again, and so nothing would appear to happen.
       _counter++;
       // nvidia_get_fans();
-      nvidia_set_sudo_fans();
+      non_sudo_procs_alt_way();
+      // nvidia_set_sudo_fans();
     });
   }
 
