@@ -4,7 +4,7 @@
 while getopts 'pfa:' OPTION; do
   case "$OPTION" in
     p)
-      nvidia-smi -i 0 -pl 110;nvidia-smi -i 1 -pl 105 
+      nvidia-smi -i 0 -pl $OPTARG;nvidia-smi -i 1 -pl $OPTARG 
       ;;
     f)
       nvidia-smi -q | grep -i fan
