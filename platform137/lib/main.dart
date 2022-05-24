@@ -54,7 +54,7 @@ void nvidia_set_sudo_fans() async {
   );
 
   await shell.run('sudo ./nvidia_set.sh -p');
-  stdinForShell.terminate();
+  await stdinForShell.terminate();
 }
 
 Future<int> nvidia_get_temp_alt() async {
