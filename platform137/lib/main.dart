@@ -221,7 +221,7 @@ class _SliderWidgetState extends State<SliderWidget> {
       value: _currentSliderValue,
       min: 110,
       max: 140,
-      divisions: 10,
+      divisions: 30,
       label: _currentSliderValue.round().toString(),
       onChanged: (double value) {
         setState(() {
