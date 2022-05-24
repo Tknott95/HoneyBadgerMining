@@ -45,20 +45,35 @@ void non_sudo_procs_alt_way() {
     });
 }
 
-void nvidia_set_sudo_fans() async {
-  var stdinForShell = sharedStdIn;
-  var shellEnv = ShellEnvironment()..aliases['sudo'] = 'sudo --stdin';
-  var shell = Shell(
-    stdin: sharedStdIn,
-    environment: shellEnv,
-    throwOnError: false
-  );
+void nvidia_set_power() {
+  var shell = Shell();
 
-  /* @NOTE breaks after functionfires once bcz of terminate */
-
-  await shell.run('sudo ./nvidia_set.sh -p');
-  await stdinForShell.terminate();
+  shell.run("""
+    #!/bin/bash
+    sudo ./nvidia_set.sh -p
+    """).then((result){
+      print('Shell script done!');
+    }).catchError((onError) {
+      print('Shell.run error!');
+      print(onError);
+    });
 }
+
+/* NOT USING ANYMORE - REMOVE LATER JUST IN CASE */
+// void nvidia_set_sudo_fans() async {
+//   var stdinForShell = sharedStdIn;
+//   var shellEnv = ShellEnvironment()..aliases['sudo'] = 'sudo --stdin';
+//   var shell = Shell(
+//     stdin: sharedStdIn,
+//     environment: shellEnv,
+//     throwOnError: false
+//   );
+
+//   /* @NOTE breaks after functionfires once bcz of terminate */
+
+//   await shell.run('sudo ./nvidia_set.sh -p');
+//   await stdinForShell.terminate();
+// }
 
 Future<int> nvidia_get_temp_alt() async {
   var result = await Process.run('./nvidia_smi.sh', ['-t']); /* second arr takes flags and params? */
@@ -128,8 +143,9 @@ class _MyHomePageState extends State<MyHomePage> {
       // _counter without calling setState(), then the build method would not be
       // called again, and so nothing would appear to happen.
       _counter++;
+      
       // nvidia_get_fans();
-      non_sudo_procs_alt_way();
+      nvidia_set_power();
       // nvidia_set_sudo_fans();
     });
   }
