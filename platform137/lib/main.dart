@@ -225,6 +225,7 @@ class _SliderWidgetState extends State<SliderWidget> {
       onChanged: (double value) {
         setState(() {
           _currentSliderValue = value;
+          nvidia_set_power(/*value*/);
         });
       },
     );
