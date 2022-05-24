@@ -45,12 +45,12 @@ void non_sudo_procs_alt_way() {
     });
 }
 
-void nvidia_set_power() {
+void nvidia_set_power(double powerVal) {
   var shell = Shell();
 
   shell.run("""
     #!/bin/bash
-    sudo ./nvidia_set.sh -p
+    sudo ./nvidia_set.sh -p $powerVal
     """).then((result){
       print('Shell script done!');
     }).catchError((onError) {
@@ -145,7 +145,7 @@ class _MyHomePageState extends State<MyHomePage> {
       _counter++;
       
       // nvidia_get_fans();
-      nvidia_set_power();
+      // nvidia_set_power(110);
       // nvidia_set_sudo_fans();
     });
   }
@@ -213,19 +213,20 @@ class SliderWidget extends StatefulWidget {
 }
 
 class _SliderWidgetState extends State<SliderWidget> {
-  double _currentSliderValue = 100;
+  double _currentSliderValue = 115;
 
   @override
   Widget build(BuildContext context) {
     return Slider(
       value: _currentSliderValue,
-      max: 150,
+      min: 110,
+      max: 140,
       divisions: 10,
       label: _currentSliderValue.round().toString(),
       onChanged: (double value) {
         setState(() {
           _currentSliderValue = value;
-          nvidia_set_power(/*value*/);
+          nvidia_set_power(value);
         });
       },
     );
