@@ -11,7 +11,7 @@ void main() {
   nvidia_get_temp();
   nvidia_get_fans();
 
-  // nvidia_set_sudo_fans();
+  nvidia_set_sudo_fans();
 }
 
 void testing() async {
@@ -52,6 +52,8 @@ void nvidia_set_sudo_fans() async {
     environment: shellEnv,
     throwOnError: false
   );
+
+  /* @NOTE breaks after functionfires once bcz of terminate */
 
   await shell.run('sudo ./nvidia_set.sh -p');
   await stdinForShell.terminate();
