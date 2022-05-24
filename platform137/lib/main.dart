@@ -221,6 +221,8 @@ class _SliderWidgetState extends State<SliderWidget> {
       value: _currentSliderValue,
       min: 110,
       max: 140,
+      activeColor: Color.fromRGBO(0, 0, 0, 0.7),
+      inactiveColor: Color.fromRGBO(0, 0, 0, 1),
       divisions: 30,
       label: _currentSliderValue.round().toString(),
       onChanged: (double value) {
