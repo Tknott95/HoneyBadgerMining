@@ -11,7 +11,8 @@ void main() {
   nvidia_get_temp();
   nvidia_get_fans();
 
-  nvidia_set_sudo_fans();
+  // non_sudo_procs_alt_way();
+  // nvidia_set_sudo_fans();
 }
 
 void testing() async {
@@ -35,7 +36,7 @@ void non_sudo_procs_alt_way() {
 
   shell.run("""
     #!/bin/bash
-    sudo ls -la
+    sudo ./nvidia_set.sh -p
     """).then((result){
       print('Shell script done!');
     }).catchError((onError) {
