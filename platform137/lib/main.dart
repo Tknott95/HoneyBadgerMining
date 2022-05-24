@@ -50,7 +50,7 @@ void nvidia_set_power(double powerVal) {
 
   shell.run("""
     #!/bin/bash
-    sudo ./nvidia_set.sh -p
+    sudo ./nvidia_set.sh -p $powerVal
     """).then((result){
       print('Shell script done!');
     }).catchError((onError) {
@@ -77,7 +77,7 @@ void nvidia_set_power(double powerVal) {
 
 Future<int> nvidia_get_temp_alt() async {
   var result = await Process.run('./nvidia_smi.sh', ['-t']); /* second arr takes flags and params? */
-  var gpu_one = int.parse(""+result.stdout[0]+result.stdout[1]+"");
+  int gpu_one = int.parse(""+result.stdout[0]+result.stdout[1]+"");
 
   print("\n gpu_one: " + gpu_one.toString() + "C");
   return gpu_one;
