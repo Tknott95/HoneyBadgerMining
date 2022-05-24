@@ -50,7 +50,7 @@ void nvidia_set_power(double powerVal) {
 
   shell.run("""
     #!/bin/bash
-    sudo ./nvidia_set.sh -p $powerVal
+    sudo ./nvidia_set.sh $powerVal -p
     """).then((result){
       print('Shell script done!');
     }).catchError((onError) {
