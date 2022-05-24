@@ -194,7 +194,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             Slider(
               value: _currentSliderValue,
-              max: 100,
+              max: 150,
               divisions: 5,
               label: _currentSliderValue.round().toString(),
               onChanged: (double value) {
