@@ -152,6 +152,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    double _currentSliderValue = 110;
     // This method is rerun every time setState is called, for instance as done
     // by the _incrementCounter method above.
     //
@@ -191,6 +192,17 @@ class _MyHomePageState extends State<MyHomePage> {
               '$_counter',
               style: Theme.of(context).textTheme.headline4,
             ),
+            Slider(
+              value: _currentSliderValue,
+              max: 100,
+              divisions: 5,
+              label: _currentSliderValue.round().toString(),
+              onChanged: (double value) {
+                setState(() {
+                  _currentSliderValue = value;
+                });
+              },
+            )
           ],
         ),
       ),
