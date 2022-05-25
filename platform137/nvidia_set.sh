@@ -7,7 +7,7 @@ while getopts 'p:f:a:' OPTION; do
       nvidia-smi -i 0 -pl $OPTARG ;nvidia-smi -i 1 -pl $OPTARG
       ;;
     f)
-      nvidia-smi -q | grep -i fan
+      nvidia-settings -a GPUFanControlState=1 -a GPUTargetFanSpeed=$OPTARG
       ;;
     a)
       avalue="$OPTARG"

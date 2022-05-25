@@ -62,6 +62,20 @@ void nvidia_set_power(double powerVal) {
     });
 }
 
+void nvidia_set_fans(double fansVal) {
+  var shell = Shell();
+
+  shell.run("""
+    #!/bin/bash
+    sudo ./nvidia_set.sh -f $fansVal
+    """).then((result){
+      print('Shell script done!');
+    }).catchError((onError) {
+      print('Shell.run error!');
+      print(onError);
+    });
+}
+
 /* NOT USING ANYMORE - REMOVE LATER JUST IN CASE */
 // void nvidia_set_sudo_fans() async {
 //   var stdinForShell = sharedStdIn;
@@ -186,7 +200,7 @@ class _MyHomePageState extends State<MyHomePage> {
           // axis because Columns are vertical (the cross axis would be
           // horizontal).
           mainAxisAlignment: MainAxisAlignment.center,
-          children: const <Widget>[
+          children: <Widget>[
             // const Text(
             //   'fetching some curls then running them - this many times:',
             // ),
@@ -194,8 +208,19 @@ class _MyHomePageState extends State<MyHomePage> {
             //   '$_counter',
             //   style: Theme.of(context).textTheme.headline4,
             // ),
-            SliderWidget(),
-            SliderWidget(),
+            Column(
+              children: const [
+                Text('P O W E R'),
+                SliderWidget(),
+              ],
+            ),
+            Column(
+              children: const [
+                Text('F A N S'),
+                SliderWidgetFans(),
+              ],
+            ),
+            const SliderWidget(),
           ],
         ),
       ),
@@ -231,21 +256,30 @@ class _SliderWidgetState extends State<SliderWidget> {
         nvidia_set_power(value);
       }
     );
-    // Slider(
-    //   value: _currentSliderValue,
-    //   min: 110,
-    //   max: 140,
-    //   activeColor: Color.fromARGB(99, 0, 88, 100),
-    //   inactiveColor: Color.fromARGB(255, 64, 115, 128),
-    //   // divisions: 30,
-    //   label: _currentSliderValue.round().toString(),
-    //   onChanged: (double value) {
-    //     setState(() {
-    //       _currentSliderValue = value;
-    //       /* going to change to run once with a button */
-    //       nvidia_set_power(value);
-    //     });
-    //   },
-    // );
+  }
+}
+
+class SliderWidgetFans extends StatefulWidget {
+  const SliderWidgetFans({Key? key}) : super(key: key);
+
+  @override
+  State<SliderWidgetFans> createState() => _SliderWidgetStateFans();
+}
+
+class _SliderWidgetStateFans extends State<SliderWidgetFans> {
+  double _currentSliderValue = 115;
+
+  @override
+  Widget build(BuildContext context) {
+    return SleekCircularSlider(
+      min: 30,
+      max: 70,
+      initialValue: 37,
+      innerWidget: (sliderValue) => Center(child: Text(sliderValue.toStringAsFixed(3)+"W"),),
+      appearance: CircularSliderAppearance(),
+      onChange: (double value) {
+        nvidia_set_power(value);
+      }
+    );
   }
 }
