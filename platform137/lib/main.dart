@@ -278,7 +278,7 @@ class _SliderWidgetStateFans extends State<SliderWidgetFans> {
       innerWidget: (sliderValue) => Center(child: Text(sliderValue.toStringAsFixed(0)+"%"),),
       appearance: CircularSliderAppearance(),
       onChange: (double value) {
-        nvidia_set_power(value);
+        nvidia_set_fans(value);
       }
     );
   }
