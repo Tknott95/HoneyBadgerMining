@@ -170,7 +170,7 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
-        child: Column(
+        child: Row(
           // Column is also a layout widget. It takes a list of children and
           // arranges them vertically. By default, it sizes itself to fit its
           // children horizontally, and tries to be as tall as its parent.
@@ -186,7 +186,7 @@ class _MyHomePageState extends State<MyHomePage> {
           // axis because Columns are vertical (the cross axis would be
           // horizontal).
           mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
+          children: const <Widget>[
             // const Text(
             //   'fetching some curls then running them - this many times:',
             // ),
@@ -194,7 +194,8 @@ class _MyHomePageState extends State<MyHomePage> {
             //   '$_counter',
             //   style: Theme.of(context).textTheme.headline4,
             // ),
-            const SliderWidget(),
+            SliderWidget(),
+            SliderWidget(),
           ],
         ),
       ),
