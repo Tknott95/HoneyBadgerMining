@@ -62,7 +62,7 @@ void nvidia_set_power(double powerVal) {
     });
 }
 
-void nvidia_set_fans(double fansVal) {
+void nvidia_set_fans(int fansVal) {
   var shell = Shell();
 
   shell.run("""
@@ -278,7 +278,7 @@ class _SliderWidgetStateFans extends State<SliderWidgetFans> {
       innerWidget: (sliderValue) => Center(child: Text(sliderValue.toStringAsFixed(0)+"%"),),
       appearance: CircularSliderAppearance(),
       onChange: (double value) {
-        nvidia_set_fans(value);
+        nvidia_set_fans(value.round());
       }
     );
   }
