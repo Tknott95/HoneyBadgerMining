@@ -5,6 +5,9 @@ import 'package:process_run/shell.dart';
 
 import 'package:flutter/material.dart';
 
+import 'package:sleek_circular_slider/sleek_circular_slider.dart';
+
+
 void main() {
   runApp(const MyApp());
   testing();
@@ -184,22 +187,22 @@ class _MyHomePageState extends State<MyHomePage> {
           // horizontal).
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Text(
-              'fetching some curls then running them - this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
+            // const Text(
+            //   'fetching some curls then running them - this many times:',
+            // ),
+            // Text(
+            //   '$_counter',
+            //   style: Theme.of(context).textTheme.headline4,
+            // ),
             const SliderWidget(),
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      // floatingActionButton: FloatingActionButton(
+      //   onPressed: _incrementCounter,
+      //   tooltip: 'Increment',
+      //   child: const Icon(Icons.add),
+      // ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
@@ -217,21 +220,30 @@ class _SliderWidgetState extends State<SliderWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Slider(
-      value: _currentSliderValue,
+    return SleekCircularSlider(
       min: 110,
       max: 140,
-      activeColor: Color.fromARGB(99, 0, 88, 100),
-      inactiveColor: Color.fromARGB(255, 64, 115, 128),
-      // divisions: 30,
-      label: _currentSliderValue.round().toString(),
-      onChanged: (double value) {
-        setState(() {
-          _currentSliderValue = value;
-          /* going to change to run once with a button */
-          nvidia_set_power(value);
-        });
-      },
+      initialValue: 115,
+      appearance: CircularSliderAppearance(),
+      onChange: (double value) {
+        nvidia_set_power(value);
+      }
     );
+    // Slider(
+    //   value: _currentSliderValue,
+    //   min: 110,
+    //   max: 140,
+    //   activeColor: Color.fromARGB(99, 0, 88, 100),
+    //   inactiveColor: Color.fromARGB(255, 64, 115, 128),
+    //   // divisions: 30,
+    //   label: _currentSliderValue.round().toString(),
+    //   onChanged: (double value) {
+    //     setState(() {
+    //       _currentSliderValue = value;
+    //       /* going to change to run once with a button */
+    //       nvidia_set_power(value);
+    //     });
+    //   },
+    // );
   }
 }
