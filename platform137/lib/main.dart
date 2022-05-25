@@ -242,8 +242,6 @@ class SliderWidget extends StatefulWidget {
 }
 
 class _SliderWidgetState extends State<SliderWidget> {
-  double _currentSliderValue = 115;
-
   @override
   Widget build(BuildContext context) {
     return SleekCircularSlider(
@@ -267,8 +265,6 @@ class SliderWidgetFans extends StatefulWidget {
 }
 
 class _SliderWidgetStateFans extends State<SliderWidgetFans> {
-  double _currentSliderValue = 115;
-
   @override
   Widget build(BuildContext context) {
     return SleekCircularSlider(
