@@ -223,7 +223,7 @@ class _SliderWidgetState extends State<SliderWidget> {
       max: 140,
       activeColor: Color.fromARGB(99, 0, 88, 100),
       inactiveColor: Color.fromARGB(255, 64, 115, 128),
-      divisions: 30,
+      // divisions: 30,
       label: _currentSliderValue.round().toString(),
       onChanged: (double value) {
         setState(() {
