@@ -220,7 +220,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 SliderWidgetFans(),
               ],
             ),
-            const SliderWidget(),
+            // const SliderWidget(),
           ],
         ),
       ),
