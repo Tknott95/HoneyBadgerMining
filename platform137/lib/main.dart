@@ -309,7 +309,7 @@ class _SliderWidgetStateGraphics extends State<SliderWidgetGraphics> {
       min: 30,
       max: 70,
       initialValue: 37,
-      innerWidget: (sliderValue) => Center(child: Text(sliderValue.toStringAsFixed(0)+"%"),),
+      innerWidget: (sliderValue) => Center(child: Text(sliderValue.toStringAsFixed(0)+" CLOCK"),),
       appearance: CircularSliderAppearance(),
       onChange: (double value) {
         nvidia_set_fans(value.round());
@@ -333,7 +333,7 @@ class _SliderWidgetStateMemory extends State<SliderWidgetMemory> {
       min: 30,
       max: 70,
       initialValue: 37,
-      innerWidget: (sliderValue) => Center(child: Text(sliderValue.toStringAsFixed(0)+"%"),),
+      innerWidget: (sliderValue) => Center(child: Text(sliderValue.toStringAsFixed(0)+" CLOCK"),),
       appearance: CircularSliderAppearance(),
       onChange: (double value) {
         nvidia_set_fans(value.round());
