@@ -1,7 +1,11 @@
 #!/bin/bash
 
+# p - power draw
+# f - fan speed
+# m - memory transfer rate offset
+# g - graphics clock offset
 
-while getopts 'p:f:a:' OPTION; do
+while getopts 'p:f:m:g:' OPTION; do
   case "$OPTION" in
     p)
       nvidia-smi -i 0 -pl $OPTARG ;nvidia-smi -i 1 -pl $OPTARG
@@ -9,9 +13,9 @@ while getopts 'p:f:a:' OPTION; do
     f)
       nvidia-settings -a GPUFanControlState=1 -a GPUTargetFanSpeed=$OPTARG
       ;;
-    a)
-      avalue="$OPTARG"
-      echo "The value provided is $OPTARG"
+    m)
+      nvidia-settings -a GPUMemoryTransferRateOffset[2]=$OPTARG
+      # nvidia-settings -a [gpu:0]/GPUMemoryTransferRateOffset[2]
       ;;
     ?)
       echo "script usage: $(basename \$0) [-l] [-h] [-a somevalue]" >&2
