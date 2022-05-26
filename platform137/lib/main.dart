@@ -220,6 +220,19 @@ class _MyHomePageState extends State<MyHomePage> {
                 SliderWidgetFans(),
               ],
             ),
+            Divider(),
+            Column(
+              children: const [
+                Text('G R A P H I C S  C L O C K I N G'),
+                SliderWidgetGraphics(),
+              ],
+            ),
+            Column(
+              children: const [
+                Text('M E M O R Y  C L O C K I N G'),
+                SliderWidgetMemory(),
+              ],
+            ),
             // const SliderWidget(),
           ],
         ),
