@@ -213,7 +213,7 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
-        child: Row(
+        child: Column(
           // Column is also a layout widget. It takes a list of children and
           // arranges them vertically. By default, it sizes itself to fit its
           // children horizontally, and tries to be as tall as its parent.
@@ -238,18 +238,19 @@ class _MyHomePageState extends State<MyHomePage> {
             //   style: Theme.of(context).textTheme.headline4,
             // ),
             Column(
-              children: const [
-                Text('P O W E R'),
-                SliderWidget(),
-              ],
-            ),
-            Column(
-              children: const [
-                Text('F A N S'),
-                SliderWidgetFans(),
-              ],
-            ),
-            Divider(),
+                  children: const [
+                    Text('P O W E R'),
+                    SliderWidget(),
+                  ],
+                ),
+                Column(
+                  children: const [
+                    Text('F A N S'),
+                    SliderWidgetFans(),
+                  ],
+                ),
+           
+             Divider(),
             Column(
               children: const [
                 Text('G R A P H I C S  C L O C K I N G'),
