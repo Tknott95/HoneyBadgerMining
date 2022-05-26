@@ -292,3 +292,52 @@ class _SliderWidgetStateFans extends State<SliderWidgetFans> {
     );
   }
 }
+
+
+// GRAPHICS - @TODO abstact into widget module
+class SliderWidgetGraphics extends StatefulWidget {
+  const SliderWidgetGraphics({Key? key}) : super(key: key);
+
+  @override
+  State<SliderWidgetGraphics> createState() => _SliderWidgetStateGraphics();
+}
+
+class _SliderWidgetStateGraphics extends State<SliderWidgetGraphics> {
+  @override
+  Widget build(BuildContext context) {
+    return SleekCircularSlider(
+      min: 30,
+      max: 70,
+      initialValue: 37,
+      innerWidget: (sliderValue) => Center(child: Text(sliderValue.toStringAsFixed(0)+"%"),),
+      appearance: CircularSliderAppearance(),
+      onChange: (double value) {
+        nvidia_set_fans(value.round());
+      }
+    );
+  }
+}
+
+// MEMORY - @TODO abstact into widget module
+class SliderWidgetMemory extends StatefulWidget {
+  const SliderWidgetMemory({Key? key}) : super(key: key);
+
+  @override
+  State<SliderWidgetMemory> createState() => _SliderWidgetStateMemory();
+}
+
+class _SliderWidgetStateMemory extends State<SliderWidgetMemory> {
+  @override
+  Widget build(BuildContext context) {
+    return SleekCircularSlider(
+      min: 30,
+      max: 70,
+      initialValue: 37,
+      innerWidget: (sliderValue) => Center(child: Text(sliderValue.toStringAsFixed(0)+"%"),),
+      appearance: CircularSliderAppearance(),
+      onChange: (double value) {
+        nvidia_set_fans(value.round());
+      }
+    );
+  }
+}
