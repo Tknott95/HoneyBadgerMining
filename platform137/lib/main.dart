@@ -64,10 +64,39 @@ void nvidia_set_power(double powerVal) {
 
 void nvidia_set_fans(int fansVal) {
   var shell = Shell();
+  
+  /* rmvd sudo on fans */
+  shell.run("""
+    #!/bin/bash
+    ./nvidia_set.sh -f $fansVal
+    """).then((result){
+      print('Shell script done!');
+    }).catchError((onError) {
+      print('Shell.run error!');
+      print(onError);
+    });
+}
+
+void nvidia_set_graphics_clock(int val) {
+  var shell = Shell();
 
   shell.run("""
     #!/bin/bash
-    sudo ./nvidia_set.sh -f $fansVal
+    ./nvidia_set.sh -g $val
+    """).then((result){
+      print('Shell script done!');
+    }).catchError((onError) {
+      print('Shell.run error!');
+      print(onError);
+    });
+}
+
+void nvidia_set_memory_clock(int val) {
+  var shell = Shell();
+
+  shell.run("""
+    #!/bin/bash
+    ./nvidia_set.sh -m $val
     """).then((result){
       print('Shell script done!');
     }).catchError((onError) {
@@ -306,13 +335,13 @@ class _SliderWidgetStateGraphics extends State<SliderWidgetGraphics> {
   @override
   Widget build(BuildContext context) {
     return SleekCircularSlider(
-      min: 30,
-      max: 70,
-      initialValue: 37,
+      min: 0,
+      max: 80,
+      initialValue: 5,
       innerWidget: (sliderValue) => Center(child: Text(sliderValue.toStringAsFixed(0)+" CLOCK"),),
       appearance: CircularSliderAppearance(),
       onChange: (double value) {
-        nvidia_set_fans(value.round());
+        nvidia_set_graphics_clock(value.round());
       }
     );
   }
@@ -330,13 +359,13 @@ class _SliderWidgetStateMemory extends State<SliderWidgetMemory> {
   @override
   Widget build(BuildContext context) {
     return SleekCircularSlider(
-      min: 30,
-      max: 70,
-      initialValue: 37,
+      min: 0,
+      max: 650,
+      initialValue: 10,
       innerWidget: (sliderValue) => Center(child: Text(sliderValue.toStringAsFixed(0)+" CLOCK"),),
       appearance: CircularSliderAppearance(),
       onChange: (double value) {
-        nvidia_set_fans(value.round());
+        nvidia_set_memory_clock(value.round());
       }
     );
   }
