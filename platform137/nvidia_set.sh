@@ -15,7 +15,11 @@ while getopts 'p:f:m:g:' OPTION; do
       ;;
     m)
       nvidia-settings -a GPUMemoryTransferRateOffset[2]=$OPTARG
-      # nvidia-settings -a [gpu:0]/GPUMemoryTransferRateOffset[2]
+      # nvidia-settings -a [gpu:0]/GPUMemoryTransferRateOffset[2]=$OPTARG
+      ;;
+    g)
+      nvidia-settings -a GPUGraphicsClockOffset[2]=$OPTARG
+      # nvidia-settings -a [gpu:0]/GPUGraphicsClockOffset[2]=$OPTARG
       ;;
     ?)
       echo "script usage: $(basename \$0) [-l] [-h] [-a somevalue]" >&2
