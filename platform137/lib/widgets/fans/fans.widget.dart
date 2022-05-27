@@ -28,20 +28,28 @@ class SliderWidgetFans extends StatefulWidget {
 class _SliderWidgetStateFans extends State<SliderWidgetFans> {
   @override
   Widget build(BuildContext context) {
-    return SleekCircularSlider(
-      min: 30,
-      max: 70,
-      initialValue: 37,
-      innerWidget: (sliderValue) => Center(
-        child: Text(
-            sliderValue.toStringAsFixed(0)+"%",
-            style: Theme.of(context).textTheme.bodyText1,
-          )
-        ),
-      appearance: CircularSliderAppearance(),
-      onChange: (double value) {
-        nvidia_set_fans(value.round());
-      }
+    return Column(
+              children: [
+                Text(
+                  'FANS',
+                  style: Theme.of(context).textTheme.headline6
+                ),
+                SleekCircularSlider(
+                  min: 30,
+                  max: 70,
+                  initialValue: 37,
+                  innerWidget: (sliderValue) => Center(
+                    child: Text(
+                        sliderValue.toStringAsFixed(0)+"%",
+                        style: Theme.of(context).textTheme.bodyText1,
+                      )
+                    ),
+                  appearance: const CircularSliderAppearance(),
+                  onChange: (double value) {
+                    nvidia_set_fans(value.round());
+                  }
+                )
+              ],
     );
   }
 }
