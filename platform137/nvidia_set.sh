@@ -11,7 +11,15 @@ while getopts 'p:f:m:g:' OPTION; do
       nvidia-smi -i 0 -pl $OPTARG ;nvidia-smi -i 1 -pl $OPTARG
       ;;
     f)
-      nvidia-settings -a GPUFanControlState=1 -a GPUTargetFanSpeed=$OPTARG
+      # VAL COMES IN AS <#-of_gpus>:<fan-speed>
+      # '20:30' in examples
+      which_fan=$(echo $OPTARG | grep -Eo "^[0-9]+")
+      fan_val=$(echo $OPTARG | grep -Eo ':.*' | grep -Eo '[0-9]+')
+      echo "ARG COMING IN: $OPTARG";
+      echo "FAN TARGETING: $which_fan"
+      echo "FAN PERCENTAGE: $fan_val"
+
+      nvidia-settings -a GPUFanControlState=1 -a GPUTargetFanSpeed=$fan_val
       ;;
     m)
       nvidia-settings -a GPUMemoryTransferRateOffset[2]=$OPTARG
