@@ -170,7 +170,7 @@ class _MyHomePageState extends State<MyHomePage> {
             // ),
             const SliderWidgetPower(),
             const SliderWidgetFans(),
-           
+
             Divider(),
             Column(
               children: [
