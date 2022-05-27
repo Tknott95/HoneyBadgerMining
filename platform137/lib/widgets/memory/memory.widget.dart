@@ -46,7 +46,20 @@ class _SliderWidgetStateMemory extends State<SliderWidgetMemory> {
                         style: Theme.of(context).textTheme.bodyText1,
                       )
                     ),
-                  appearance: const CircularSliderAppearance(size: 85),
+                  appearance: CircularSliderAppearance(
+                    size: 85,
+                    customColors: CustomSliderColors(
+                      dotColor: const Color.fromARGB(175, 255, 255, 255)/*Theme.of(context).primaryColor*/,
+                      trackColor: Color.fromARGB(172, 0, 0, 0),
+                      progressBarColors: const [
+                      Color.fromARGB(255, 240, 40, 13),
+                      Color.fromARGB(255, 238, 169, 20),
+                      Color.fromARGB(255, 8, 63, 3),
+                      Color.fromARGB(255, 50, 192, 45),
+                      ],
+                     shadowColor: const Color.fromARGB(255, 0, 0, 0),
+                    ),
+                  ),
                   onChange: (double value) {
                     nvidia_set_memory_clock(value.round());
                   }

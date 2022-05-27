@@ -58,9 +58,9 @@ class _SliderWidgetStatePower extends State<SliderWidgetPower> {
                       Color.fromARGB(255, 238, 169, 20),
                       Color.fromARGB(255, 6, 49, 105),
                       Color.fromARGB(255, 45, 192, 180),
-                     ],
+                      ],
                      shadowColor: const Color.fromARGB(255, 0, 0, 0),
-                  ),
+                    ),
                   ),
                   onChange: (double value) {
                     nvidia_set_power(value);
