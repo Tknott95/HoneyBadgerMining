@@ -168,15 +168,7 @@ class _MyHomePageState extends State<MyHomePage> {
             //   '$_counter',
             //   style: Theme.of(context).textTheme.headline4,
             // ),
-            Column(
-              children: [
-                Text(
-                  'POWER',
-                  style: Theme.of(context).textTheme.headline6
-                ),
-                const SliderWidgetPower(),
-              ],
-            ),
+            const SliderWidgetPower(),
             Column(
               children: [
                 Text(

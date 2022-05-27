@@ -26,20 +26,29 @@ class SliderWidgetPower extends StatefulWidget {
 class _SliderWidgetStatePower extends State<SliderWidgetPower> {
   @override
   Widget build(BuildContext context) {
-    return SleekCircularSlider(
-      min: 110,
-      max: 140,
-      initialValue: 115,
-      innerWidget: (sliderValue) => Center(
-        child: Text(
-            sliderValue.toStringAsFixed(3)+"W",
-            style: Theme.of(context).textTheme.bodyText1,
-          )
-        ),
-      appearance: CircularSliderAppearance(),
-      onChange: (double value) {
-        nvidia_set_power(value);
-      }
-    );
+    return  Column(
+              children: [
+                Text(
+                  'POWER',
+                  style: Theme.of(context).textTheme.headline6
+                ),
+                SleekCircularSlider(
+                  min: 110,
+                  max: 140,
+                  initialValue: 115,
+                  innerWidget: (sliderValue) => Center(
+                    child: Text(
+                        sliderValue.toStringAsFixed(3)+"W",
+                        style: Theme.of(context).textTheme.bodyText1,
+                      )
+                    ),
+                  appearance: CircularSliderAppearance(),
+                  onChange: (double value) {
+                    nvidia_set_power(value);
+                  }
+                )
+              ],
+            );
   }
 }
+
