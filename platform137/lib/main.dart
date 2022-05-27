@@ -13,7 +13,6 @@ import 'package:sleek_circular_slider/sleek_circular_slider.dart';
 
 void main() {
   runApp(const MyApp());
-  testing();
   nvidia_get_temp();
   nvidia_get_fans();
 
@@ -21,11 +20,11 @@ void main() {
   // nvidia_set_sudo_fans();
 }
 
-void testing() async {
-  // List all files in the current directory in UNIX-like systems.
-  var result = await Process.run('./run_smi.sh', ['']); /* second arr takes flags and params? */
-  print(result.stdout);
-}
+// void testing() async {
+//   // List all files in the current directory in UNIX-like systems.
+//   var result = await Process.run('./run_smi.sh', ['']); /* second arr takes flags and params? */
+//   print(result.stdout);
+// }
 
 void nvidia_get_temp() async {
   // List all files in the current directory in UNIX-like systems.
