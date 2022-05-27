@@ -107,90 +107,64 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Row(
-  children: <Widget>[
-    Expanded(
-      child: Column(
-          children: <Widget>[
-            Center(
-              child: SizedBox(
-                // heightFactor: .3,
-                // widthFactor: 1,
-                height: 180,
-                width: double.infinity,
-                
-                child: Container(
-                 decoration: const BoxDecoration(color: Colors.green),
-                 child: Center(
-                   child: Text(
-                     'kjsalkjasljkasljk',
-                      style: Theme.of(context).textTheme.headline1
-                    )
+      children: <Widget>[
+        Expanded(
+          child: Column(
+              children: <Widget>[
+                Center(
+                  child: SizedBox(
+                    // heightFactor: .3,
+                    // widthFactor: 1,
+                    height: 180,
+                    width: double.infinity,
+                    
+                    child: Container(
+                    decoration: const BoxDecoration(color: Colors.green),
+                    child: Center(
+                      child: Text(
+                        'kjsalkjasljkasljk',
+                          style: Theme.of(context).textTheme.headline1
+                        )
+                      ),
+                    ),
                   ),
                 ),
-              ),
-            ),
-            Expanded(
-              flex: 1,
-              
-              child: Container(
-               color: const Color.fromARGB(145, 115, 115, 124),
-               child: Center(
-                   child: Text(
-                     'tdffgdffgsdfg',
-                      style: Theme.of(context).textTheme.headline1
-                    )
+                Expanded(
+                  flex: 1,
+                  
+                  child: Container(
+                  color: const Color.fromARGB(145, 115, 115, 124),
+                  child: Center(
+                      child: Text(
+                        'tdffgdffgsdfg',
+                          style: Theme.of(context).textTheme.headline1
+                        )
+                      ),
+                  width: double.infinity,
                   ),
-               width: double.infinity,
-              ),
-            )
-          ],
-      ),
-      flex: 73,
-    ),
-    Expanded(
-      child: Container(
-        decoration: const BoxDecoration(color: Color.fromARGB(255, 255, 255, 255)),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: const <Widget>[
-            SliderWidgetPower(),
-            SliderWidgetFans(),
-            Divider(),
-            SliderWidgetMemory(),
-            SliderWidgetGraphics()
-          ]
+                )
+              ],
+          ),
+          flex: 73,
         ),
-      ),
-      flex: 27,
-    ),
-    
-  ],
-);
-    
-    // Column(
-    //       children: <Widget>[
-    //         SizedBox(
-    //           // heightFactor: .3,
-    //           // widthFactor: 1,
-    //           height: 180,
-    //           width: double.infinity,
-              
-    //           child: Container(
-    //            color: const Color.fromARGB(0, 202, 202, 206),
-    //            child: const Text('kjsalkjasljkasljk',),
-    //           ),
-    //         ),
-    //         Expanded(
-    //           flex: 1,
-              
-    //           child: Container(
-    //            color: const Color.fromARGB(145, 115, 115, 124),
-    //            child: const Text('fghjfghjhgjfhg'),
-    //            width: double.infinity,
-    //           ),
-    //         )
-    //       ],
-    // );
+        Expanded(
+          child: Container(
+            decoration: const BoxDecoration(color: Color.fromARGB(255, 255, 255, 255)),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: const <Widget>[
+                SliderWidgetPower(),
+                SliderWidgetFans(),
+                Divider(),
+                SliderWidgetMemory(),
+                SliderWidgetGraphics()
+              ]
+            ),
+          ),
+          flex: 27,
+        ),
+        
+      ],
+    );
   }
 }
-
