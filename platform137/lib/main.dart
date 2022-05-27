@@ -163,29 +163,41 @@ class _MyHomePageState extends State<MyHomePage> {
             //   style: Theme.of(context).textTheme.headline4,
             // ),
             Column(
-              children: const [
-                Text('P O W E R'),
-                SliderWidgetPower(),
+              children: [
+                Text(
+                  'P O W E R',
+                  style: Theme.of(context).textTheme.bodyText1
+                ),
+                const SliderWidgetPower(),
               ],
             ),
             Column(
-              children: const [
-                Text('F A N S'),
-                SliderWidgetFans(),
+              children: [
+                Text(
+                  'F A N S',
+                  style: Theme.of(context).textTheme.bodyText1
+                ),
+                const SliderWidgetFans(),
               ],
             ),
            
             Divider(),
             Column(
-              children: const [
-                Text('G R A P H I C S  C L O C K I N G'),
-                SliderWidgetGraphics(),
+              children: [
+                Text(
+                  'G R A P H I C S  C L O C K I N G',
+                  style: Theme.of(context).textTheme.bodyText1,
+                  ),
+                const SliderWidgetGraphics(),
               ],
             ),
             Column(
-              children: const [
-                Text('M E M O R Y  C L O C K I N G'),
-                SliderWidgetMemory(),
+              children: [
+                Text(
+                  'M E M O R Y  C L O C K I N G',
+                  style: Theme.of(context).textTheme.bodyText1,
+                ),
+                const SliderWidgetMemory(),
               ],
             ),
             // const SliderWidget(),
