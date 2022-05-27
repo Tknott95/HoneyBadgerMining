@@ -30,20 +30,28 @@ class SliderWidgetMemory extends StatefulWidget {
 class _SliderWidgetStateMemory extends State<SliderWidgetMemory> {
   @override
   Widget build(BuildContext context) {
-    return SleekCircularSlider(
-      min: 0,
-      max: 650,
-      initialValue: 10,
-      innerWidget: (sliderValue) => Center(
-        child: Text(
-            "+"+sliderValue.toStringAsFixed(0),
-            style: Theme.of(context).textTheme.bodyText1,
-          )
-        ),
-      appearance: CircularSliderAppearance(),
-      onChange: (double value) {
-        nvidia_set_memory_clock(value.round());
-      }
-    );
+    return Column(
+              children: [
+                Text(
+                  'MEMORY  CLOCKING',
+                  style: Theme.of(context).textTheme.headline6,
+                ),
+                SleekCircularSlider(
+                  min: 0,
+                  max: 650,
+                  initialValue: 10,
+                  innerWidget: (sliderValue) => Center(
+                    child: Text(
+                        "+"+sliderValue.toStringAsFixed(0),
+                        style: Theme.of(context).textTheme.bodyText1,
+                      )
+                    ),
+                  appearance: const CircularSliderAppearance(),
+                  onChange: (double value) {
+                    nvidia_set_memory_clock(value.round());
+                  }
+                ),
+              ],
+      );
   }
 }

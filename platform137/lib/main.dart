@@ -160,7 +160,7 @@ class _MyHomePageState extends State<MyHomePage> {
           // axis because Columns are vertical (the cross axis would be
           // horizontal).
           mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
+          children: const <Widget>[
             // const Text(
             //   'fetching some curls then running them - this many times:',
             // ),
@@ -168,22 +168,15 @@ class _MyHomePageState extends State<MyHomePage> {
             //   '$_counter',
             //   style: Theme.of(context).textTheme.headline4,
             // ),
-            const SliderWidgetPower(),
-            const SliderWidgetFans(),
+            SliderWidgetPower(),
+            SliderWidgetFans(),
 
             Divider(),
 
-            const SliderWidgetGraphics(),
+            SliderWidgetGraphics(),
+            SliderWidgetMemory(),
 
-            Column(
-              children: [
-                Text(
-                  'MEMORY  CLOCKING',
-                  style: Theme.of(context).textTheme.headline6,
-                ),
-                const SliderWidgetMemory(),
-              ],
-            ),
+      
             // const SliderWidget(),
           ],
         ),
