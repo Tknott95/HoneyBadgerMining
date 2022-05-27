@@ -66,6 +66,11 @@ void nvidia_get_fans() async {
   print(result.stdout);
 }
 
+/* BLACK - w900
+/  SEMIBOLD - w600
+/  LIGHT - w300
+*/
+
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 

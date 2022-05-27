@@ -93,5 +93,12 @@ flutter:
       fonts:
         - asset: assets/fonts/Montserrat-SemiBold.ttf
         - asset: assets/fonts/Montserrat-Light.ttf
+        - asset: assets/fonts/Montserrat-Black.ttf
+
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+  
+
+  # BLACK - w900
+  # SEMIBOLD - w600
+  # LIGHT - w300
