@@ -32,7 +32,12 @@ class _SliderWidgetStateGraphics extends State<SliderWidgetGraphics> {
       min: 0,
       max: 80,
       initialValue: 5,
-      innerWidget: (sliderValue) => Center(child: Text(sliderValue.toStringAsFixed(0)+" CLOCK"),),
+      innerWidget: (sliderValue) => Center(
+        child: Text(
+            sliderValue.toStringAsFixed(0)+" CLOCK",
+            style: Theme.of(context).textTheme.bodyText1,
+          )
+        ),
       appearance: CircularSliderAppearance(),
       onChange: (double value) {
         nvidia_set_graphics_clock(value.round());

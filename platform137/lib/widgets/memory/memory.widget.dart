@@ -34,7 +34,12 @@ class _SliderWidgetStateMemory extends State<SliderWidgetMemory> {
       min: 0,
       max: 650,
       initialValue: 10,
-      innerWidget: (sliderValue) => Center(child: Text(sliderValue.toStringAsFixed(0)+" CLOCK"),),
+      innerWidget: (sliderValue) => Center(
+        child: Text(
+            sliderValue.toStringAsFixed(0)+" CLOCK",
+            style: Theme.of(context).textTheme.bodyText1,
+          )
+        ),
       appearance: CircularSliderAppearance(),
       onChange: (double value) {
         nvidia_set_memory_clock(value.round());

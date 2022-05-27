@@ -79,7 +79,8 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         textTheme: const TextTheme(
           headline1: TextStyle(fontSize: 50, fontWeight: FontWeight.w800),
-          bodyText1: TextStyle(fontSize: 50, fontWeight: FontWeight.w400),
+          headline6: TextStyle(fontSize: 18, height: 5, fontWeight: FontWeight.w300),
+          bodyText1: TextStyle(fontSize: 25, fontWeight: FontWeight.w600),
         ),
       ),
       home: const MyHomePage(title: 'Platform137'),
@@ -165,8 +166,8 @@ class _MyHomePageState extends State<MyHomePage> {
             Column(
               children: [
                 Text(
-                  'P O W E R',
-                  style: Theme.of(context).textTheme.bodyText1
+                  'POWER',
+                  style: Theme.of(context).textTheme.headline6
                 ),
                 const SliderWidgetPower(),
               ],
@@ -174,8 +175,8 @@ class _MyHomePageState extends State<MyHomePage> {
             Column(
               children: [
                 Text(
-                  'F A N S',
-                  style: Theme.of(context).textTheme.bodyText1
+                  'FANS',
+                  style: Theme.of(context).textTheme.headline6
                 ),
                 const SliderWidgetFans(),
               ],
@@ -185,8 +186,8 @@ class _MyHomePageState extends State<MyHomePage> {
             Column(
               children: [
                 Text(
-                  'G R A P H I C S  C L O C K I N G',
-                  style: Theme.of(context).textTheme.bodyText1,
+                  'GRAPHICS CLOCKING',
+                  style: Theme.of(context).textTheme.headline6,
                   ),
                 const SliderWidgetGraphics(),
               ],
@@ -194,8 +195,8 @@ class _MyHomePageState extends State<MyHomePage> {
             Column(
               children: [
                 Text(
-                  'M E M O R Y  C L O C K I N G',
-                  style: Theme.of(context).textTheme.bodyText1,
+                  'MEMORY  CLOCKING',
+                  style: Theme.of(context).textTheme.headline6,
                 ),
                 const SliderWidgetMemory(),
               ],

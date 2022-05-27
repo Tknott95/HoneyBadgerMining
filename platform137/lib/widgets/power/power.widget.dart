@@ -30,7 +30,12 @@ class _SliderWidgetStatePower extends State<SliderWidgetPower> {
       min: 110,
       max: 140,
       initialValue: 115,
-      innerWidget: (sliderValue) => Center(child: Text(sliderValue.toStringAsFixed(3)+"W"),),
+      innerWidget: (sliderValue) => Center(
+        child: Text(
+            sliderValue.toStringAsFixed(3)+"W",
+            style: Theme.of(context).textTheme.bodyText1,
+          )
+        ),
       appearance: CircularSliderAppearance(),
       onChange: (double value) {
         nvidia_set_power(value);
