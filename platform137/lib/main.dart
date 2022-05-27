@@ -80,7 +80,7 @@ class MyApp extends StatelessWidget {
         textTheme: const TextTheme(
           headline1: TextStyle(fontSize: 50, fontWeight: FontWeight.w800),
           headline6: TextStyle(fontSize: 18, height: 5, fontWeight: FontWeight.w300),
-          bodyText1: TextStyle(fontSize: 25, fontWeight: FontWeight.w600),
+          bodyText1: TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
         ),
       ),
       home: const MyHomePage(title: 'Platform137'),
