@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:platform137/widgets/fans/fans.widget.dart';
 import 'package:platform137/widgets/graphics/graphics.widget.dart';
 import 'package:platform137/widgets/memory/memory.widget.dart';
+import 'package:platform137/widgets/power/power.widget.dart';
 import 'package:process_run/shell.dart';
 
 import 'package:flutter/material.dart';
@@ -16,7 +17,6 @@ void main() {
   nvidia_get_temp();
   nvidia_get_fans();
 
-  // non_sudo_procs_alt_way();
   // nvidia_set_sudo_fans();
 }
 
@@ -35,35 +35,6 @@ void nvidia_get_temp() async {
   print(result.stdout);
   print("\n gpu_one: " + gpu_one.toString() + "C");
 }
-
-void non_sudo_procs_alt_way() {
-  var shell = Shell();
-
-  shell.run("""
-    #!/bin/bash
-    sudo ./nvidia_set.sh -p
-    """).then((result){
-      print('Shell script done!');
-    }).catchError((onError) {
-      print('Shell.run error!');
-      print(onError);
-    });
-}
-
-void nvidia_set_power(double powerVal) {
-  var shell = Shell();
-
-  shell.run("""
-    #!/bin/bash
-    sudo ./nvidia_set.sh -p $powerVal
-    """).then((result){
-      print('Shell script done!');
-    }).catchError((onError) {
-      print('Shell.run error!');
-      print(onError);
-    });
-}
-
 
 /* NOT USING ANYMORE - REMOVE LATER JUST IN CASE */
 // void nvidia_set_sudo_fans() async {
@@ -151,8 +122,6 @@ class _MyHomePageState extends State<MyHomePage> {
       _counter++;
       
       // nvidia_get_fans();
-      // nvidia_set_power(110);
-      // nvidia_set_sudo_fans();
     });
   }
 
@@ -236,26 +205,3 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 }
 
-
-class SliderWidgetPower extends StatefulWidget {
-  const SliderWidgetPower({Key? key}) : super(key: key);
-
-  @override
-  State<SliderWidgetPower> createState() => _SliderWidgetStatePower();
-}
-
-class _SliderWidgetStatePower extends State<SliderWidgetPower> {
-  @override
-  Widget build(BuildContext context) {
-    return SleekCircularSlider(
-      min: 110,
-      max: 140,
-      initialValue: 115,
-      innerWidget: (sliderValue) => Center(child: Text(sliderValue.toStringAsFixed(3)+"W"),),
-      appearance: CircularSliderAppearance(),
-      onChange: (double value) {
-        nvidia_set_power(value);
-      }
-    );
-  }
-}
