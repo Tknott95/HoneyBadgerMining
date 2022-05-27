@@ -84,8 +84,8 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         textTheme: const TextTheme(
           headline1: TextStyle(fontSize: 50, fontWeight: FontWeight.w800),
-          headline6: TextStyle(fontSize: 18, height: 5, fontWeight: FontWeight.w900),
-          bodyText1: TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
+          headline6: TextStyle(fontSize: 18, height: 5, fontWeight: FontWeight.w600),
+          bodyText1: TextStyle(fontSize: 14, height: 1, fontWeight: FontWeight.w900),
         ),
       ),
       home: const MyHomePage(title: 'Platform137'),

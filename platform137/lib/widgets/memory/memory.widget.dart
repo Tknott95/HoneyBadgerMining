@@ -36,7 +36,7 @@ class _SliderWidgetStateMemory extends State<SliderWidgetMemory> {
       initialValue: 10,
       innerWidget: (sliderValue) => Center(
         child: Text(
-            sliderValue.toStringAsFixed(0)+" CLOCK",
+            "+"+sliderValue.toStringAsFixed(0),
             style: Theme.of(context).textTheme.bodyText1,
           )
         ),
