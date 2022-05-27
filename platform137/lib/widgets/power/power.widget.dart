@@ -42,7 +42,7 @@ class _SliderWidgetStatePower extends State<SliderWidgetPower> {
                         style: Theme.of(context).textTheme.bodyText1,
                       )
                     ),
-                  appearance: CircularSliderAppearance(),
+                  appearance: const CircularSliderAppearance(size: 85),
                   onChange: (double value) {
                     nvidia_set_power(value);
                   }

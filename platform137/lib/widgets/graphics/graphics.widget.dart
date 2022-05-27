@@ -44,7 +44,7 @@ class _SliderWidgetStateGraphics extends State<SliderWidgetGraphics> {
                         style: Theme.of(context).textTheme.bodyText1,
                       )
                     ),
-                  appearance: CircularSliderAppearance(),
+                  appearance: const CircularSliderAppearance(size: 85),
                   onChange: (double value) {
                     nvidia_set_graphics_clock(value.round());
                   }

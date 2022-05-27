@@ -46,7 +46,7 @@ class _SliderWidgetStateMemory extends State<SliderWidgetMemory> {
                         style: Theme.of(context).textTheme.bodyText1,
                       )
                     ),
-                  appearance: const CircularSliderAppearance(),
+                  appearance: const CircularSliderAppearance(size: 85),
                   onChange: (double value) {
                     nvidia_set_memory_clock(value.round());
                   }

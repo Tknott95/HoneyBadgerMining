@@ -44,7 +44,7 @@ class _SliderWidgetStateFans extends State<SliderWidgetFans> {
                         style: Theme.of(context).textTheme.bodyText1,
                       )
                     ),
-                  appearance: const CircularSliderAppearance(),
+                  appearance: const CircularSliderAppearance(size: 85),
                   onChange: (double value) {
                     nvidia_set_fans(value.round());
                   }

@@ -84,8 +84,8 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         textTheme: const TextTheme(
           headline1: TextStyle(fontSize: 50, fontWeight: FontWeight.w800),
-          headline6: TextStyle(fontSize: 18, height: 5, fontWeight: FontWeight.w400),
-          bodyText1: TextStyle(fontSize: 14, height: 1, fontWeight: FontWeight.w900),
+          headline6: TextStyle(fontSize: 8, height: 5, fontWeight: FontWeight.w900),
+          bodyText1: TextStyle(fontSize: 10, height: 1, fontWeight: FontWeight.w600),
         ),
       ),
       home: const MyHomePage(title: 'Platform137'),
@@ -95,15 +95,6 @@ class MyApp extends StatelessWidget {
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key, required this.title}) : super(key: key);
-
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
 
   final String title;
 
@@ -115,36 +106,69 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      // appBar: AppBar(
-      //   // Here we take the value from the MyHomePage object that was created by
-      //   // the App.build method, and use it to set our appbar title.
-      //   title: Text(widget.title),
-      // ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: const <Widget>[
-
-            // Text(
-            //   'GPUs control room',
-            //   style: Theme.of(context).textTheme.headline6,
-            // ),
-            SliderWidgetPower(),
-            SliderWidgetFans(),
-
-            Divider(),
-
-            SliderWidgetGraphics(),
-            SliderWidgetMemory(),
-
+    return Row(
+  children: <Widget>[
+    Expanded(
+      child: Column(
+          children: <Widget>[
+            SizedBox(
+              // heightFactor: .3,
+              // widthFactor: 1,
+              height: 180,
+              width: double.infinity,
+              
+              child: Container(
+               decoration: const BoxDecoration(color: Colors.green),
+               child: const Text('kjsalkjasljkasljk',),
+              ),
+            ),
+            Expanded(
+              flex: 1,
+              
+              child: Container(
+               color: const Color.fromARGB(145, 115, 115, 124),
+               child: const Text('fghjfghjhgjfhg'),
+               width: double.infinity,
+              ),
+            )
           ],
-        ),
       ),
-
-    );
+      flex: 6,
+    ),
+    Expanded(
+      child: Container(
+        decoration: const BoxDecoration(color: Colors.green),
+      ),
+      flex: 4,
+    ),
+    
+  ],
+);
+    
+    // Column(
+    //       children: <Widget>[
+    //         SizedBox(
+    //           // heightFactor: .3,
+    //           // widthFactor: 1,
+    //           height: 180,
+    //           width: double.infinity,
+              
+    //           child: Container(
+    //            color: const Color.fromARGB(0, 202, 202, 206),
+    //            child: const Text('kjsalkjasljkasljk',),
+    //           ),
+    //         ),
+    //         Expanded(
+    //           flex: 1,
+              
+    //           child: Container(
+    //            color: const Color.fromARGB(145, 115, 115, 124),
+    //            child: const Text('fghjfghjhgjfhg'),
+    //            width: double.infinity,
+    //           ),
+    //         )
+    //       ],
+    // );
   }
 }
 
