@@ -3,6 +3,7 @@ import 'dart:io';
 // import 'package:process_run/which.dart';
 import 'package:platform137/widgets/fans/fans.widget.dart';
 import 'package:platform137/widgets/graphics/graphics.widget.dart';
+import 'package:platform137/widgets/memory/memory.widget.dart';
 import 'package:process_run/shell.dart';
 
 import 'package:flutter/material.dart';
@@ -64,20 +65,6 @@ void nvidia_set_power(double powerVal) {
     });
 }
 
-
-void nvidia_set_memory_clock(int val) {
-  var shell = Shell();
-
-  shell.run("""
-    #!/bin/bash
-    ./nvidia_set.sh -m $val
-    """).then((result){
-      print('Shell script done!');
-    }).catchError((onError) {
-      print('Shell.run error!');
-      print(onError);
-    });
-}
 
 /* NOT USING ANYMORE - REMOVE LATER JUST IN CASE */
 // void nvidia_set_sudo_fans() async {
@@ -269,31 +256,6 @@ class _SliderWidgetState extends State<SliderWidget> {
       appearance: CircularSliderAppearance(),
       onChange: (double value) {
         nvidia_set_power(value);
-      }
-    );
-  }
-}
-
-
-// MEMORY - @TODO abstact into widget module
-class SliderWidgetMemory extends StatefulWidget {
-  const SliderWidgetMemory({Key? key}) : super(key: key);
-
-  @override
-  State<SliderWidgetMemory> createState() => _SliderWidgetStateMemory();
-}
-
-class _SliderWidgetStateMemory extends State<SliderWidgetMemory> {
-  @override
-  Widget build(BuildContext context) {
-    return SleekCircularSlider(
-      min: 0,
-      max: 650,
-      initialValue: 10,
-      innerWidget: (sliderValue) => Center(child: Text(sliderValue.toStringAsFixed(0)+" CLOCK"),),
-      appearance: CircularSliderAppearance(),
-      onChange: (double value) {
-        nvidia_set_memory_clock(value.round());
       }
     );
   }
