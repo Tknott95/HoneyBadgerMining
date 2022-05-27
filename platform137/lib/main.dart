@@ -200,7 +200,7 @@ class _MyHomePageState extends State<MyHomePage> {
             Column(
               children: const [
                 Text('P O W E R'),
-                SliderWidget(),
+                SliderWidgetPower(),
               ],
             ),
             Column(
@@ -237,14 +237,14 @@ class _MyHomePageState extends State<MyHomePage> {
 }
 
 
-class SliderWidget extends StatefulWidget {
-  const SliderWidget({Key? key}) : super(key: key);
+class SliderWidgetPower extends StatefulWidget {
+  const SliderWidgetPower({Key? key}) : super(key: key);
 
   @override
-  State<SliderWidget> createState() => _SliderWidgetState();
+  State<SliderWidgetPower> createState() => _SliderWidgetStatePower();
 }
 
-class _SliderWidgetState extends State<SliderWidget> {
+class _SliderWidgetStatePower extends State<SliderWidgetPower> {
   @override
   Widget build(BuildContext context) {
     return SleekCircularSlider(
