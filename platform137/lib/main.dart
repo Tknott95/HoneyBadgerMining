@@ -161,12 +161,10 @@ class _MyHomePageState extends State<MyHomePage> {
           // horizontal).
           mainAxisAlignment: MainAxisAlignment.center,
           children: const <Widget>[
-            // const Text(
-            //   'fetching some curls then running them - this many times:',
-            // ),
+
             // Text(
-            //   '$_counter',
-            //   style: Theme.of(context).textTheme.headline4,
+            //   'GPUs control room',
+            //   style: Theme.of(context).textTheme.headline6,
             // ),
             SliderWidgetPower(),
             SliderWidgetFans(),
@@ -176,15 +174,10 @@ class _MyHomePageState extends State<MyHomePage> {
             SliderWidgetGraphics(),
             SliderWidgetMemory(),
 
-      
           ],
         ),
       ),
-      // floatingActionButton: FloatingActionButton(
-      //   onPressed: _incrementCounter,
-      //   tooltip: 'Increment',
-      //   child: const Icon(Icons.add),
-      // ), // This trailing comma makes auto-formatting nicer for build methods.
+
     );
   }
 }
