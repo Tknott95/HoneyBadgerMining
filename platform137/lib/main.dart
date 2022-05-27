@@ -1,6 +1,7 @@
 import 'dart:io';
 
 // import 'package:process_run/which.dart';
+import 'package:platform137/widgets/fans/fans.widget.dart';
 import 'package:process_run/shell.dart';
 
 import 'package:flutter/material.dart';
@@ -62,20 +63,21 @@ void nvidia_set_power(double powerVal) {
     });
 }
 
-void nvidia_set_fans(int fansVal) {
-  var shell = Shell();
+// void nvidia_set_fans(int fansVal) {
+//   var shell = Shell();
   
-  /* rmvd sudo on fans */
-  shell.run("""
-    #!/bin/bash
-    ./nvidia_set.sh -f $fansVal
-    """).then((result){
-      print('Shell script done!');
-    }).catchError((onError) {
-      print('Shell.run error!');
-      print(onError);
-    });
-}
+//   final fansParam = "1:"+fansVal.toString();
+//   /* rmvd sudo on fans */
+//   shell.run("""
+//     #!/bin/bash
+//     ./nvidia_set.sh -f $fansParam
+//     """).then((result){
+//       print('Shell script done!');
+//     }).catchError((onError) {
+//       print('Shell.run error!');
+//       print(onError);
+//     });
+// }
 
 void nvidia_set_graphics_clock(int val) {
   var shell = Shell();
@@ -300,28 +302,28 @@ class _SliderWidgetState extends State<SliderWidget> {
   }
 }
 
-class SliderWidgetFans extends StatefulWidget {
-  const SliderWidgetFans({Key? key}) : super(key: key);
+// class SliderWidgetFans extends StatefulWidget {
+//   const SliderWidgetFans({Key? key}) : super(key: key);
 
-  @override
-  State<SliderWidgetFans> createState() => _SliderWidgetStateFans();
-}
+//   @override
+//   State<SliderWidgetFans> createState() => _SliderWidgetStateFans();
+// }
 
-class _SliderWidgetStateFans extends State<SliderWidgetFans> {
-  @override
-  Widget build(BuildContext context) {
-    return SleekCircularSlider(
-      min: 30,
-      max: 70,
-      initialValue: 37,
-      innerWidget: (sliderValue) => Center(child: Text(sliderValue.toStringAsFixed(0)+"%"),),
-      appearance: CircularSliderAppearance(),
-      onChange: (double value) {
-        nvidia_set_fans(value.round());
-      }
-    );
-  }
-}
+// class _SliderWidgetStateFans extends State<SliderWidgetFans> {
+//   @override
+//   Widget build(BuildContext context) {
+//     return SleekCircularSlider(
+//       min: 30,
+//       max: 70,
+//       initialValue: 37,
+//       innerWidget: (sliderValue) => Center(child: Text(sliderValue.toStringAsFixed(0)+"%"),),
+//       appearance: CircularSliderAppearance(),
+//       onChange: (double value) {
+//         nvidia_set_fans(value.round());
+//       }
+//     );
+//   }
+// }
 
 
 // GRAPHICS - @TODO abstact into widget module
