@@ -42,7 +42,26 @@ class _SliderWidgetStatePower extends State<SliderWidgetPower> {
                         style: Theme.of(context).textTheme.bodyText1,
                       )
                     ),
-                  appearance: const CircularSliderAppearance(size: 85),
+                  appearance: CircularSliderAppearance(
+                    size: 85,
+                    //  customWidths: CustomSliderWidths(
+                    //   handlerSize: 20,
+                    //   trackWidth: 10,
+                    //   shadowWidth: 0,
+                    //   progressBarWidth: 10,
+                    // ),
+                    customColors: CustomSliderColors(
+                      dotColor: const Color.fromARGB(175, 255, 255, 255)/*Theme.of(context).primaryColor*/,
+                      trackColor:Color.fromARGB(172, 8, 30, 109),
+                      // progressBarColor: Color.fromARGB(174, 0, 0, 0),
+                      progressBarColors: [
+                      Color.fromARGB(255, 86, 255, 77),
+                      Color.fromARGB(255, 34, 152, 230),
+                      Color.fromARGB(255, 0, 11, 75),
+                      Color.fromARGB(255, 238, 169, 20),
+                    ],
+                  ),
+                  ),
                   onChange: (double value) {
                     nvidia_set_power(value);
                   }
