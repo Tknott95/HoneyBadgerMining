@@ -2,6 +2,7 @@ import 'dart:io';
 
 // import 'package:process_run/which.dart';
 import 'package:platform137/widgets/fans/fans.widget.dart';
+import 'package:platform137/widgets/graphics/graphics.widget.dart';
 import 'package:process_run/shell.dart';
 
 import 'package:flutter/material.dart';
@@ -63,20 +64,6 @@ void nvidia_set_power(double powerVal) {
     });
 }
 
-
-void nvidia_set_graphics_clock(int val) {
-  var shell = Shell();
-
-  shell.run("""
-    #!/bin/bash
-    ./nvidia_set.sh -g $val
-    """).then((result){
-      print('Shell script done!');
-    }).catchError((onError) {
-      print('Shell.run error!');
-      print(onError);
-    });
-}
 
 void nvidia_set_memory_clock(int val) {
   var shell = Shell();
@@ -287,29 +274,6 @@ class _SliderWidgetState extends State<SliderWidget> {
   }
 }
 
-// GRAPHICS - @TODO abstact into widget module
-class SliderWidgetGraphics extends StatefulWidget {
-  const SliderWidgetGraphics({Key? key}) : super(key: key);
-
-  @override
-  State<SliderWidgetGraphics> createState() => _SliderWidgetStateGraphics();
-}
-
-class _SliderWidgetStateGraphics extends State<SliderWidgetGraphics> {
-  @override
-  Widget build(BuildContext context) {
-    return SleekCircularSlider(
-      min: 0,
-      max: 80,
-      initialValue: 5,
-      innerWidget: (sliderValue) => Center(child: Text(sliderValue.toStringAsFixed(0)+" CLOCK"),),
-      appearance: CircularSliderAppearance(),
-      onChange: (double value) {
-        nvidia_set_graphics_clock(value.round());
-      }
-    );
-  }
-}
 
 // MEMORY - @TODO abstact into widget module
 class SliderWidgetMemory extends StatefulWidget {
