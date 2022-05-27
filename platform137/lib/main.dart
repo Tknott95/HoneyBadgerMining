@@ -177,7 +177,6 @@ class _MyHomePageState extends State<MyHomePage> {
             SliderWidgetMemory(),
 
       
-            // const SliderWidget(),
           ],
         ),
       ),
