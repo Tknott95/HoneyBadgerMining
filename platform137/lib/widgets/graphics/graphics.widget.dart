@@ -28,20 +28,28 @@ class SliderWidgetGraphics extends StatefulWidget {
 class _SliderWidgetStateGraphics extends State<SliderWidgetGraphics> {
   @override
   Widget build(BuildContext context) {
-    return SleekCircularSlider(
-      min: 0,
-      max: 80,
-      initialValue: 5,
-      innerWidget: (sliderValue) => Center(
-        child: Text(
-            "+"+sliderValue.toStringAsFixed(0),
-            style: Theme.of(context).textTheme.bodyText1,
-          )
-        ),
-      appearance: CircularSliderAppearance(),
-      onChange: (double value) {
-        nvidia_set_graphics_clock(value.round());
-      }
-    );
+    return  Column(
+              children: [
+                Text(
+                  'GRAPHICS CLOCKING',
+                  style: Theme.of(context).textTheme.headline6,
+                  ),
+                SleekCircularSlider(
+                  min: 0,
+                  max: 80,
+                  initialValue: 5,
+                  innerWidget: (sliderValue) => Center(
+                    child: Text(
+                        "+"+sliderValue.toStringAsFixed(0),
+                        style: Theme.of(context).textTheme.bodyText1,
+                      )
+                    ),
+                  appearance: CircularSliderAppearance(),
+                  onChange: (double value) {
+                    nvidia_set_graphics_clock(value.round());
+                  }
+                )
+              ],
+            );
   }
 }

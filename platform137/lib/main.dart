@@ -172,15 +172,9 @@ class _MyHomePageState extends State<MyHomePage> {
             const SliderWidgetFans(),
 
             Divider(),
-            Column(
-              children: [
-                Text(
-                  'GRAPHICS CLOCKING',
-                  style: Theme.of(context).textTheme.headline6,
-                  ),
-                const SliderWidgetGraphics(),
-              ],
-            ),
+
+            const SliderWidgetGraphics(),
+
             Column(
               children: [
                 Text(
