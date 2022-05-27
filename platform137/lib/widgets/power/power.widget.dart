@@ -52,13 +52,14 @@ class _SliderWidgetStatePower extends State<SliderWidgetPower> {
                     // ),
                     customColors: CustomSliderColors(
                       dotColor: const Color.fromARGB(175, 255, 255, 255)/*Theme.of(context).primaryColor*/,
-                      trackColor:Color.fromARGB(172, 153, 153, 153),
+                      trackColor: const Color.fromARGB(172, 153, 153, 153),
                       progressBarColors: const [
                       Color.fromARGB(255, 240, 40, 13),
                       Color.fromARGB(255, 238, 169, 20),
                       Color.fromARGB(255, 6, 49, 105),
                       Color.fromARGB(255, 45, 192, 180),
                      ],
+                     shadowColor: const Color.fromARGB(255, 0, 0, 0),
                   ),
                   ),
                   onChange: (double value) {
