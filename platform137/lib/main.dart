@@ -238,19 +238,19 @@ class _MyHomePageState extends State<MyHomePage> {
             //   style: Theme.of(context).textTheme.headline4,
             // ),
             Column(
-                  children: const [
-                    Text('P O W E R'),
-                    SliderWidget(),
-                  ],
-                ),
-                Column(
-                  children: const [
-                    Text('F A N S'),
-                    SliderWidgetFans(),
-                  ],
-                ),
+              children: const [
+                Text('P O W E R'),
+                SliderWidget(),
+              ],
+            ),
+            Column(
+              children: const [
+                Text('F A N S'),
+                SliderWidgetFans(),
+              ],
+            ),
            
-             Divider(),
+            Divider(),
             Column(
               children: const [
                 Text('G R A P H I C S  C L O C K I N G'),
