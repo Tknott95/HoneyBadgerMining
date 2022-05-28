@@ -1,14 +1,17 @@
 #!/bin/bash
 
-# p - power draw
-# f - fan speed
-# m - memory transfer rate offset
-# g - graphics clock offset
-# t - temp threshold
+# p - power draw                   | NVIDIA-SMI
+# t - temp threshold               | NVIDIA-SMI
+# f - fan speed                    | NVIDIA-SETTINGS
+# m - memory transfer rate offset  | NVIDIA-SETTINGS
+# g - graphics clock offset        | NVIDIA-SETTINGS
 
-while getopts 'p:f:m:g:t:' OPTION; do
+while getopts 'p:t:f:m:g:' OPTION; do
   case "$OPTION" in
     p)
+      nvidia-smi -i 0 -pl $OPTARG ;nvidia-smi -i 1 -pl $OPTARG
+      ;;
+    t)
       nvidia-smi -i 0 -pl $OPTARG ;nvidia-smi -i 1 -pl $OPTARG
       ;;
     f)
