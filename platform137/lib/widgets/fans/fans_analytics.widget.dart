@@ -23,29 +23,29 @@ class FanAnalyticsWidget extends StatefulWidget {
 
 class FanAnalyticsWidgetState extends State<FanAnalyticsWidget> {
   String gpuFanSpeed = '00';
-  int gpuIndex = 0;
   
 
   @override
   void initState() {
-    gpuIndex = widget.gpuIndex;
-    gpuFanSpeed = nvidia_get_fan_speed(gpuIndex).toString();
+    final int gpuIndex = widget.gpuIndex;
+    nvidia_get_fan_speed(gpuIndex).then((result) { gpuFanSpeed = result.toString();});
 
     Timer mytimer = Timer.periodic(const Duration(seconds: 5), (timer) {
-      nvidia_get_fan_speed(gpuIndex).then((result) {print("gpu_($gpuIndex) fan speed: $result"); gpuFanSpeed=result.toString();});
+      nvidia_get_fan_speed(gpuIndex).then((result) {gpuFanSpeed = result.toString(); print("gpu_($gpuIndex) fan speed: $result");});
       // nvidia_get_fan_speed(1).then((result) {print("gpu_two fan speed: $result");});
 
-      gpuFanSpeed = nvidia_get_fan_speed(gpuIndex).toString();
+      //gpuFanSpeed = nvidia_get_fan_speed(gpuIndex).toString();
       print("gpu_one fan speed: $gpuFanSpeed");
       setState(() { });
 
-        //mytimer.cancel() //to terminate this timer
+      // mytimer.cancel() //to terminate this timer
      });
     
     // print('timer: $mytimer');
     super.initState();
   }
 
+  /* needs to become a stream builder probably */
   @override
   Widget build(BuildContext context) {
     return SizedBox(height: 100, width: 250, 
