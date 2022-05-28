@@ -5,6 +5,7 @@ import 'package:platform137/widgets/fans/fans.widget.dart';
 import 'package:platform137/widgets/graphics/graphics.widget.dart';
 import 'package:platform137/widgets/memory/memory.widget.dart';
 import 'package:platform137/widgets/power/power.widget.dart';
+import 'package:platform137/widgets/temperature/temp_thresh.widget.dart';
 import 'package:process_run/shell.dart';
 
 import 'package:flutter/material.dart';
@@ -165,6 +166,8 @@ class _MyHomePageState extends State<MyHomePage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: const <Widget>[
                 SliderWidgetPower(),
+                SliderWidgetTempThresh(),
+                Divider(),
                 SliderWidgetFans(),
                 Divider(),
                 SliderWidgetMemory(),

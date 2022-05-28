@@ -12,7 +12,7 @@ while getopts 'p:t:f:m:g:' OPTION; do
       nvidia-smi -i 0 -pl $OPTARG ;nvidia-smi -i 1 -pl $OPTARG
       ;;
     t)
-      nvidia-smi -i 0 -pl $OPTARG ;nvidia-smi -i 1 -pl $OPTARG
+      nvidia-smi -i 0 -gtt $OPTARG ;nvidia-smi -i 1 -gtt $OPTARG
       ;;
     f)
       # VAL COMES IN AS <#-of_gpus>:<fan-speed>

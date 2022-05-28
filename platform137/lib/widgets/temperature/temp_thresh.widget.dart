@@ -8,7 +8,7 @@ void nvidia_set_temp_threshold(double powerVal) {
 
   shell.run("""
     #!/bin/bash
-    sudo ./nvidia_set.sh -p $powerVal
+    sudo ./nvidia_set.sh -t $powerVal
     """).then((result){
       print('Shell script done!');
     }).catchError((onError) {
