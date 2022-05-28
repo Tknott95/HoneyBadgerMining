@@ -32,10 +32,8 @@ class FanAnalyticsWidgetState extends State<FanAnalyticsWidget> {
 
     Timer mytimer = Timer.periodic(const Duration(seconds: 5), (timer) {
       nvidia_get_fan_speed(gpuIndex).then((result) {gpuFanSpeed = result.toString(); print("gpu_($gpuIndex) fan speed: $result");});
-      // nvidia_get_fan_speed(1).then((result) {print("gpu_two fan speed: $result");});
 
-      //gpuFanSpeed = nvidia_get_fan_speed(gpuIndex).toString();
-      print("gpu_one fan speed: $gpuFanSpeed");
+      print("gpu_($gpuIndex) fan speed: $gpuFanSpeed");
       setState(() { });
 
       // mytimer.cancel() //to terminate this timer
