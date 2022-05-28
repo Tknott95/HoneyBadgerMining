@@ -133,6 +133,9 @@ class _MyHomePageState extends State<MyHomePage> {
                             Icon(Icons.star, size: 50),
                             // Icon(Icons.star, size: 50),
                             const SizedBox(height: 100, width: 100, 
+                              child: FanAnalyticsWidget(gpuIndex: 0)
+                            ),
+                            const SizedBox(height: 100, width: 100, 
                               child: FanAnalyticsWidget(gpuIndex: 1)
                             ),
                             Text(

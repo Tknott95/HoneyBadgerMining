@@ -29,11 +29,11 @@ class FanAnalyticsWidgetState extends State<FanAnalyticsWidget> {
   @override
   void initState() {
     gpuIndex = widget.gpuIndex;
-    gpuFanSpeed = nvidia_get_fan_speed(0).toString();
+    gpuFanSpeed = nvidia_get_fan_speed(gpuIndex).toString();
 
     Timer mytimer = Timer.periodic(const Duration(seconds: 5), (timer) {
       nvidia_get_fan_speed(gpuIndex).then((result) {print("gpu_($gpuIndex) fan speed: $result"); gpuFanSpeed=result.toString();});
-      nvidia_get_fan_speed(1).then((result) {print("gpu_two fan speed: $result");});
+      // nvidia_get_fan_speed(1).then((result) {print("gpu_two fan speed: $result");});
 
       gpuFanSpeed = nvidia_get_fan_speed(gpuIndex).toString();
       print("gpu_one fan speed: $gpuFanSpeed");
