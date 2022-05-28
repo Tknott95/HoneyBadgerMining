@@ -148,7 +148,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   color: Color.fromARGB(255, 130, 130, 130),
                   child: Center(
                       child: Text(
-                        'tdffgdffgsdfg',
+                        'mining here',
                           style: Theme.of(context).textTheme.headline1
                         )
                       ),

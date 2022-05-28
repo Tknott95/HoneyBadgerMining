@@ -30,16 +30,16 @@ class _SliderWidgetStateTempThresh extends State<SliderWidgetTempThresh> {
     return  Column(
               children: [
                 Text(
-                  'POWER',
+                  'TEMP LIMIT',
                   style: Theme.of(context).textTheme.headline6
                 ),
                 SleekCircularSlider(
-                  min: 110,
-                  max: 140,
-                  initialValue: 115,
+                  min: 70,
+                  max: 88,
+                  initialValue: 75,
                   innerWidget: (sliderValue) => Center(
                     child: Text(
-                        sliderValue.toStringAsFixed(3)+"W",
+                        sliderValue.toStringAsFixed(3)+"°C",
                         style: Theme.of(context).textTheme.bodyText1,
                       )
                     ),
