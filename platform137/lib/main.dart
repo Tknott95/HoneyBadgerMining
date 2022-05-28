@@ -17,8 +17,8 @@ void main() {
   runApp(const MyApp());
   nvidia_get_temp();
   
+  nvidia_get_fan_speed(0);
   nvidia_get_fan_speed(1);
-  nvidia_get_fan_speed(2);
 
   // nvidia_set_sudo_fans();
 }
@@ -67,7 +67,7 @@ void nvidia_get_fan_speed(int _gpuIndex) async {
   // List all files in the current directory in UNIX-like systems.
   var result = await Process.run('./nvidia_smi.sh', ['-f $_gpuIndex']); /* second arr takes flags and params? */
   print(result.stdout);
-  print(int.parse(result.stdout));
+  // print(int.parse(result.stdout));
 }
 
 /* BLACK - w900
