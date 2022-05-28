@@ -16,7 +16,9 @@ import 'package:sleek_circular_slider/sleek_circular_slider.dart';
 void main() {
   runApp(const MyApp());
   nvidia_get_temp();
-  nvidia_get_fans();
+  
+  nvidia_get_fan_speed(1);
+  nvidia_get_fan_speed(2);
 
   // nvidia_set_sudo_fans();
 }
@@ -31,7 +33,7 @@ void nvidia_get_temp() async {
   // List all files in the current directory in UNIX-like systems.
   var result = await Process.run('./nvidia_smi.sh', ['-t']); /* second arr takes flags and params? */
   var gpu_one = int.parse(""+result.stdout[0]+result.stdout[1]+"");
-  var gpu_two = ""+result.stdout[2]+result.stdout[3]+"";
+
 
   print(result.stdout);
   print("\n gpu_one: " + gpu_one.toString() + "C");
@@ -61,10 +63,11 @@ Future<int> nvidia_get_temp_alt() async {
   return gpu_one;
 }
 
-void nvidia_get_fans() async {
+void nvidia_get_fan_speed(int _gpuIndex) async {
   // List all files in the current directory in UNIX-like systems.
-  var result = await Process.run('./nvidia_smi.sh', ['-f']); /* second arr takes flags and params? */
+  var result = await Process.run('./nvidia_smi.sh', ['-f $_gpuIndex']); /* second arr takes flags and params? */
   print(result.stdout);
+  print(int.parse(result.stdout));
 }
 
 /* BLACK - w900
@@ -104,7 +107,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
   @override
   Widget build(BuildContext context) {
     return Row(
