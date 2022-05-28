@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:process_run/shell_run.dart';
 import 'package:sleek_circular_slider/sleek_circular_slider.dart';
 
-void nvidia_set_temp_threshold(double powerVal) {
+void nvidia_set_temp_threshold(int _val) {
   var shell = Shell();
 
   shell.run("""
     #!/bin/bash
-    sudo ./nvidia_set.sh -t $powerVal
+    sudo ./nvidia_set.sh -t $_val
     """).then((result){
       print('Shell script done!');
     }).catchError((onError) {
@@ -63,8 +63,8 @@ class _SliderWidgetStateTempThresh extends State<SliderWidgetTempThresh> {
                      shadowColor: const Color.fromARGB(255, 0, 0, 0),
                     ),
                   ),
-                  onChange: (double value) {
-                    nvidia_set_temp_threshold(value);
+                  onChange: (double _val) {
+                    nvidia_set_temp_threshold(_val.round());
                   }
                 )
               ],

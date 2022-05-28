@@ -1,13 +1,15 @@
 #!/bin/bash
 
 
-while getopts 'tfa:' OPTION; do
+while getopts 't:f:a:' OPTION; do
   case "$OPTION" in
     t)
       nvidia-smi --query-gpu=temperature.gpu --format=csv,noheader
       ;;
     f)
-      nvidia-smi -q | grep -i fan
+      # nvidia-smi -q | grep -i fan
+      # nvidia-smi --query-gpu=fan.speed --format=csv,noheader
+      nvidia-smi --query-gpu=fan.speed --format=csv,noheader -i $OPTARG | grep -Eo "^[0-9]+"
       ;;
     a)
       avalue="$OPTARG"
