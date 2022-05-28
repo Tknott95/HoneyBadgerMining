@@ -13,7 +13,8 @@ Future<int> nvidia_get_fan_speed(int _gpuIndex) async {
 }
 
 class FanAnalyticsWidget extends StatefulWidget {
-  const FanAnalyticsWidget({Key? key}) : super(key: key);
+  final gpuIndex;
+  const FanAnalyticsWidget({Key? key, @required this.gpuIndex}) : super(key: key);
 
   @override
   State<FanAnalyticsWidget> createState() => FanAnalyticsWidgetState();
@@ -22,16 +23,19 @@ class FanAnalyticsWidget extends StatefulWidget {
 
 class FanAnalyticsWidgetState extends State<FanAnalyticsWidget> {
   String gpuFanSpeed = '00';
+  int gpuIndex = 0;
+  
 
   @override
   void initState() {
-    nvidia_get_fan_speed(0).then((result) { gpuFanSpeed = result.toString();});
+    gpuIndex = widget.gpuIndex;
+    gpuFanSpeed = nvidia_get_fan_speed(0).toString();
 
     Timer mytimer = Timer.periodic(const Duration(seconds: 5), (timer) {
-      nvidia_get_fan_speed(0).then((result) {print("gpu_one fan speed: $result"); gpuFanSpeed=result.toString();});
+      nvidia_get_fan_speed(gpuIndex).then((result) {print("gpu_($gpuIndex) fan speed: $result"); gpuFanSpeed=result.toString();});
       nvidia_get_fan_speed(1).then((result) {print("gpu_two fan speed: $result");});
 
-      gpuFanSpeed = nvidia_get_fan_speed(0).toString();
+      gpuFanSpeed = nvidia_get_fan_speed(gpuIndex).toString();
       print("gpu_one fan speed: $gpuFanSpeed");
       setState(() { });
 
