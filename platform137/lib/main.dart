@@ -119,12 +119,23 @@ class _MyHomePageState extends State<MyHomePage> {
                     width: double.infinity,
                     
                     child: Container(
-                    decoration: const BoxDecoration(color: Colors.green),
-                    child: Center(
-                      child: Text(
-                        'kjsalkjasljkasljk',
-                          style: Theme.of(context).textTheme.headline1
-                        )
+                      decoration: const BoxDecoration(color: Color.fromARGB(255, 255, 253, 249)),
+                      child: Center(
+                        child: Row /*or Column*/( 
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children:  <Widget>[
+                            Icon(Icons.star, size: 50),
+                            Icon(Icons.star, size: 50),
+                            Icon(Icons.star, size: 50),
+                            Text(
+                              'platform137',
+                              style: Theme.of(context).textTheme.headline1
+                            ),
+                            Icon(Icons.star, size: 50),
+                            Icon(Icons.star, size: 50),
+                            Icon(Icons.star, size: 50),
+                          ],
+                        ),
                       ),
                     ),
                   ),
@@ -133,7 +144,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   flex: 1,
                   
                   child: Container(
-                  color: const Color.fromARGB(145, 115, 115, 124),
+                  color: Color.fromARGB(255, 130, 130, 130),
                   child: Center(
                       child: Text(
                         'tdffgdffgsdfg',
