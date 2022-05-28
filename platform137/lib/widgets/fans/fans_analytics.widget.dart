@@ -2,8 +2,6 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:process_run/shell_run.dart';
-import 'package:sleek_circular_slider/sleek_circular_slider.dart';
 
 /* will have to use future builder and can pass down string so I dont have to parse then toString() */
 Future<int> nvidia_get_fan_speed(int _gpuIndex) async {
