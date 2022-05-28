@@ -21,18 +21,19 @@ class FanAnalyticsWidget extends StatefulWidget {
 
 
 class FanAnalyticsWidgetState extends State<FanAnalyticsWidget> {
-  String gpuFanSpeed = '';
+  String gpuFanSpeed = '00';
+
   @override
   void initState() {
-     Timer mytimer = Timer.periodic(const Duration(seconds: 5), (timer) {
+    nvidia_get_fan_speed(0).then((result) { gpuFanSpeed = result.toString();});
+
+    Timer mytimer = Timer.periodic(const Duration(seconds: 5), (timer) {
       nvidia_get_fan_speed(0).then((result) {print("gpu_one fan speed: $result"); gpuFanSpeed=result.toString();});
       nvidia_get_fan_speed(1).then((result) {print("gpu_two fan speed: $result");});
 
       gpuFanSpeed = nvidia_get_fan_speed(0).toString();
       print("gpu_one fan speed: $gpuFanSpeed");
-      setState(() {
-          
-      });
+      setState(() { });
 
         //mytimer.cancel() //to terminate this timer
      });
@@ -43,15 +44,23 @@ class FanAnalyticsWidgetState extends State<FanAnalyticsWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Text(
-          //"GPU_ONE: $gpuFanSpeed",
-          gpuFanSpeed,
-          style: Theme.of(context).textTheme.headline6
-        ),
-                
-      ],
+    return SizedBox(height: 100, width: 250, 
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                "$gpuFanSpeed",
+                style: Theme.of(context).textTheme.headline1
+              ),
+              Text('%', style: Theme.of(context).textTheme.bodyText2)
+            ],
+          ),
+          Text('FAN SPEED', style: Theme.of(context).textTheme.bodyText2),      
+        ],
+      )
     );
   }
 }

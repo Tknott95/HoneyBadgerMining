@@ -127,11 +127,14 @@ class _MyHomePageState extends State<MyHomePage> {
                       child: Center(
                         child: Row /*or Column*/( 
                           mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
                           children:  <Widget>[
                             Icon(Icons.star, size: 50),
                             Icon(Icons.star, size: 50),
                             // Icon(Icons.star, size: 50),
-                            const FanAnalyticsWidget(),
+                            const SizedBox(height: 100, width: 100, 
+                              child: FanAnalyticsWidget()
+                            ),
                             Text(
                               'platform137',
                               style: Theme.of(context).textTheme.headline1
