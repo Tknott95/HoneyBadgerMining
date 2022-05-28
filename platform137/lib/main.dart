@@ -2,6 +2,7 @@ import 'dart:io';
 
 // import 'package:process_run/which.dart';
 import 'package:platform137/widgets/fans/fans.widget.dart';
+import 'package:platform137/widgets/fans/fans_analytics.widget.dart';
 import 'package:platform137/widgets/graphics/graphics.widget.dart';
 import 'package:platform137/widgets/memory/memory.widget.dart';
 import 'package:platform137/widgets/power/power.widget.dart';
@@ -129,7 +130,8 @@ class _MyHomePageState extends State<MyHomePage> {
                           children:  <Widget>[
                             Icon(Icons.star, size: 50),
                             Icon(Icons.star, size: 50),
-                            Icon(Icons.star, size: 50),
+                            // Icon(Icons.star, size: 50),
+                            const FanAnalyticsWidget(),
                             Text(
                               'platform137',
                               style: Theme.of(context).textTheme.headline1
