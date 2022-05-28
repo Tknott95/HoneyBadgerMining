@@ -17,8 +17,8 @@ void main() {
   runApp(const MyApp());
   nvidia_get_temp();
   
-  nvidia_get_fan_speed(0);
-  nvidia_get_fan_speed(1);
+  nvidia_get_fan_speed(0); /* async error is herem, will be fixed once in an async return widget */
+  nvidia_get_fan_speed(1); /* async error is herem, will be fixed once in an async return widget */
 
   // nvidia_set_sudo_fans();
 }
