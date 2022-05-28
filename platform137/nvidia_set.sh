@@ -4,8 +4,9 @@
 # f - fan speed
 # m - memory transfer rate offset
 # g - graphics clock offset
+# t - temp threshold
 
-while getopts 'p:f:m:g:' OPTION; do
+while getopts 'p:f:m:g:t:' OPTION; do
   case "$OPTION" in
     p)
       nvidia-smi -i 0 -pl $OPTARG ;nvidia-smi -i 1 -pl $OPTARG
