@@ -63,12 +63,12 @@ Future<int> nvidia_get_temp_alt() async {
   return gpu_one;
 }
 
-void nvidia_get_fan_speed(int _gpuIndex) async {
-  // List all files in the current directory in UNIX-like systems.
-  var result = await Process.run('./nvidia_smi.sh', ['-f $_gpuIndex']); /* second arr takes flags and params? */
-  print(result.stdout);
-  // print(int.parse(result.stdout));
-}
+// void nvidia_get_fan_speed(int _gpuIndex) async {
+//   // List all files in the current directory in UNIX-like systems.
+//   var result = await Process.run('./nvidia_smi.sh', ['-f $_gpuIndex']); /* second arr takes flags and params? */
+//   print(result.stdout);
+//   // print(int.parse(result.stdout));
+// }
 
 /* BLACK - w900
 /  SEMIBOLD - w600
