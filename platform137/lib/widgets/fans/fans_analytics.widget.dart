@@ -24,6 +24,7 @@ class FanAnalyticsWidgetState extends State<FanAnalyticsWidget> {
   @override
   void initState() {
     Timer mytimer = Timer.periodic(const Duration(seconds: 5), (timer) {
+      nvidia_get_fan_speed(0).then((result) {print(result);});
       gpuFanSpeed = nvidia_get_fan_speed(0).toString();
       print("gpu_one fan speed: $gpuFanSpeed");
 
