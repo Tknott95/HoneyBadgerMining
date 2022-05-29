@@ -18,6 +18,7 @@ import 'package:sleek_circular_slider/sleek_circular_slider.dart';
 void main() {
   runApp(const MyApp());
   nvidia_get_temp();
+  nvidia_set_gpu_count();
   // nvidia_get_fan_speed(0); /* async error is herem, will be fixed once in an async return widget */
   // nvidia_get_fan_speed(1); /* async error is herem, will be fixed once in an async return widget */
 
@@ -136,16 +137,16 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  @override
-  void initState() {
-    nvidia_set_gpu_count();
+  // @override
+  // void initState() {
+  //   nvidia_set_gpu_count();
 
-    setState(() { });
+  //   setState(() { });
 
     
-    // print('timer: $mytimer');
-    super.initState();
-  }
+  //   // print('timer: $mytimer');
+  //   super.initState();
+  // }
 
   @override
   Widget build(BuildContext context) {
