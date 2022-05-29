@@ -1,0 +1,77 @@
+{
+    "Software": "lolMiner 1.51a",
+    "Session": {
+        "Startup": 1653829628,
+        "Startup_String": "2022-05-29_07-07-08",
+        "Uptime": 40,
+        "Last_Update": 1653829668
+    },
+    "Num_Workers": 2,
+    "Workers": [
+        {
+            "Index": 0,
+            "Name": "NVIDIA GeForce GTX 1660",
+            "Power": 73.420000000000002,
+            "CCLK": 2025,
+            "MCLK": 4147,
+            "Core_Temp": 57,
+            "Juc_Temp": 68,
+            "Mem_Temp": 0,
+            "Fan_Speed": 37,
+            "LHR_Unlock_Pct": 0,
+            "Dual_Factor": 0,
+            "PCIE_Address": "1:0"
+        },
+        {
+            "Index": 1,
+            "Name": "NVIDIA GeForce RTX 3060",
+            "Power": 82.602000000000004,
+            "CCLK": 1950,
+            "MCLK": 7350,
+            "Core_Temp": 43,
+            "Juc_Temp": 55,
+            "Mem_Temp": 0,
+            "Fan_Speed": 50,
+            "LHR_Unlock_Pct": 0,
+            "Dual_Factor": 0,
+            "PCIE_Address": "4:0"
+        }
+    ],
+    "Num_Algorithms": 1,
+    "Algorithms": [
+        {
+            "Algorithm": "Autolykos V2 (Ergo)",
+            "Algorithm_Appendix": "",
+            "Pool": "erg.2miners.com:8888",
+            "User": "9iBNhtz7EsNgzAS43Ad3Hie7TCsbXy2yunAncgHemTMXroXJ93g",
+            "Worker": "",
+            "Performance_Unit": "Mh\/s",
+            "Performance_Factor": 1000000,
+            "Total_Performance": 121.10069759999999,
+            "Total_Accepted": 0,
+            "Total_Rejected": 0,
+            "Total_Stales": 0,
+            "Total_Errors": 0,
+            "Worker_Performance": [
+                42.93,
+                78.17
+            ],
+            "Worker_Accepted": [
+                0,
+                0
+            ],
+            "Worker_Rejected": [
+                0,
+                0
+            ],
+            "Worker_Stales": [
+                0,
+                0
+            ],
+            "Worker_Errors": [
+                0,
+                0
+            ]
+        }
+    ]
+}
