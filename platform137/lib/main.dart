@@ -17,9 +17,11 @@ import 'package:sleek_circular_slider/sleek_circular_slider.dart';
 void main() {
   runApp(const MyApp());
   nvidia_get_temp();
+
+  start_mining();
   
-  nvidia_get_fan_speed(0); /* async error is herem, will be fixed once in an async return widget */
-  nvidia_get_fan_speed(1); /* async error is herem, will be fixed once in an async return widget */
+  // nvidia_get_fan_speed(0); /* async error is herem, will be fixed once in an async return widget */
+  // nvidia_get_fan_speed(1); /* async error is herem, will be fixed once in an async return widget */
 
   // nvidia_set_sudo_fans();
 }
@@ -38,6 +40,21 @@ void nvidia_get_temp() async {
 
   print(result.stdout);
   print("\n gpu_one: " + gpu_one.toString() + "C");
+}
+
+void start_mining() async {
+  var shell = Shell();
+
+  shell.run("""
+    #!/bin/bash
+    sudo ./get_lolminer.sh
+    """).then((result){
+      print(result.toString());
+      print('Shell script done!');
+    }).catchError((onError) {
+      print('Shell.run error!');
+      print(onError);
+    });
 }
 
 /* NOT USING ANYMORE - REMOVE LATER JUST IN CASE */

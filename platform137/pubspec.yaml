@@ -31,6 +31,7 @@ dependencies:
     sdk: flutter
   process_run: any
   sleek_circular_slider : ^2.0.1
+  provider: ^6.0.3
 
 
 

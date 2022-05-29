@@ -36,7 +36,7 @@ class _SliderWidgetStateFans extends State<SliderWidgetFans> {
                 ),
                 SleekCircularSlider(
                   min: 30,
-                  max: 70,
+                  max: 90,
                   initialValue: 37,
                   innerWidget: (sliderValue) => Center(
                     child: Text(
