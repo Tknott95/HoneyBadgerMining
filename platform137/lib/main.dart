@@ -11,14 +11,16 @@ import 'package:platform137/widgets/temperature/temp_thresh.widget.dart';
 import 'package:process_run/shell.dart';
 
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-import 'package:sleek_circular_slider/sleek_circular_slider.dart';
 
 
 void main() {
   runApp(const MyApp());
   nvidia_get_temp();
-  nvidia_set_gpu_count();
+  /* inits running in widget state below now */
+  final newGPUCount = GPUProvider().numOfGPUs;
+  print('GLOBAL GPU COUNT: $newGPUCount');
   // nvidia_get_fan_speed(0); /* async error is herem, will be fixed once in an async return widget */
   // nvidia_get_fan_speed(1); /* async error is herem, will be fixed once in an async return widget */
 
@@ -41,15 +43,15 @@ void nvidia_get_temp() async {
   print("\n gpu_one: " + gpu_one.toString() + "C");
 }
 
-void nvidia_set_gpu_count() async {
+void nvidia_set_gpu_count(context) async {
   // List all files in the current directory in UNIX-like systems.
   var result = await Process.run('./nvidia_get.sh', ['-l']); /* second arr takes flags and params? */
   final gpuCount = int.parse(result.stdout);
   print('SETTING GPU COUNT: $gpuCount');
-  GPUProvider().setAmtOfGPUS(gpuCount);
+  Provider.of<GPUProvider>(context, listen: false).setAmtOfGPUS(gpuCount);
 
 
-  final newGPUCount = GPUProvider().numOfGPUs;
+  final newGPUCount = Provider.of<GPUProvider>(context, listen: false).numOfGPUs;
   print('GLOBAL GPU COUNT: $newGPUCount');
 
 }
@@ -150,6 +152,9 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+
+    nvidia_set_gpu_count(context);
+
     return Row(
       children: <Widget>[
         Expanded(
