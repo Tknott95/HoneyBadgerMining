@@ -18,9 +18,8 @@ import 'package:provider/provider.dart';
 void main() {
   runApp(const MyApp());
   nvidia_get_temp();
-  /* inits running in widget state below now */
-  final newGPUCount = GPUProvider().numOfGPUs;
-  print('GLOBAL GPU COUNT: $newGPUCount');
+  // nvidia_set_gpu_count();
+
   // nvidia_get_fan_speed(0); /* async error is herem, will be fixed once in an async return widget */
   // nvidia_get_fan_speed(1); /* async error is herem, will be fixed once in an async return widget */
 
@@ -49,7 +48,7 @@ void nvidia_set_gpu_count(context) async {
   final gpuCount = int.parse(result.stdout);
   print('SETTING GPU COUNT: $gpuCount');
   Provider.of<GPUProvider>(context, listen: false).setAmtOfGPUS(gpuCount);
-
+  // GPUProvider().setAmtOfGPUS(gpuCount);
 
   final newGPUCount = Provider.of<GPUProvider>(context, listen: false).numOfGPUs;
   print('GLOBAL GPU COUNT: $newGPUCount');
@@ -113,7 +112,13 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MultiProvider(
+    providers: [
+      ChangeNotifierProvider(
+        create: ((context) => GPUProvider()), 
+      )
+    ],
+    child:MaterialApp(
       title: 'Platform137',
       theme: ThemeData(
         fontFamily: 'Montserrat',
@@ -125,7 +130,8 @@ class MyApp extends StatelessWidget {
         ),
       ),
       home: const MyHomePage(title: 'Platform137'),
-    );
+    ))
+    ;
   }
 }
 
@@ -152,9 +158,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-
     nvidia_set_gpu_count(context);
-
     return Row(
       children: <Widget>[
         Expanded(
