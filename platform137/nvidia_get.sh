@@ -3,7 +3,9 @@
 # f - is fan speed by provding a gpu-index-#
 # l - list amount of GPUs
 
-while getopts 't:f:a:' OPTION; do
+
+# : after the flag makes you have to have a param
+while getopts 'tf:a:l' OPTION; do
   case "$OPTION" in
     t)
       nvidia-smi --query-gpu=temperature.gpu --format=csv,noheader
@@ -14,8 +16,7 @@ while getopts 't:f:a:' OPTION; do
       nvidia-smi --query-gpu=fan.speed --format=csv,noheader -i $OPTARG | grep -Eo "^[0-9]+"
       ;;
     l)
-      avalue="$OPTARG"
-      echo "The value provided is $OPTARG"
+      nvidia-smi --list-gpus | wc -l
       ;;
     ?)
       echo "script usage: $(basename \$0) [-l] [-h] [-a somevalue]" >&2
