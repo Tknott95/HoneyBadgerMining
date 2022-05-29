@@ -1,6 +1,7 @@
 import 'dart:io';
 
 // import 'package:process_run/which.dart';
+import 'package:platform137/providers/gpu.provider.dart';
 import 'package:platform137/widgets/fans/fans.widget.dart';
 import 'package:platform137/widgets/fans/fans_analytics.widget.dart';
 import 'package:platform137/widgets/graphics/graphics.widget.dart';
@@ -17,9 +18,6 @@ import 'package:sleek_circular_slider/sleek_circular_slider.dart';
 void main() {
   runApp(const MyApp());
   nvidia_get_temp();
-
-  start_mining();
-  
   // nvidia_get_fan_speed(0); /* async error is herem, will be fixed once in an async return widget */
   // nvidia_get_fan_speed(1); /* async error is herem, will be fixed once in an async return widget */
 
@@ -40,6 +38,19 @@ void nvidia_get_temp() async {
 
   print(result.stdout);
   print("\n gpu_one: " + gpu_one.toString() + "C");
+}
+
+void nvidia_set_gpu_count() async {
+  // List all files in the current directory in UNIX-like systems.
+  var result = await Process.run('./nvidia_get.sh', ['-l']); /* second arr takes flags and params? */
+  final gpuCount = int.parse(result.stdout);
+  print('SETTING GPU COUNT: $gpuCount');
+  GPUProvider().setAmtOfGPUS(gpuCount);
+
+
+  final newGPUCount = GPUProvider().numOfGPUs;
+  print('GLOBAL GPU COUNT: $newGPUCount');
+
 }
 
 void start_mining() async {
@@ -125,6 +136,17 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  @override
+  void initState() {
+    nvidia_set_gpu_count();
+
+    setState(() { });
+
+    
+    // print('timer: $mytimer');
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Row(
