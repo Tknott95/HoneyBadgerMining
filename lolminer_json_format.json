@@ -1,0 +1,33 @@
+{
+    "Software": "lolMiner 1.51a",
+    "Session": {
+        "Startup": 1653829302,
+        "Startup_String": "2022-05-29_07-01-42",
+        "Uptime": 0,
+        "Last_Update": 1653829302
+    },
+    "Num_Workers": 0,
+    "Workers": "",
+    "Num_Algorithms": 1,
+    "Algorithms": [
+        {
+            "Algorithm": "",
+            "Algorithm_Appendix": "",
+            "Pool": "",
+            "User": "",
+            "Worker": "",
+            "Performance_Unit": "",
+            "Performance_Factor": "2.4703282292062327e-323",
+            "Total_Performance": 0,
+            "Total_Accepted": 0,
+            "Total_Rejected": 0,
+            "Total_Stales": 0,
+            "Total_Errors": 0,
+            "Worker_Performance": "",
+            "Worker_Accepted": "",
+            "Worker_Rejected": "",
+            "Worker_Stales": "",
+            "Worker_Errors": ""
+        }
+    ]
+}

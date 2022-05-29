@@ -20,4 +20,4 @@ ls -la
 
 
 chmod +x lolMiner
-./lolMiner --algo AUTOLYKOS2 --pool $POOL --user $WALLET $@
+./lolMiner --algo AUTOLYKOS2 --pool $POOL --user $WALLET $@ --apiport 1339
