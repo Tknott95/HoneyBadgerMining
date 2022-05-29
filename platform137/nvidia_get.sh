@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# f - is fan speed by provding a gpu-index-#
+# l - list amount of GPUs
 
 while getopts 't:f:a:' OPTION; do
   case "$OPTION" in
@@ -11,7 +13,7 @@ while getopts 't:f:a:' OPTION; do
       # nvidia-smi --query-gpu=fan.speed --format=csv,noheader
       nvidia-smi --query-gpu=fan.speed --format=csv,noheader -i $OPTARG | grep -Eo "^[0-9]+"
       ;;
-    a)
+    l)
       avalue="$OPTARG"
       echo "The value provided is $OPTARG"
       ;;
