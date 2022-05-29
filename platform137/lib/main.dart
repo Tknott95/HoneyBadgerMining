@@ -18,12 +18,6 @@ import 'package:provider/provider.dart';
 void main() {
   runApp(const MyApp());
   nvidia_get_temp();
-  // nvidia_set_gpu_count();
-
-  // nvidia_get_fan_speed(0); /* async error is herem, will be fixed once in an async return widget */
-  // nvidia_get_fan_speed(1); /* async error is herem, will be fixed once in an async return widget */
-
-  // nvidia_set_sudo_fans();
 }
 
 // void testing() async {
@@ -158,6 +152,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+     final gpuCount = Provider.of<GPUProvider>(context, listen: false).numOfGPUs;
+     print('GPU COUNT ###    ($gpuCount)');
     nvidia_set_gpu_count(context);
     return Row(
       children: <Widget>[
@@ -181,12 +177,18 @@ class _MyHomePageState extends State<MyHomePage> {
                             Icon(Icons.star, size: 50),
                             Icon(Icons.star, size: 50),
                             // Icon(Icons.star, size: 50),
-                            const SizedBox(height: 100, width: 100, 
-                              child: FanAnalyticsWidget(gpuIndex: 0)
-                            ),
-                            const SizedBox(height: 100, width: 100, 
-                              child: FanAnalyticsWidget(gpuIndex: 1)
-                            ),
+                            if (gpuCount > 1)...[
+                              const SizedBox(height: 100, width: 100, 
+                                child: FanAnalyticsWidget(gpuIndex: 0)
+                              ),
+                              const SizedBox(height: 100, width: 100, 
+                                child: FanAnalyticsWidget(gpuIndex: 1)
+                              ),
+                            ] else...[
+                              const SizedBox(height: 100, width: 100, 
+                                child: FanAnalyticsWidget(gpuIndex: 0)
+                              ),
+                            ],
                             Text(
                               'platform137',
                               style: Theme.of(context).textTheme.headline1
