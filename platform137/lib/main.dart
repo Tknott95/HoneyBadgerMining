@@ -49,6 +49,21 @@ void nvidia_set_gpu_count(context) async {
 
 }
 
+Future<int> nvidia_set_gpu_count_alt (context) async {
+  // List all files in the current directory in UNIX-like systems.
+  var result = await Process.run('./nvidia_get.sh', ['-l']); /* second arr takes flags and params? */
+  final gpuCount = int.parse(result.stdout);
+  print('SETTING GPU COUNT: $gpuCount');
+  Provider.of<GPUProvider>(context, listen: false).setAmtOfGPUS(gpuCount);
+  // GPUProvider().setAmtOfGPUS(gpuCount);
+
+  final newGPUCount = Provider.of<GPUProvider>(context, listen: false).numOfGPUs;
+  print('GLOBAL GPU COUNT: $newGPUCount');
+
+  return newGPUCount
+
+}
+
 void start_mining() async {
   var shell = Shell();
 
@@ -152,9 +167,10 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-     final gpuCount = Provider.of<GPUProvider>(context, listen: false).numOfGPUs;
-     print('GPU COUNT ###    ($gpuCount)');
+     // print('GPU COUNT ###    ($gpuCount)');
     nvidia_set_gpu_count(context);
+    final gpuCount = Provider.of<GPUProvider>(context, listen: false).numOfGPUs;
+   
     return Row(
       children: <Widget>[
         Expanded(
