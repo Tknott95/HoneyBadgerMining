@@ -60,8 +60,7 @@ Future<int> nvidia_set_gpu_count_alt (context) async {
   final newGPUCount = Provider.of<GPUProvider>(context, listen: false).numOfGPUs;
   print('GLOBAL GPU COUNT: $newGPUCount');
 
-  return newGPUCount
-
+  return newGPUCount;
 }
 
 void start_mining() async {
@@ -167,10 +166,12 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    
      // print('GPU COUNT ###    ($gpuCount)');
     nvidia_set_gpu_count(context);
     final gpuCount = Provider.of<GPUProvider>(context, listen: false).numOfGPUs;
-   
+    /* nest this as it is async and not waiting for an update to call without listen which is shit on computation */
+
     return Row(
       children: <Widget>[
         Expanded(
