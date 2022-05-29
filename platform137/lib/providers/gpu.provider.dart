@@ -7,9 +7,9 @@ class GPUProvider with ChangeNotifier {
 
   int get numOfGPUs => _numOfGPUs;
 
+  /* nvidia-smi --list-gpus | wc -l */
   void setAmtOfGPUS(int _gpuCount) {
     _numOfGPUs = _gpuCount;
     notifyListeners();
   }
-
 }

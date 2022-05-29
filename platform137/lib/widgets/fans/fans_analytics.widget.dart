@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 /* will have to use future builder and can pass down string so I dont have to parse then toString() */
 Future<int> nvidia_get_fan_speed(int _gpuIndex) async {
   // List all files in the current directory in UNIX-like systems.
-  var result = await Process.run('./nvidia_smi.sh', ['-f $_gpuIndex']); /* second arr takes flags and params? */
+  var result = await Process.run('./nvidia_get.sh', ['-f $_gpuIndex']); /* second arr takes flags and params? */
   print(result.stdout);
   return int.parse(result.stdout);
   // print(int.parse(result.stdout));

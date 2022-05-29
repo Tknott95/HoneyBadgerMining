@@ -34,7 +34,7 @@ void main() {
 
 void nvidia_get_temp() async {
   // List all files in the current directory in UNIX-like systems.
-  var result = await Process.run('./nvidia_smi.sh', ['-t']); /* second arr takes flags and params? */
+  var result = await Process.run('./nvidia_get.sh', ['-t']); /* second arr takes flags and params? */
   var gpu_one = int.parse(""+result.stdout[0]+result.stdout[1]+"");
 
 
