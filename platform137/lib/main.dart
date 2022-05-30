@@ -3,6 +3,7 @@ import 'dart:io';
 // import 'package:process_run/which.dart';
 import 'package:platform137/providers/gpu.provider.dart';
 import 'package:platform137/sections/middle/middle.section.dart';
+import 'package:platform137/sections/right/right.section.dart';
 import 'package:platform137/widgets/fans/fans.widget.dart';
 import 'package:platform137/widgets/fans/fans_analytics.widget.dart';
 import 'package:platform137/widgets/graphics/graphics.widget.dart';
@@ -234,23 +235,9 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
           flex: 73,
         ),
-        Expanded(
-          child: Container(
-            decoration: const BoxDecoration(color: Color.fromARGB(255, 255, 255, 255)),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: const <Widget>[
-                SliderWidgetPower(),
-                SliderWidgetTempThresh(),
-                Divider(),
-                SliderWidgetFans(),
-                Divider(),
-                SliderWidgetMemory(),
-                SliderWidgetGraphics()
-              ]
-            ),
-          ),
+        const Expanded(
           flex: 27,
+          child: RightSection()
         ),
         
       ],
