@@ -29,14 +29,14 @@ Future<void> _fetchLolMiningData() async {
     var response = await http.get(_url);
     print('Response status: ${response.statusCode}');
 
-    List _jsonBody = json.decode(response.body);
+    Lolminer _jsonBody = json.decode(response.body);
     // final _jsonBody = json.decode(response.body);
     //.cast<Map<String, dynamic>>();
     // List<dynamic> _addrsList = Addrs.fromJson(_jsonBody);
     // List<Transactions> _transactList = [];
-    List<Lolminer> _finalTrans = _jsonBody
-        .map<Lolminer>((ijk) => Lolminer.fromJson(ijk))
-        .toList();
+
+    print(_jsonBody);
+
     // ${_jsonBody[0]['id']}
     // final _newResp = Transactions.fromJson(_jsonBody);
     // print(
@@ -46,9 +46,8 @@ Future<void> _fetchLolMiningData() async {
     // print(
     //     '#######################     ${_finalTrans[0].numWorkers}    /    ${_finalTrans[0].algorithms} ################################');
     print(
-        '#######################     ${_finalTrans[0].software}    /    ${_finalTrans[0].numWorkers} ################################');
+        '#######################     ${_jsonBody.software}    /    ${_jsonBody.numWorkers} ################################');
 
-    print('Amount of transactions:  ${_finalTrans.length}');
 
     print('Response status: ${response.statusCode}');
 
