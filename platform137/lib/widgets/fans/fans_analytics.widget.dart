@@ -55,7 +55,7 @@ class FanAnalyticsWidgetState extends State<FanAnalyticsWidget> {
             children: [
               Text(
                 "$gpuFanSpeed",
-                style: Theme.of(context).textTheme.headline1
+                style: Theme.of(context).textTheme.headline2,
               ),
               Text('%', style: Theme.of(context).textTheme.bodyText2)
             ],

@@ -19,7 +19,7 @@ import 'package:provider/provider.dart';
 
 
 void main() {
-  start_mining();
+  // start_mining();
   runApp(const MyApp());
   nvidia_get_temp();
   // start_mining();
@@ -138,7 +138,28 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         textTheme: const TextTheme(
           headline1: TextStyle(fontSize: 50, fontWeight: FontWeight.w800),
+          headline2: TextStyle(fontSize: 50, fontWeight: FontWeight.w400,  
+            shadows: [
+              Shadow( // bottomLeft
+                offset: Offset(-1.5, -1.5),
+                color: Color.fromARGB(255, 0, 0, 0)
+              ),
+              // Shadow( // bottomRight
+              //   offset: Offset(1.5, -1.5),
+              //   color: Color.fromARGB(255, 0, 16, 85)
+              // ),
+              // Shadow( // topRight
+              //   offset: Offset(1.5, 1.5),
+              //   color: Color.fromARGB(255, 0, 39, 97)
+              // ),
+              // Shadow( // topLeft
+              //   offset: Offset(-1.5, 1.5),
+              //   color: Color.fromARGB(255, 0, 6, 90)
+              // ),
+            ]
+          ),
           headline6: TextStyle(fontSize: 8, height: 5, fontWeight: FontWeight.w900),
+          headline5: TextStyle(fontSize: 8, height: 5, fontWeight: FontWeight.w400),
           bodyText1: TextStyle(fontSize: 10, height: 1, fontWeight: FontWeight.w600),
         ),
       ),
