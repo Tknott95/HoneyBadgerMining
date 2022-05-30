@@ -141,7 +141,7 @@ class MyApp extends StatelessWidget {
           headline2: TextStyle(fontSize: 50, fontWeight: FontWeight.w400,  
             shadows: [
               Shadow( // bottomLeft
-                offset: Offset(-1.5, -1.5),
+                offset: Offset(-.5, -.5),
                 /* change shadow based on temp ? @TODO ? */
                 color: Color.fromARGB(255, 255, 0, 0)
               ),
