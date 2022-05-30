@@ -1,4 +1,5 @@
 
+import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
@@ -11,7 +12,16 @@ class MiddleSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Future.delayed(Duration(seconds: 5), (){_fetchLolMiningData();});
+    // Future.delayed(Duration(seconds: 5), (){
+    //   Timer mytimer = Timer.periodic(const Duration(seconds: 5), (timer) {
+    //     _fetchLolMiningData();
+      
+    //   });
+    // });
+    Timer mytimer = Timer.periodic(const Duration(seconds: 5), (timer) {
+        _fetchLolMiningData();
+      
+    });
 
     return Center(
       child: Text(
