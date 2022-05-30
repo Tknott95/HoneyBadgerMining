@@ -142,7 +142,8 @@ class MyApp extends StatelessWidget {
             shadows: [
               Shadow( // bottomLeft
                 offset: Offset(-1.5, -1.5),
-                color: Color.fromARGB(255, 0, 0, 0)
+                /* change shadow based on temp ? @TODO ? */
+                color: Color.fromARGB(255, 255, 0, 0)
               ),
               // Shadow( // bottomRight
               //   offset: Offset(1.5, -1.5),
