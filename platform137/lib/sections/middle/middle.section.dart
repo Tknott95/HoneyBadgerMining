@@ -24,7 +24,7 @@ class MiddleSection extends StatelessWidget {
 
 Future<void> _fetchLolMiningData() async {
   var _url =
-      Uri.parse('http://localhost:1339/');
+      Uri.parse('http://127.0.0.1:1339');
   try {
     var response = await http.get(_url);
     print('Response status: ${response.statusCode}');
