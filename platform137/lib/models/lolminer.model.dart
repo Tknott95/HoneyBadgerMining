@@ -11,7 +11,7 @@ String lolminerToJson(Lolminer data) => json.encode(data.toJson());
 
 class Lolminer {
     Lolminer({
-        this.software,
+        required this.software,
         // required this.session,
         required this.numWorkers,
         // required this.workers,
@@ -19,26 +19,26 @@ class Lolminer {
         // required this.algorithms,
     });
 
-    final String? software;
+    final String software;
     // final Session? session;
-    final int? numWorkers;
+    final int numWorkers;
     // final List<Worker>? workers;
     // final int? numAlgorithms;
     // final List<Algorithm>? algorithms;
 
     factory Lolminer.fromJson(Map<String, dynamic> json) => Lolminer(
-        software: json["Software"] == null ? null : json["Software"],
+        software: json["Software"],
         // session: json["Session"] == null ? null : Session.fromJson(json["Session"]),
-        numWorkers: json["Num_Workers"] == null ? null : json["Num_Workers"],
+        numWorkers: json["Num_Workers"],
         // workers: json["Workers"] == null ? null : List<Worker>.from(json["Workers"].map((x) => Worker.fromJson(x))),
         // numAlgorithms: json["Num_Algorithms"] == null ? null : json["Num_Algorithms"],
         // algorithms: json["Algorithms"] == null ? null : List<Algorithm>.from(json["Algorithms"].map((x) => Algorithm.fromJson(x))),
     );
 
     Map<String, dynamic> toJson() => {
-        "Software": software == null ? null : software,
+        "Software": software,
         // "Session": session == null ? null : session!.toJson(),
-        "Num_Workers": numWorkers == null ? null : numWorkers,
+        "Num_Workers": numWorkers,
         // "Workers": workers == null ? null : List<dynamic>.from(workers!.map((x) => x.toJson())),
         // "Num_Algorithms": numAlgorithms == null ? null : numAlgorithms,
         // "Algorithms": algorithms == null ? null : List<dynamic>.from(algorithms!.map((x) => x.toJson())),
