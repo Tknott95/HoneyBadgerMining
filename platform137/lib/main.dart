@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:platform137/providers/gpu.provider.dart';
 import 'package:platform137/sections/middle/middle.section.dart';
 import 'package:platform137/sections/right/right.section.dart';
+import 'package:platform137/sections/top/top.section.dart';
 import 'package:platform137/widgets/fans/fans.widget.dart';
 import 'package:platform137/widgets/fans/fans_analytics.widget.dart';
 import 'package:platform137/widgets/graphics/graphics.widget.dart';
@@ -172,7 +173,6 @@ class _MyHomePageState extends State<MyHomePage> {
     
      // print('GPU COUNT ###    ($gpuCount)');
     nvidia_set_gpu_count(context);
-    final gpuCount = Provider.of<GPUProvider>(context, listen: false).numOfGPUs;
     /* nest this as it is async and not waiting for an update to call without listen which is shit on computation */
 
     return Row(
@@ -180,48 +180,7 @@ class _MyHomePageState extends State<MyHomePage> {
         Expanded(
           child: Column(
               children: <Widget>[
-                Center(
-                  child: SizedBox(
-                    // heightFactor: .3,
-                    // widthFactor: 1,
-                    height: 180,
-                    width: double.infinity,
-                    
-                    child: Container(
-                      decoration: const BoxDecoration(color: Color.fromARGB(255, 255, 253, 249)),
-                      child: Center(
-                        child: Row /*or Column*/( 
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children:  <Widget>[
-                            Icon(Icons.star, size: 50),
-                            Icon(Icons.star, size: 50),
-                            // Icon(Icons.star, size: 50),
-                            if (gpuCount > 1)...[
-                              const SizedBox(height: 100, width: 100, 
-                                child: FanAnalyticsWidget(gpuIndex: 0)
-                              ),
-                              const SizedBox(height: 100, width: 100, 
-                                child: FanAnalyticsWidget(gpuIndex: 1)
-                              ),
-                            ] else...[
-                              const SizedBox(height: 100, width: 100, 
-                                child: FanAnalyticsWidget(gpuIndex: 0)
-                              ),
-                            ],
-                            Text(
-                              'platform137',
-                              style: Theme.of(context).textTheme.headline1
-                            ),
-                            Icon(Icons.star, size: 50),
-                            Icon(Icons.star, size: 50),
-                            Icon(Icons.star, size: 50),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
+                const TopSection(),
                 Expanded(
                   flex: 1,
                   
