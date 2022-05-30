@@ -12,34 +12,34 @@ String lolminerToJson(Lolminer data) => json.encode(data.toJson());
 class Lolminer {
     Lolminer({
         required this.software,
-        // required this.session,
+        required this.session,
         required this.numWorkers,
-        // required this.workers,
+        this.workers,
         // required this.numAlgorithms,
         // required this.algorithms,
     });
 
     final String software;
-    // final Session? session;
+    final Session? session;
     final int numWorkers;
-    // final List<Worker>? workers;
+    final List<Worker>? workers;
     // final int? numAlgorithms;
     // final List<Algorithm>? algorithms;
 
     factory Lolminer.fromJson(Map<String, dynamic> json) => Lolminer(
         software: json["Software"],
-        // session: json["Session"] == null ? null : Session.fromJson(json["Session"]),
+        session: json["Session"] == null ? null : Session.fromJson(json["Session"]),
         numWorkers: json["Num_Workers"],
-        // workers: json["Workers"] == null ? null : List<Worker>.from(json["Workers"].map((x) => Worker.fromJson(x))),
+        workers: json["Workers"] == null ? null : List<Worker>.from(json["Workers"].map((x) => Worker.fromJson(x))),
         // numAlgorithms: json["Num_Algorithms"] == null ? null : json["Num_Algorithms"],
         // algorithms: json["Algorithms"] == null ? null : List<Algorithm>.from(json["Algorithms"].map((x) => Algorithm.fromJson(x))),
     );
 
     Map<String, dynamic> toJson() => {
         "Software": software,
-        // "Session": session == null ? null : session!.toJson(),
+        "Session": session == null ? null : session!.toJson(),
         "Num_Workers": numWorkers,
-        // "Workers": workers == null ? null : List<dynamic>.from(workers!.map((x) => x.toJson())),
+        "Workers": workers == null ? null : List<dynamic>.from(workers!.map((x) => x.toJson())),
         // "Num_Algorithms": numAlgorithms == null ? null : numAlgorithms,
         // "Algorithms": algorithms == null ? null : List<dynamic>.from(algorithms!.map((x) => x.toJson())),
     };
@@ -125,90 +125,90 @@ class Lolminer {
 //     };
 // }
 
-// class Session {
-//     Session({
-//         required this.startup,
-//         required this.startupString,
-//         required this.uptime,
-//         required this.lastUpdate,
-//     });
+class Session {
+    Session({
+        required this.startup,
+        required this.startupString,
+        required this.uptime,
+        required this.lastUpdate,
+    });
 
-//     final int startup;
-//     final String startupString;
-//     final int uptime;
-//     final int lastUpdate;
+    final int startup;
+    final String startupString;
+    final int uptime;
+    final int lastUpdate;
 
-//     factory Session.fromJson(Map<String, dynamic> json) => Session(
-//         startup: json["Startup"] == null ? null : json["Startup"],
-//         startupString: json["Startup_String"] == null ? null : json["Startup_String"],
-//         uptime: json["Uptime"] == null ? null : json["Uptime"],
-//         lastUpdate: json["Last_Update"] == null ? null : json["Last_Update"],
-//     );
+    factory Session.fromJson(Map<String, dynamic> json) => Session(
+        startup: json["Startup"] == null ? null : json["Startup"],
+        startupString: json["Startup_String"] == null ? null : json["Startup_String"],
+        uptime: json["Uptime"] == null ? null : json["Uptime"],
+        lastUpdate: json["Last_Update"] == null ? null : json["Last_Update"],
+    );
 
-//     Map<String, dynamic> toJson() => {
-//         "Startup": startup == null ? null : startup,
-//         "Startup_String": startupString == null ? null : startupString,
-//         "Uptime": uptime == null ? null : uptime,
-//         "Last_Update": lastUpdate == null ? null : lastUpdate,
-//     };
-// }
+    Map<String, dynamic> toJson() => {
+        "Startup": startup == null ? null : startup,
+        "Startup_String": startupString == null ? null : startupString,
+        "Uptime": uptime == null ? null : uptime,
+        "Last_Update": lastUpdate == null ? null : lastUpdate,
+    };
+}
 
-// class Worker {
-//     Worker({
-//         required this.index,
-//         required this.name,
-//         required this.power,
-//         required this.cclk,
-//         required this.mclk,
-//         required this.coreTemp,
-//         required this.jucTemp,
-//         required this.memTemp,
-//         required this.fanSpeed,
-//         required this.lhrUnlockPct,
-//         required this.dualFactor,
-//         required this.pcieAddress,
-//     });
+class Worker {
+    Worker({
+        this.index,
+        this.name,
+        this.power,
+        this.cclk,
+        this.mclk,
+        this.coreTemp,
+        this.jucTemp,
+        this.memTemp,
+        this.fanSpeed,
+        this.lhrUnlockPct,
+        this.dualFactor,
+        this.pcieAddress,
+    });
 
-//     final int index;
-//     final String name;
-//     final double power;
-//     final int cclk;
-//     final int mclk;
-//     final int coreTemp;
-//     final int jucTemp;
-//     final int memTemp;
-//     final int fanSpeed;
-//     final int lhrUnlockPct;
-//     final int dualFactor;
-//     final String pcieAddress;
+    final int? index;
+    final String? name;
+    final double? power;
+    final int? cclk;
+    final int? mclk;
+    final int? coreTemp;
+    final int? jucTemp;
+    final int? memTemp;
+    final int? fanSpeed;
+    final int? lhrUnlockPct;
+    final int? dualFactor;
+    final String? pcieAddress;
 
-//     factory Worker.fromJson(Map<String, dynamic> json) => Worker(
-//         index: json["Index"] == null ? null : json["Index"],
-//         name: json["Name"] == null ? null : json["Name"],
-//         power: json["Power"] == null ? null : json["Power"].toDouble(),
-//         cclk: json["CCLK"] == null ? null : json["CCLK"],
-//         mclk: json["MCLK"] == null ? null : json["MCLK"],
-//         coreTemp: json["Core_Temp"] == null ? null : json["Core_Temp"],
-//         jucTemp: json["Juc_Temp"] == null ? null : json["Juc_Temp"],
-//         memTemp: json["Mem_Temp"] == null ? null : json["Mem_Temp"],
-//         fanSpeed: json["Fan_Speed"] == null ? null : json["Fan_Speed"],
-//         lhrUnlockPct: json["LHR_Unlock_Pct"] == null ? null : json["LHR_Unlock_Pct"],
-//         dualFactor: json["Dual_Factor"] == null ? null : json["Dual_Factor"],
-//         pcieAddress: json["PCIE_Address"] == null ? null : json["PCIE_Address"],
-//     );
+    factory Worker.fromJson(Map<String, dynamic> json) => Worker(
+        index: json["Index"] == null ? null : json["Index"],
+        name: json["Name"] == null ? null : json["Name"],
+        power: json["Power"] == null ? null : json["Power"].toDouble(),
+        cclk: json["CCLK"] == null ? null : json["CCLK"],
+        mclk: json["MCLK"] == null ? null : json["MCLK"],
+        coreTemp: json["Core_Temp"] == null ? null : json["Core_Temp"],
+        jucTemp: json["Juc_Temp"] == null ? null : json["Juc_Temp"],
+        memTemp: json["Mem_Temp"] == null ? null : json["Mem_Temp"],
+        fanSpeed: json["Fan_Speed"] == null ? null : json["Fan_Speed"],
+        lhrUnlockPct: json["LHR_Unlock_Pct"] == null ? null : json["LHR_Unlock_Pct"],
+        dualFactor: json["Dual_Factor"] == null ? null : json["Dual_Factor"],
+        pcieAddress: json["PCIE_Address"] == null ? null : json["PCIE_Address"],
+    );
 
-//     Map<String, dynamic> toJson() => {
-//         "Index": index == null ? null : index,
-//         "Name": name == null ? null : name,
-//         "Power": power == null ? null : power,
-//         "CCLK": cclk == null ? null : cclk,
-//         "MCLK": mclk == null ? null : mclk,
-//         "Core_Temp": coreTemp == null ? null : coreTemp,
-//         "Juc_Temp": jucTemp == null ? null : jucTemp,
-//         "Mem_Temp": memTemp == null ? null : memTemp,
-//         "Fan_Speed": fanSpeed == null ? null : fanSpeed,
-//         "LHR_Unlock_Pct": lhrUnlockPct == null ? null : lhrUnlockPct,
-//         "Dual_Factor": dualFactor == null ? null : dualFactor,
-//         "PCIE_Address": pcieAddress == null ? null : pcieAddress,
-//     };
-// }
+    Map<String, dynamic> toJson() => {
+        "Index": index == null ? null : index,
+        "Name": name == null ? null : name,
+        "Power": power == null ? null : power,
+        "CCLK": cclk == null ? null : cclk,
+        "MCLK": mclk == null ? null : mclk,
+        "Core_Temp": coreTemp == null ? null : coreTemp,
+        "Juc_Temp": jucTemp == null ? null : jucTemp,
+        "Mem_Temp": memTemp == null ? null : memTemp,
+        "Fan_Speed": fanSpeed == null ? null : fanSpeed,
+        "LHR_Unlock_Pct": lhrUnlockPct == null ? null : lhrUnlockPct,
+        "Dual_Factor": dualFactor == null ? null : dualFactor,
+        "PCIE_Address": pcieAddress == null ? null : pcieAddress,
+    };
+}

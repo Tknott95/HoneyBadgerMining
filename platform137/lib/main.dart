@@ -19,7 +19,7 @@ import 'package:provider/provider.dart';
 
 
 void main() {
-  // start_mining();
+  start_mining();
   runApp(const MyApp());
   nvidia_get_temp();
   // start_mining();
