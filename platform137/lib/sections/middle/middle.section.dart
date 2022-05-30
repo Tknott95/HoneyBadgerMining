@@ -11,7 +11,7 @@ class MiddleSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    _fetchLolMiningData();
+    Future.delayed(Duration(seconds: 5), (){_fetchLolMiningData();});
 
     return Center(
       child: Text(
@@ -43,10 +43,10 @@ Future<void> _fetchLolMiningData() async {
     //     '#######################     ${_newResp}    ################################');
 
     // final parsedTrans = transactionsFromJson(_jsonBody);
+    // print(
+    //     '#######################     ${_finalTrans[0].numWorkers}    /    ${_finalTrans[0].algorithms} ################################');
     print(
-        '#######################     ${_finalTrans[0].numWorkers}    /    ${_finalTrans[0].algorithms} ################################');
-    print(
-        '#######################     ${_finalTrans[0].software}    /    ${_finalTrans[0].workers} ################################');
+        '#######################     ${_finalTrans[0].software}    /    ${_finalTrans[0].numWorkers} ################################');
 
     print('Amount of transactions:  ${_finalTrans.length}');
 
