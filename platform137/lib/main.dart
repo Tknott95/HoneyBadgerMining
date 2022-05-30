@@ -2,6 +2,7 @@ import 'dart:io';
 
 // import 'package:process_run/which.dart';
 import 'package:platform137/providers/gpu.provider.dart';
+import 'package:platform137/sections/middle/middle.section.dart';
 import 'package:platform137/widgets/fans/fans.widget.dart';
 import 'package:platform137/widgets/fans/fans_analytics.widget.dart';
 import 'package:platform137/widgets/graphics/graphics.widget.dart';
@@ -225,13 +226,8 @@ class _MyHomePageState extends State<MyHomePage> {
                   
                   child: Container(
                   color: Color.fromARGB(255, 130, 130, 130),
-                  child: Center(
-                      child: Text(
-                        'mining here',
-                          style: Theme.of(context).textTheme.headline1
-                        )
-                      ),
                   width: double.infinity,
+                  child: const MiddleSection(),
                   ),
                 )
               ],
