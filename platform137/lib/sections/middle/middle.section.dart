@@ -18,24 +18,34 @@ class _MiddleSectionState extends State<MiddleSection> {
   /* @TODO TURN INTO STATEFUL WIDGET */  
   final walletAddr = '';
   final poolUsing = '';
+  String dropdownValue = '';
 
   final List<String> ergPools = [
     'erg.2miners.com:8888',
     'us-erg.2miners.com:8888',
     'asia-erg.2miners.com:8888'	
-  ];
+  ].toList();
+
+  @override
+  void initState() {
+    dropdownValue = ergPools[0]; //. ergPools[0];
+
+    super.initState();
+  }
+
 
 
   @override
   Widget build(BuildContext context) {
-    String dropdownValue = ergPools[0];
 
     Timer mytimer = Timer.periodic(const Duration(seconds: 5), (timer) {
         _fetchLolMiningData();
       
     });
+    
 
-    return Row(
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         Material(
           child: DropdownButton<String>(
