@@ -24,8 +24,8 @@ class _MiningAnalyWidgetState extends State<MiningAnalyWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder(
-        future: _fetchLolMiningData(),
+    return StreamBuilder(
+        stream: _fetchLolMiningData(),
         builder: (context, AsyncSnapshot snapshot) {
           if (snapshot.data == null) {
             return Container(
@@ -47,7 +47,7 @@ class _MiningAnalyWidgetState extends State<MiningAnalyWidget> {
 
 
 
-Future _fetchLolMiningData() async {
+Stream _fetchLolMiningData() async* {
   var _url =
       Uri.parse('http://127.0.0.1:1339');
   try {
@@ -78,7 +78,7 @@ Future _fetchLolMiningData() async {
 
     print('Response status: ${response.statusCode}');
 
-    return miningData;
+    yield miningData;
   } catch (e) {
     print(e);
   }
