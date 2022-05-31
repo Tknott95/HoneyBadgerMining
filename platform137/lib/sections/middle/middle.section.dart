@@ -9,6 +9,10 @@ import 'package:platform137/models/lolminer.model.dart';
 class MiddleSection extends StatelessWidget {
   const MiddleSection({Key? key}) : super(key: key);
 
+  /* @TODO TURN INTO STATEFUL WIDGET */  
+  final walletAddr = '';
+  final poolUsing = '';
+
 
   @override
   Widget build(BuildContext context) {
