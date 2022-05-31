@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'dart:io';
 
 // import 'package:process_run/which.dart';
@@ -21,6 +22,8 @@ const bool IS_MINING = false;
 void main() {
   if (IS_MINING) start_mining();
   runApp(const MyApp());
+  print("\x1B[1;33m  IS_MINING: \x1B[1;37m $IS_MINING\x1B[0m");
+
   nvidia_get_temp();
   // start_mining();
 }
