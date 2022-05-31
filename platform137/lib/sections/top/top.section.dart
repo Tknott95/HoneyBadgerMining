@@ -24,7 +24,7 @@ class TopSection extends StatelessWidget {
                       decoration: const BoxDecoration(color: Color.fromARGB(255, 255, 253, 249)),
                       child: Center(
                         child: Row /*or Column*/( 
-                          mainAxisAlignment: MainAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children:  <Widget>[
                             // Icon(Icons.star, size: 50),
@@ -49,10 +49,10 @@ class TopSection extends StatelessWidget {
                                 child: FanAnalyticsWidget(gpuIndex: 0)
                               ),
                             ],
-                            Text(
-                              'platform137',
-                              style: Theme.of(context).textTheme.headline1
-                            ),
+                            // Text(
+                            //   ' x137 ',
+                            //   style: Theme.of(context).textTheme.headline1
+                            // ),
                              Text(
                               'autolykos',
                               style: Theme.of(context).textTheme.bodySmall
