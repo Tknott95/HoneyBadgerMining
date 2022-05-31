@@ -5,10 +5,10 @@
 
 
 # : after the flag makes you have to have a param
-while getopts 'tf:a:l' OPTION; do
+while getopts 't:f:a:l' OPTION; do
   case "$OPTION" in
     t)
-      nvidia-smi --query-gpu=temperature.gpu --format=csv,noheader
+      nvidia-smi --query-gpu=temperature.gpu --format=csv,noheader -i $OPTARG
       ;;
     f)
       # nvidia-smi -q | grep -i fan
