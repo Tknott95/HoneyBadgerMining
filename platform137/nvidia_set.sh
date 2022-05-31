@@ -23,14 +23,19 @@ while getopts 'p:t:f:m:g:' OPTION; do
       echo "FAN TARGETING: $which_fan"
       echo "FAN PERCENTAGE: $fan_val"
 
-      nvidia-settings -a GPUFanControlState=1 -a [fan:$which_fan]/GPUTargetFanSpeed=$fan_val
+      # nvidia-settings -a GPUFanControlState=1 -a [fan:$which_fan]/GPUTargetFanSpeed=$fan_val
+      nvidia-settings -a GPUFanControlState=1 -a GPUTargetFanSpeed=$fan_val
       ;;
     m)
-      nvidia-settings -a GPUMemoryTransferRateOffset[2]=$OPTARG
+      which_gpu=$(echo $OPTARG | grep -Eo "^[0-9]+")
+      clock_val=$(echo $OPTARG | grep -Eo ':.*' | grep -Eo '[0-9]+')
+      nvidia-settings -a [gpu:$which_gpu]/GPUMemoryTransferRateOffset[2]=$clock_val
       # nvidia-settings -a [gpu:0]/GPUMemoryTransferRateOffset[2]=$OPTARG
       ;;
     g)
-      nvidia-settings -a GPUGraphicsClockOffset[2]=$OPTARG
+      which_gpu=$(echo $OPTARG | grep -Eo "^[0-9]+")
+      clock_val=$(echo $OPTARG | grep -Eo ':.*' | grep -Eo '[0-9]+')
+      nvidia-settings -a [gpu:$which_gpu]/GPUGraphicsClockOffset[2]=$OPTARG
       # nvidia-settings -a [gpu:0]/GPUGraphicsClockOffset[2]=$OPTARG
       ;;
     ?)
