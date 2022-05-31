@@ -9,10 +9,13 @@
 while getopts 'p:t:f:m:g:' OPTION; do
   case "$OPTION" in
     p)
+      # POWER COMES IN AS FLOAT SO REGEX IT A TAD DIFF
       nvidia-smi -i 0 -pl $OPTARG ;nvidia-smi -i 1 -pl $OPTARG
       ;;
     t)
-      nvidia-smi -i 0 -gtt $OPTARG ;nvidia-smi -i 1 -gtt $OPTARG
+      which_gpu=$(echo $OPTARG | grep -Eo "^[0-9]+")
+      temp_val=$(echo $OPTARG | grep -Eo ':.*' | grep -Eo '[0-9]+')
+      nvidia-smi -i $which_gpu -gtt $temp_val
       ;;
     f)
       # VAL COMES IN AS <#-of_gpus>:<fan-speed>
