@@ -44,7 +44,7 @@ class _MiningAnalyWidgetState extends State<MiningAnalyWidget> {
           case ConnectionState.waiting: return Center(child: Column(
             children: [
               Text(
-                'WAITING FO MINING DATA',
+                'WAITING FOR MINING TO BEGIN - START MINING ABOVE',
                 style: Theme.of(context).textTheme.bodySmall
               ),
               const CircularProgressIndicator(),
