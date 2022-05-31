@@ -39,13 +39,12 @@ class _MiddleSectionState extends State<MiddleSection> {
 
   @override
   Widget build(BuildContext context) {
-  final AnimatedButtonController animatedButtonController = AnimatedButtonController();
+    final AnimatedButtonController animatedButtonController = AnimatedButtonController();
 
     TextEditingController walletAddrCtrl = TextEditingController();
 
     Timer mytimer = Timer.periodic(const Duration(seconds: 5), (timer) {
         _fetchLolMiningData();
-      
     });
     
 
