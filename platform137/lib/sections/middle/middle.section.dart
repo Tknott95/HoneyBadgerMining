@@ -127,12 +127,12 @@ class _MiddleSectionState extends State<MiddleSection> {
                   onPressed: () async {
                       /// calling your API here and wait for the response.
                       if (!isMining) { 
-                        final fxx = walletAddrCtrl.value.text;
+                        final walletAddr = walletAddrCtrl.value.text;
                         print("\x1B[1;33m  POOL MINING: \x1B[1;37m $poolForMining\x1B[0m");
-                        print("\x1B[1;33m  WALLET ADDR: \x1B[1;37m $fxx\x1B[0m");
+                        print("\x1B[1;33m  WALLET ADDR: \x1B[1;37m $walletAddr\x1B[0m");
                         
                         /* PASS DOWN ADDR AND POOL HERE FOR MVP @TODO */
-                        start_mining();
+                        start_mining(poolForMining, walletAddr);
                         isMining = true; 
                       };
                       await Future.delayed(Duration(seconds: 3)); // simulated your API requesting time.
@@ -225,12 +225,14 @@ Future<void> _fetchLolMiningData() async {
   }
 }
 
-void start_mining() async {
+void start_mining(String _walletAddr, String _pool) async {
   var shell = Shell();
+
+  String minerParams = "$_walletAddr;$_pool";
 
   shell.run("""
     #!/bin/bash
-    sudo ./get_lolminer.sh
+    sudo ./start_miner.sh $minerParams
     """).then((result){
       print(result.toString());
       print('Shell script done!');
