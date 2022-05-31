@@ -33,7 +33,6 @@ dependencies:
   sleek_circular_slider : ^2.0.1
   provider: ^6.0.3
   http: ^0.13.4
-  slider_button: ^2.0.0
 
 
 
