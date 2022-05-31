@@ -19,8 +19,7 @@ class MiddleSection extends StatefulWidget {
 class _MiddleSectionState extends State<MiddleSection> {
   /* @TODO TURN INTO STATEFUL WIDGET */
   bool isMining = false;
-  final walletAddr = '';
-  final poolUsing = '';
+  String poolForMining = 'erg.2miners.com:8888';
   String? dropdownValue;
 
   final List<String> ergPools = [
@@ -84,6 +83,7 @@ class _MiddleSectionState extends State<MiddleSection> {
                   onChanged: (String? _newVal) {
                     setState(() {
                       dropdownValue = _newVal!;
+                      poolForMining = _newVal;
                     });
                   },
                   items: ergPools
@@ -129,8 +129,9 @@ class _MiddleSectionState extends State<MiddleSection> {
                       /// calling your API here and wait for the response.
                       if (!isMining) { 
                         final fxx = walletAddrCtrl.value.text;
+                        print("\x1B[1;33m  POOL MINING: \x1B[1;37m $poolForMining\x1B[0m");
                         print("\x1B[1;33m  WALLET ADDR: \x1B[1;37m $fxx\x1B[0m");
-                        print(walletAddrCtrl.value);
+                        
                         start_mining();
                         isMining = true; 
                       };
