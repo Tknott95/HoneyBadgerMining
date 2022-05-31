@@ -54,7 +54,7 @@ class _MiddleSectionState extends State<MiddleSection> {
             // icon: const Icon(Icons.arrow_downward),
             elevation: 32,
             style: const TextStyle(color: Colors.black, fontWeight: FontWeight.w300,),
-            iconEnabledColor: Color.fromARGB(255, 14, 14, 14),
+            iconEnabledColor: const Color.fromARGB(255, 14, 14, 14),
             onChanged: (String? _newVal) {
               setState(() {
                 dropdownValue = _newVal!;
