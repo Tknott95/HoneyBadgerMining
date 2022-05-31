@@ -228,7 +228,8 @@ Future<void> _fetchLolMiningData() async {
 void start_mining(String _walletAddr, String _pool) async {
   var shell = Shell();
 
-  String minerParams = "$_walletAddr;$_pool";
+  String minerParams = "$_pool;$_walletAddr";
+  print("STARTING MINER: $minerParams");
 
   shell.run("""
     #!/bin/bash
