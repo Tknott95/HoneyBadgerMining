@@ -89,11 +89,13 @@ class _MiddleSectionState extends State<MiddleSection> {
 
 
         /* @TODO PULL WIDGETS INTO OWN */
-        Center(
-          child: Text(
-            'mining here',
-            style: Theme.of(context).textTheme.headline1
-          )
+        Material(
+          child: Center(
+            child: Text(
+              'mining here',
+              style: Theme.of(context).textTheme.headline1
+            )
+          ),
         ),
 
         // Center(child: SliderButton(
