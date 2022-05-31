@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:platform137/providers/gpu.provider.dart';
 import 'package:platform137/widgets/fans/fans_analytics.widget.dart';
+import 'package:platform137/widgets/temperature/temp_analytics.widget.dart';
 import 'package:provider/provider.dart';
 
 class TopSection extends StatelessWidget {
@@ -26,10 +27,14 @@ class TopSection extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children:  <Widget>[
-                            Icon(Icons.star, size: 50),
-                            Icon(Icons.star, size: 50),
                             // Icon(Icons.star, size: 50),
                             if (gpuCount > 1)...[
+                             const SizedBox(height: 100, width: 100, 
+                                child: TempAnalyticsWidget(gpuIndex: 0)
+                              ),
+                              const SizedBox(height: 100, width: 100, 
+                                child: TempAnalyticsWidget(gpuIndex: 1)
+                              ),
                               const SizedBox(height: 100, width: 100, 
                                 child: FanAnalyticsWidget(gpuIndex: 0)
                               ),
@@ -37,6 +42,9 @@ class TopSection extends StatelessWidget {
                                 child: FanAnalyticsWidget(gpuIndex: 1)
                               ),
                             ] else...[
+                              const SizedBox(height: 100, width: 100, 
+                                child: TempAnalyticsWidget(gpuIndex: 0)
+                              ),
                               const SizedBox(height: 100, width: 100, 
                                 child: FanAnalyticsWidget(gpuIndex: 0)
                               ),
