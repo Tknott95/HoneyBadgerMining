@@ -16,11 +16,16 @@ class MiningAnalyWidget extends StatefulWidget {
 
 // @TODO modularize this
 class _MiningAnalyWidgetState extends State<MiningAnalyWidget> {
-  final ScrollController _scrollCtl = ScrollController();
+  StreamController<Lolminer> _streamCtrl = StreamController();
 
   Timer mytimer = Timer.periodic(const Duration(seconds: 5), (timer) {
     _fetchLolMiningData();
   });
+
+  @override
+  void dispose() {
+    _streamCtrl.close();
+  }
 
   @override
   Widget build(BuildContext context) {
