@@ -23,11 +23,11 @@ class TempAnalyticsWidget extends StatefulWidget {
 
 class TempAnalyticsWidgetState extends State<TempAnalyticsWidget> {
   String gpuTemp = '00';
-
+  var gpuIndex;
 
   @override
   void initState() {
-    final int gpuIndex = widget.gpuIndex;
+    gpuIndex = widget.gpuIndex;
     nvidia_get_fan_speed(gpuIndex).then((result) {gpuTemp = result.toString(); print("gpu_($gpuIndex) gpu temp: $result");});
 
     Timer mytimer = Timer.periodic(const Duration(seconds: 5), (timer) {
@@ -55,12 +55,12 @@ class TempAnalyticsWidgetState extends State<TempAnalyticsWidget> {
             children: [
               Text(
                 "$gpuTemp",
-                style: Theme.of(context).textTheme.headline2,
+                style: Theme.of(context).textTheme.headline3,
               ),
               Text('°C', style: Theme.of(context).textTheme.bodyText2)
             ],
           ),
-          Text('GPU TEMP', style: Theme.of(context).textTheme.bodyText2),      
+          Text('GPU_$gpuIndex TEMP', style: Theme.of(context).textTheme.bodyText2),      
         ],
       )
     );

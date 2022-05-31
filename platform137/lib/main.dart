@@ -162,6 +162,15 @@ class MyApp extends StatelessWidget {
               // ),
             ]
           ),
+          headline3: TextStyle(fontSize: 50, fontWeight: FontWeight.w400,  
+            shadows: [
+              Shadow( // bottomLeft
+                // offset: Offset(-.5, -.5),
+                /* change shadow based on temp ? @TODO ? */
+                // color: Color.fromARGB(255, 72, 69, 255)
+              ),
+            ]
+          ),
           headline6: TextStyle(fontSize: 8, height: 5, fontWeight: FontWeight.w900),
           headline5: TextStyle(fontSize: 8, height: 5, fontWeight: FontWeight.w400),
           bodyText1: TextStyle(fontSize: 10, height: 1, fontWeight: FontWeight.w600),
