@@ -24,7 +24,7 @@ class _MiddleSectionState extends State<MiddleSection> {
     'erg.2miners.com:8888',
     'us-erg.2miners.com:8888',
     'asia-erg.2miners.com:8888'	
-  ].toList();
+  ];
 
   @override
   void initState() {
@@ -49,20 +49,25 @@ class _MiddleSectionState extends State<MiddleSection> {
       children: [
         Material(
           child: DropdownButton<String>(
+            hint: const Text("select a mining pool"),
             value: dropdownValue,
-            icon: const Icon(Icons.arrow_downward),
-            elevation: 16,
-            style: const TextStyle(color: Colors.black, height: .5, fontWeight: FontWeight.w300),
-            onChanged: (String? newValue) {
+            // icon: const Icon(Icons.arrow_downward),
+            elevation: 32,
+            style: const TextStyle(color: Colors.black, fontWeight: FontWeight.w300,),
+            iconEnabledColor: Color.fromARGB(255, 14, 14, 14),
+            onChanged: (String? _newVal) {
               setState(() {
-                dropdownValue = newValue!;
+                dropdownValue = _newVal!;
               });
             },
             items: ergPools
                 .map<DropdownMenuItem<String>>((String value) {
               return DropdownMenuItem<String>(
                 value: value,
-                child: Text(value),
+                child: Center(child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(value),
+                )),
               );
             }).toList(),
             underline: Container(),
