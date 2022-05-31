@@ -6,12 +6,7 @@ import 'package:platform137/providers/gpu.provider.dart';
 import 'package:platform137/sections/middle/middle.section.dart';
 import 'package:platform137/sections/right/right.section.dart';
 import 'package:platform137/sections/top/top.section.dart';
-import 'package:platform137/widgets/fans/fans.widget.dart';
-import 'package:platform137/widgets/fans/fans_analytics.widget.dart';
-import 'package:platform137/widgets/graphics/graphics.widget.dart';
-import 'package:platform137/widgets/memory/memory.widget.dart';
-import 'package:platform137/widgets/power/power.widget.dart';
-import 'package:platform137/widgets/temperature/temp_thresh.widget.dart';
+
 import 'package:process_run/shell.dart';
 
 import 'package:flutter/material.dart';
