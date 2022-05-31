@@ -214,7 +214,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   flex: 1,
                   
                   child: Container(
-                  color: Color.fromARGB(255, 130, 130, 130),
+                  color: const Color.fromRGBO(250, 250, 250, 1), /* matching forms */
                   width: double.infinity,
                   child: const MiddleSection(),
                   ),
