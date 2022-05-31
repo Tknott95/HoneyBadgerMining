@@ -17,14 +17,12 @@ import 'package:process_run/shell.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-const bool IS_MINING = true;
+const bool IS_MINING = false;
 
 void main() {
   if (IS_MINING) start_mining();
   runApp(const MyApp());
   print("\x1B[1;33m  IS_MINING: \x1B[1;37m $IS_MINING\x1B[0m");
-
-  nvidia_get_temp();
   // start_mining();
 }
 
@@ -34,15 +32,16 @@ void main() {
 //   print(result.stdout);
 // }
 
-void nvidia_get_temp() async {
-  // List all files in the current directory in UNIX-like systems.
-  var result = await Process.run('./nvidia_get.sh', ['-t']); /* second arr takes flags and params? */
-  var gpu_one = int.parse(""+result.stdout[0]+result.stdout[1]+"");
+/* DEPRECATED */
+// void nvidia_get_temp() async {
+//   // List all files in the current directory in UNIX-like systems.
+//   var result = await Process.run('./nvidia_get.sh', ['-t']); /* second arr takes flags and params? */
+//   var gpu_one = int.parse(""+result.stdout[0]+result.stdout[1]+"");
 
 
-  print(result.stdout);
-  print("\n gpu_one: " + gpu_one.toString() + "C");
-}
+//   print(result.stdout);
+//   print("\n gpu_one: " + gpu_one.toString() + "C");
+// }
 
 void nvidia_set_gpu_count(context) async {
   // List all files in the current directory in UNIX-like systems.
