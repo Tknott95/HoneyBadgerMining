@@ -47,7 +47,7 @@ class _MiningAnalyWidgetState extends State<MiningAnalyWidget> {
 
 
 
-Stream _fetchLolMiningData() async* {
+Stream<Lolminer> _fetchLolMiningData() async* {
   var _url =
       Uri.parse('http://127.0.0.1:1339');
   try {
