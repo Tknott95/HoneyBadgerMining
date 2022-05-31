@@ -28,6 +28,12 @@ class _MiningAnalyWidgetState extends State<MiningAnalyWidget> {
   }
 
   @override
+  void initState() {
+
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return StreamBuilder(
         stream: _fetchLolMiningData(),
