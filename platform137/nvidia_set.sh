@@ -35,7 +35,7 @@ while getopts 'p:t:f:m:g:' OPTION; do
     g)
       which_gpu=$(echo $OPTARG | grep -Eo "^[0-9]+")
       clock_val=$(echo $OPTARG | grep -Eo ':.*' | grep -Eo '[0-9]+')
-      nvidia-settings -a [gpu:$which_gpu]/GPUGraphicsClockOffset[2]=$OPTARG
+      nvidia-settings -a [gpu:$which_gpu]/GPUGraphicsClockOffset[2]=$clock_val
       # nvidia-settings -a [gpu:0]/GPUGraphicsClockOffset[2]=$OPTARG
       ;;
     ?)
