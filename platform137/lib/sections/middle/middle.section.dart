@@ -5,6 +5,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:platform137/models/lolminer.model.dart';
+import 'package:slider_button/slider_button.dart';
 
 class MiddleSection extends StatefulWidget {
   const MiddleSection({Key? key}) : super(key: key);
@@ -79,6 +80,27 @@ class _MiddleSectionState extends State<MiddleSection> {
             style: Theme.of(context).textTheme.headline1
           )
         ),
+
+        Center(child: SliderButton(
+          action: () {
+            ///Do something here
+            Navigator.of(context).pop();
+          },
+          label: Text(
+              "Slide to begin mining",
+              style: TextStyle(
+                  color: Color(0xff4a4a4a), fontWeight: FontWeight.w500, fontSize: 17),
+            ),
+            icon: Text(
+              "x",
+              style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.w400,
+                fontSize: 44,
+              ),
+            ),
+            )),
+
       ],
     );
   }
