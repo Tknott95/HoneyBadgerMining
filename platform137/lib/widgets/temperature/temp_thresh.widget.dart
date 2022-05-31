@@ -65,6 +65,7 @@ class _SliderWidgetStateTempThresh extends State<SliderWidgetTempThresh> {
                   ),
                   onChange: (double _val) {
                     nvidia_set_temp_threshold(0, _val.round());
+                    nvidia_set_temp_threshold(1, _val.round());
                   }
                 )
               ],
