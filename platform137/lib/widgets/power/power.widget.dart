@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:process_run/shell_run.dart';
 import 'package:sleek_circular_slider/sleek_circular_slider.dart';
 
-void nvidia_set_power(double powerVal) {
+void nvidia_set_power(int _gpuIndex, double _powerVal) {
   var shell = Shell();
 
   shell.run("""
     #!/bin/bash
-    sudo ./nvidia_set.sh -p $powerVal
+    sudo ./nvidia_set.sh -p $_gpuIndex:$_powerVal
     """).then((result){
       print('Shell script done!');
     }).catchError((onError) {
@@ -63,7 +63,8 @@ class _SliderWidgetStatePower extends State<SliderWidgetPower> {
                     ),
                   ),
                   onChange: (double value) {
-                    nvidia_set_power(value);
+                    nvidia_set_power(0, value);
+                    nvidia_set_power(1, value);
                   }
                 )
               ],
