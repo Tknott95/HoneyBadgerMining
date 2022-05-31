@@ -6,9 +6,15 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:platform137/models/lolminer.model.dart';
 
-class MiddleSection extends StatelessWidget {
+class MiddleSection extends StatefulWidget {
   const MiddleSection({Key? key}) : super(key: key);
 
+  @override
+  State<MiddleSection> createState() => _MiddleSectionState();
+}
+
+
+class _MiddleSectionState extends State<MiddleSection> {
   /* @TODO TURN INTO STATEFUL WIDGET */  
   final walletAddr = '';
   final poolUsing = '';
