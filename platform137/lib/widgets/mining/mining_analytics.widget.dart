@@ -35,49 +35,57 @@ class _MiningAnalyWidgetState extends State<MiningAnalyWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder(
-        stream: _fetchLolMiningData(),
-        builder: (context, AsyncSnapshot snapshot) {
-          if (snapshot.data == null) {
-            return Container(
-                child: const Center(
-                    // child: LinearProgressIndicator(
-                    //   backgroundColor: Colors.black,
-                    //   color: Colors.blueGrey,
-                    // ),
-                    child: Text('L O A D I N G') //CircularProgressIndicator(
-                    // backgroundColor: Colors.black,
-                    //color: Colors.blueGrey,
-                    //),
-                    ));
-          } else
-            return Text(snapshot.data.software, style: Theme.of(context).textTheme.headline1);
-        });
+    return StreamBuilder<Lolminer>(
+      stream: _streamCtrl.stream,
+      builder: (context, snapshot) {
+        switch(snapshot.connectionState) {
+          case ConnectionState.waiting: return Center(child: CircularProgressIndicator());
+          default: if(snapshot.hasError){
+            return Text('Waiting for mining server...', style: Theme.of(context).textTheme.headline1);
+          } else {
+            return analyticsWidget(snapshot.data!)
+          }
+        }
+      }
+    );
   }
+            // return Text(snapshot.data.software, style: Theme.of(context).textTheme.headline1);
+
+  Widget analyticsWidget(Lolminer _minerModel) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        Text( , style: Theme.of(context).textTheme.bodySmall),
+        Text( , style: Theme.of(context).textTheme.bodySmall),
+        Text( , style: Theme.of(context).textTheme.bodySmall)
+      ],
+
+    );
+  } 
 
   /* @TODO set tto var of type in initState then run a timer and only call var names on type. Set type every time and just run functional code patterns instead of a stream */
-Future<void> _fetchLolMiningData() async {
-  var _url =
-      Uri.parse('http://127.0.0.1:1339');
-  try {
-    var response = await http.get(_url);
-    print('Response status: ${response.statusCode}');
+  Future<void> _fetchLolMiningData() async {
+    var _url =
+        Uri.parse('http://127.0.0.1:1339');
+    try {
+      var response = await http.get(_url);
+      print('Response status: ${response.statusCode}');
 
-    final miningData = new Lolminer.fromJson(json.decode(response.body));
+      final miningData = new Lolminer.fromJson(json.decode(response.body));
 
-    print(miningData);
+      print(miningData);
 
-    _streamCtrl.sink.add(miningData);
+      _streamCtrl.sink.add(miningData);
 
-    // final parsedTrans = transactionsFromJson(_jsonBody);
-    print('#########     ${miningData.session?.uptime}    /   ${miningData.session?.lastUpdate} ####');
-    print('#########     ${miningData.software}    /    ${miningData.numWorkers} ##############');
-    print('Response status: ${response.statusCode}');
+      // final parsedTrans = transactionsFromJson(_jsonBody);
+      print('#########     ${miningData.session?.uptime}    /   ${miningData.session?.lastUpdate} ####');
+      print('#########     ${miningData.software}    /    ${miningData.numWorkers} ##############');
+      print('Response status: ${response.statusCode}');
 
-    // return miningData;
-  } catch (e) {
-    print(e);
+      // return miningData;
+    } catch (e) {
+      print(e);
+    }
   }
-}
 }
 
