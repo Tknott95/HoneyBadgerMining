@@ -54,9 +54,8 @@ class _MiningAnalyWidgetState extends State<MiningAnalyWidget> {
             return Text(snapshot.data.software, style: Theme.of(context).textTheme.headline1);
         });
   }
-}
 
-/* @TODO set tto var of type in initState then run a timer and only call var names on type. Set type every time and just run functional code patterns instead of a stream */
+  /* @TODO set tto var of type in initState then run a timer and only call var names on type. Set type every time and just run functional code patterns instead of a stream */
 Future _fetchLolMiningData() async {
   var _url =
       Uri.parse('http://127.0.0.1:1339');
@@ -64,28 +63,13 @@ Future _fetchLolMiningData() async {
     var response = await http.get(_url);
     print('Response status: ${response.statusCode}');
 
-    // Map<String, dynamic> _jsonBody = json.decode(response.body);
-    // final _jsonBody = json.decode(response.body);
-    //.cast<Map<String, dynamic>>();
-    // List<dynamic> _addrsList = Addrs.fromJson(_jsonBody);
-    // List<Transactions> _transactList = [];
-
     final miningData = Lolminer.fromJson(json.decode(response.body));
 
     print(miningData);
 
-    // ${_jsonBody[0]['id']}
-    // final _newResp = Transactions.fromJson(_jsonBody);
-    // print(
-    //     '#######################     ${_newResp}    ################################');
-
     // final parsedTrans = transactionsFromJson(_jsonBody);
-    print(
-        '#######################     ${miningData.session?.uptime}    /   ${miningData.session?.lastUpdate} ################################');
-    print(
-        '#######################     ${miningData.software}    /    ${miningData.numWorkers} ################################');
-
-
+    print('#########     ${miningData.session?.uptime}    /   ${miningData.session?.lastUpdate} ####');
+    print('#########     ${miningData.software}    /    ${miningData.numWorkers} ##############');
     print('Response status: ${response.statusCode}');
 
     return miningData;
@@ -93,3 +77,5 @@ Future _fetchLolMiningData() async {
     print(e);
   }
 }
+}
+
