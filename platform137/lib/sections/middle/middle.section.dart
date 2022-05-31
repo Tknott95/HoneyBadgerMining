@@ -128,7 +128,7 @@ class _MiddleSectionState extends State<MiddleSection> {
                   onPressed: () async {
                       /// calling your API here and wait for the response.
                       if (!isMining) { 
-                        final fxx = walletAddrCtrl.value;
+                        final fxx = walletAddrCtrl.value.text;
                         print("\x1B[1;33m  WALLET ADDR: \x1B[1;37m $fxx\x1B[0m");
                         print(walletAddrCtrl.value);
                         start_mining();
