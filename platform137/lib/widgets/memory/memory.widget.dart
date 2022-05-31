@@ -6,12 +6,12 @@ import 'package:flutter/material.dart';
 import 'package:process_run/shell_run.dart';
 import 'package:sleek_circular_slider/sleek_circular_slider.dart';
 
-void nvidia_set_memory_clock(int val) {
+void nvidia_set_memory_clock(int _gpuIndex, int _val) {
   var shell = Shell();
 
   shell.run("""
     #!/bin/bash
-    ./nvidia_set.sh -m $val
+    ./nvidia_set.sh -m $_gpuIndex:$_val
     """).then((result){
       print('Shell script done!');
     }).catchError((onError) {
@@ -61,7 +61,7 @@ class _SliderWidgetStateMemory extends State<SliderWidgetMemory> {
                     ),
                   ),
                   onChange: (double value) {
-                    nvidia_set_memory_clock(value.round());
+                    nvidia_set_memory_clock(0, value.round());
                   }
                 ),
               ],
