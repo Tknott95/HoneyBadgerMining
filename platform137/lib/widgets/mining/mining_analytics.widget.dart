@@ -41,9 +41,18 @@ class _MiningAnalyWidgetState extends State<MiningAnalyWidget> {
       stream: _streamCtrl.stream,
       builder: (context, snapshot) {
         switch(snapshot.connectionState) {
-          case ConnectionState.waiting: return Center(child: CircularProgressIndicator());
+          case ConnectionState.waiting: return Center(child: Column(
+            children: [
+              Text(
+                'WAITING FO MINING DATA',
+                style: Theme.of(context).textTheme.bodySmall
+              ),
+              const CircularProgressIndicator(),
+            ],
+          ));
           default: if(snapshot.hasError){
-            return Text('Waiting for mining server...', style: Theme.of(context).textTheme.headline1);
+            return Text(
+              'Waiting for mining server...', style: Theme.of(context).textTheme.headline1);
           } else {
             return analyticsWidget(snapshot.data!);
           }
