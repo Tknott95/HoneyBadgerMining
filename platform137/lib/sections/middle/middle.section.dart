@@ -49,53 +49,60 @@ class _MiddleSectionState extends State<MiddleSection> {
       children: [
 
         /* @TODO PULL WIDGETS INTO OWN */
-        Material(
-          child: DropdownButton<String>(
-            hint: const Text("select a mining pool"),
-            value: dropdownValue,
-            // icon: const Icon(Icons.arrow_downward),
-            elevation: 32,
-            style: const TextStyle(color: Colors.black, fontWeight: FontWeight.w300,),
-            iconEnabledColor: const Color.fromARGB(255, 14, 14, 14),
-            onChanged: (String? _newVal) {
-              setState(() {
-                dropdownValue = _newVal!;
-              });
-            },
-            items: ergPools
-                .map<DropdownMenuItem<String>>((String value) {
-              return DropdownMenuItem<String>(
-                value: value,
-                child: Center(child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text(value),
-                )),
-              );
-            }).toList(),
-            underline: Container(),
-          ),
-        ),
-
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
-          child: TextFormField(
-            decoration: const InputDecoration(
-              border: UnderlineInputBorder(),
-              labelText: 'Enter your username',
+        Column(
+          children: <Widget>[
+            Material(
+              child: DropdownButton<String>(
+                hint: const Text("select a mining pool"),
+                value: dropdownValue,
+                // icon: const Icon(Icons.arrow_downward),
+                elevation: 32,
+                style: const TextStyle(color: Colors.black, fontWeight: FontWeight.w300,),
+                iconEnabledColor: const Color.fromARGB(255, 14, 14, 14),
+                onChanged: (String? _newVal) {
+                  setState(() {
+                    dropdownValue = _newVal!;
+                  });
+                },
+                items: ergPools
+                    .map<DropdownMenuItem<String>>((String value) {
+                  return DropdownMenuItem<String>(
+                    value: value,
+                    child: Center(child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(value),
+                    )),
+                  );
+                }).toList(),
+                underline: Container(),
+              ),
             ),
-          ),
+
+            SizedBox(
+              width: 700,
+              child: Material(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
+                  child: TextFormField(
+                    decoration: const InputDecoration(
+                      border: UnderlineInputBorder(),
+                      labelText: 'enter your wallet address',
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ],
         ),
 
-
+        const Divider(),
 
         /* @TODO PULL WIDGETS INTO OWN */
-        Material(
-          child: Center(
-            child: Text(
-              'mining here',
-              style: Theme.of(context).textTheme.headline1
-            )
-          ),
+        Center(
+          child: Text(
+            'mining here',
+            style: Theme.of(context).textTheme.headline1
+          )
         ),
 
         // Center(child: SliderButton(
