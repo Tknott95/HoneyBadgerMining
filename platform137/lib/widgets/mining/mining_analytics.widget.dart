@@ -18,9 +18,6 @@ class MiningAnalyWidget extends StatefulWidget {
 class _MiningAnalyWidgetState extends State<MiningAnalyWidget> {
   StreamController<Lolminer> _streamCtrl = StreamController();
 
-  Timer mytimer = Timer.periodic(const Duration(seconds: 5), (timer) {
-    _fetchLolMiningData();
-  });
 
   @override
   void dispose() {
@@ -29,6 +26,11 @@ class _MiningAnalyWidgetState extends State<MiningAnalyWidget> {
 
   @override
   void initState() {
+
+
+    Timer mytimer = Timer.periodic(const Duration(seconds: 5), (timer) {
+      _fetchLolMiningData();
+    });
 
     super.initState();
   }
@@ -57,7 +59,7 @@ class _MiningAnalyWidgetState extends State<MiningAnalyWidget> {
       children: [
         Text("Software:     ${_minerModel.software}", style: Theme.of(context).textTheme.bodySmall),
         Text("# of workers: ${_minerModel.numWorkers}" , style: Theme.of(context).textTheme.bodySmall),
-        Text("Workers:      ${_minerModel.workers}", style: Theme.of(context).textTheme.bodySmall)
+        // Text("Workers:      ${_minerModel.workers}", style: Theme.of(context).textTheme.bodySmall)
       ],
 
     );
