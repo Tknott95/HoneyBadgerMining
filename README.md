@@ -10,4 +10,4 @@ HoneyBadgerMining
 
 
 
-  # going to set all fans with only the gpu active for now nvidia-settings -a [gpu:0]/GPUFanControlState=1  -a [fan:2]/GPUTargetFanSpeed=39
+  # going to set all fans with only the gpu, by gpu #,  active for now nvidia-settings -a [gpu:0]/GPUFanControlState=1  -a [fan:2]/GPUTargetFanSpeed=39

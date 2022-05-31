@@ -16,10 +16,10 @@ import 'package:process_run/shell.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-
+const bool IS_MINING = false;
 
 void main() {
-  start_mining();
+  if (IS_MINING) start_mining();
   runApp(const MyApp());
   nvidia_get_temp();
   // start_mining();
