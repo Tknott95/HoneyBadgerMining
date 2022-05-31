@@ -47,6 +47,8 @@ class _MiddleSectionState extends State<MiddleSection> {
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
+
+        /* @TODO PULL WIDGETS INTO OWN */
         Material(
           child: DropdownButton<String>(
             hint: const Text("select a mining pool"),
@@ -73,6 +75,20 @@ class _MiddleSectionState extends State<MiddleSection> {
             underline: Container(),
           ),
         ),
+
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
+          child: TextFormField(
+            decoration: const InputDecoration(
+              border: UnderlineInputBorder(),
+              labelText: 'Enter your username',
+            ),
+          ),
+        ),
+
+
+
+        /* @TODO PULL WIDGETS INTO OWN */
         Center(
           child: Text(
             'mining here',
