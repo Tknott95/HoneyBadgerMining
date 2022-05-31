@@ -43,7 +43,7 @@ class _MiningAnalyWidgetState extends State<MiningAnalyWidget> {
           default: if(snapshot.hasError){
             return Text('Waiting for mining server...', style: Theme.of(context).textTheme.headline1);
           } else {
-            return analyticsWidget(snapshot.data!)
+            return analyticsWidget(snapshot.data!);
           }
         }
       }
