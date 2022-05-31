@@ -84,14 +84,14 @@ class _MiddleSectionState extends State<MiddleSection> {
         Center(child: SliderButton(
           action: () {
             ///Do something here
-            Navigator.of(context).pop();
+            // Navigator.of(context).pop();
           },
-          label: Text(
+          label: const Text(
               "Slide to begin mining",
               style: TextStyle(
                   color: Color(0xff4a4a4a), fontWeight: FontWeight.w500, fontSize: 17),
             ),
-            icon: Text(
+            icon: const Text(
               "x",
               style: TextStyle(
                 color: Colors.white,
