@@ -56,23 +56,25 @@ class _MiningAnalyWidgetState extends State<MiningAnalyWidget> {
   }
 
   /* @TODO set tto var of type in initState then run a timer and only call var names on type. Set type every time and just run functional code patterns instead of a stream */
-Future _fetchLolMiningData() async {
+Future<void> _fetchLolMiningData() async {
   var _url =
       Uri.parse('http://127.0.0.1:1339');
   try {
     var response = await http.get(_url);
     print('Response status: ${response.statusCode}');
 
-    final miningData = Lolminer.fromJson(json.decode(response.body));
+    final miningData = new Lolminer.fromJson(json.decode(response.body));
 
     print(miningData);
+
+    _streamCtrl.sink.add(miningData);
 
     // final parsedTrans = transactionsFromJson(_jsonBody);
     print('#########     ${miningData.session?.uptime}    /   ${miningData.session?.lastUpdate} ####');
     print('#########     ${miningData.software}    /    ${miningData.numWorkers} ##############');
     print('Response status: ${response.statusCode}');
 
-    return miningData;
+    // return miningData;
   } catch (e) {
     print(e);
   }
