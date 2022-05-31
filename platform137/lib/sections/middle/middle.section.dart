@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:platform137/models/lolminer.model.dart';
 import 'package:animated_progress_button/animated_progress_button.dart';
+import 'package:platform137/widgets/mining/mining_analytics.widget.dart';
 import 'package:process_run/shell_run.dart';
 
 class MiddleSection extends StatefulWidget {
@@ -43,9 +44,9 @@ class _MiddleSectionState extends State<MiddleSection> {
 
     TextEditingController walletAddrCtrl = TextEditingController();
 
-    Timer mytimer = Timer.periodic(const Duration(seconds: 5), (timer) {
-        _fetchLolMiningData();
-    });
+    // Timer mytimer = Timer.periodic(const Duration(seconds: 5), (timer) {
+    //     _fetchLolMiningData();
+    // });
     
 
     return Column(
@@ -122,7 +123,7 @@ class _MiddleSectionState extends State<MiddleSection> {
                   controller: animatedButtonController,
                   // color: Colors.greenAccent,
                   text: isMining ? 'already mining' : 'START MINING',
-                  loadingText: 'Loading',
+                  loadingText: 'MINER RUNNING',
                   loadedIcon: Icon(Icons.check, color: Colors.white),
                   onPressed: () async {
                       /// calling your API here and wait for the response.
@@ -154,12 +155,33 @@ class _MiddleSectionState extends State<MiddleSection> {
         // const Divider(),
 
         /* @TODO PULL WIDGETS INTO OWN */
-        Center(
-          child: Text(
-            'mining here',
-            style: Theme.of(context).textTheme.headline1
-          )
-        ),
+        // Center(
+        //   child: Text(
+        //     'mining here',
+        //     style: Theme.of(context).textTheme.headline1
+        //   )
+        // ),
+
+        MiningAnalyWidget(),
+
+        // FutureBuilder(
+        // future: _fetchAssets(walletID),
+        // builder: (context, AsyncSnapshot snapshot) {
+        //   if (snapshot.data == null) {
+        //     return Container(
+        //         child: Center(
+        //             // child: LinearProgressIndicator(
+        //             //   backgroundColor: Colors.black,
+        //             //   color: Colors.blueGrey,
+        //             // ),
+        //             child: Text('L O A D I N G') //CircularProgressIndicator(
+        //             // backgroundColor: Colors.black,
+        //             //color: Colors.blueGrey,
+        //             //),
+        //             ));
+        //   } else {
+        //     Text(snapshot.data.);
+        //   },
 
         // Center(child: SliderButton(
         //   action: () {
@@ -186,44 +208,42 @@ class _MiddleSectionState extends State<MiddleSection> {
   }
 }
 
-Future<void> _fetchLolMiningData() async {
-  var _url =
-      Uri.parse('http://127.0.0.1:1339');
-  try {
-    var response = await http.get(_url);
-    print('Response status: ${response.statusCode}');
+// Future _fetchLolMiningData() async {
+//   var _url =
+//       Uri.parse('http://127.0.0.1:1339');
+//   try {
+//     var response = await http.get(_url);
+//     print('Response status: ${response.statusCode}');
 
-    // Map<String, dynamic> _jsonBody = json.decode(response.body);
-    // final _jsonBody = json.decode(response.body);
-    //.cast<Map<String, dynamic>>();
-    // List<dynamic> _addrsList = Addrs.fromJson(_jsonBody);
-    // List<Transactions> _transactList = [];
+//     // Map<String, dynamic> _jsonBody = json.decode(response.body);
+//     // final _jsonBody = json.decode(response.body);
+//     //.cast<Map<String, dynamic>>();
+//     // List<dynamic> _addrsList = Addrs.fromJson(_jsonBody);
+//     // List<Transactions> _transactList = [];
 
-    final miningData = Lolminer.fromJson(json.decode(response.body));
+//     final miningData = Lolminer.fromJson(json.decode(response.body));
 
-    print(miningData);
+//     print(miningData);
 
-    // ${_jsonBody[0]['id']}
-    // final _newResp = Transactions.fromJson(_jsonBody);
-    // print(
-    //     '#######################     ${_newResp}    ################################');
+//     // ${_jsonBody[0]['id']}
+//     // final _newResp = Transactions.fromJson(_jsonBody);
+//     // print(
+//     //     '#######################     ${_newResp}    ################################');
 
-    // final parsedTrans = transactionsFromJson(_jsonBody);
-    print(
-        '#######################     ${miningData.session?.uptime}    /   ${miningData.session?.lastUpdate} ################################');
-    print(
-        '#######################     ${miningData.software}    /    ${miningData.numWorkers} ################################');
+//     // final parsedTrans = transactionsFromJson(_jsonBody);
+//     print(
+//         '#######################     ${miningData.session?.uptime}    /   ${miningData.session?.lastUpdate} ################################');
+//     print(
+//         '#######################     ${miningData.software}    /    ${miningData.numWorkers} ################################');
 
 
-    print('Response status: ${response.statusCode}');
+//     print('Response status: ${response.statusCode}');
 
-    // return _finalTrans;
-
-    //  return _addrsList;
-  } catch (e) {
-    print(e);
-  }
-}
+//     return miningData;
+//   } catch (e) {
+//     print(e);
+//   }
+// }
 
 void start_mining(String _walletAddr, String _pool) async {
   var shell = Shell();
