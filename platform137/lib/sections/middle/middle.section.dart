@@ -5,6 +5,8 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:platform137/models/lolminer.model.dart';
+import 'package:animated_progress_button/animated_progress_button.dart';
+import 'package:process_run/shell_run.dart';
 
 class MiddleSection extends StatefulWidget {
   const MiddleSection({Key? key}) : super(key: key);
@@ -37,6 +39,7 @@ class _MiddleSectionState extends State<MiddleSection> {
 
   @override
   Widget build(BuildContext context) {
+  final AnimatedButtonController animatedButtonController = AnimatedButtonController();
 
     Timer mytimer = Timer.periodic(const Duration(seconds: 5), (timer) {
         _fetchLolMiningData();
@@ -50,18 +53,18 @@ class _MiddleSectionState extends State<MiddleSection> {
 
         /* @TODO PULL WIDGETS INTO OWN */
         Container(
-          // decoration: const BoxDecoration(color: Color.fromARGB(255, 255, 253, 249)),
-          padding: const EdgeInsets.only(top:  20.0, bottom: 10),
+          decoration: const BoxDecoration(color: Color.fromARGB(24, 255, 253, 249)),
+          // padding: new EdgeInsets.all(10.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             
             children: <Widget>[
               Center(
                 child: Padding(
-                  padding: const EdgeInsets.all(20.0),
+                  padding:const EdgeInsets.only(top: 0, bottom: 50),
                   child: Text(
                     'INSERT MINING DATA BELOW',
-                    style: Theme.of(context).textTheme.bodySmall
+                    style: Theme.of(context).textTheme.headline6
                   ),
                 )
               ),
@@ -111,6 +114,24 @@ class _MiddleSectionState extends State<MiddleSection> {
             ],
           ),
         ),
+
+        AnimatedButton(
+          controller: animatedButtonController,
+          // color: Colors.greenAccent,
+          text: 'START MINING',
+          loadingText: 'Loading',
+          loadedIcon: Icon(Icons.check, color: Colors.white),
+          onPressed: () async {
+              /// calling your API here and wait for the response.
+              start_mining();
+              await Future.delayed(Duration(seconds: 3)); // simulated your API requesting time.
+              animatedButtonController.completed(); // call when you get the response
+              // await Future.delayed(Duration(seconds: 2));
+              // animatedButtonController.reset(); // call to reset button animation
+          },
+        ),
+
+   
 
         const Divider(),
 
@@ -184,4 +205,19 @@ Future<void> _fetchLolMiningData() async {
   } catch (e) {
     print(e);
   }
+}
+
+void start_mining() async {
+  var shell = Shell();
+
+  shell.run("""
+    #!/bin/bash
+    sudo ./get_lolminer.sh
+    """).then((result){
+      print(result.toString());
+      print('Shell script done!');
+    }).catchError((onError) {
+      print('Shell.run error!');
+      print(onError);
+    });
 }

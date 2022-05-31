@@ -4,4 +4,4 @@
 # IF USING slider_button --no-sound-null-safety  - I am not as I want null safety
 
 sudo ls
-flutter run 
+flutter run  --no-sound-null-safety
