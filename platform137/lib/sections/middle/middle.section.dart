@@ -17,7 +17,8 @@ class MiddleSection extends StatefulWidget {
 
 
 class _MiddleSectionState extends State<MiddleSection> {
-  /* @TODO TURN INTO STATEFUL WIDGET */  
+  /* @TODO TURN INTO STATEFUL WIDGET */
+  bool isMining = false;
   final walletAddr = '';
   final poolUsing = '';
   String? dropdownValue;
@@ -118,12 +119,12 @@ class _MiddleSectionState extends State<MiddleSection> {
         AnimatedButton(
           controller: animatedButtonController,
           // color: Colors.greenAccent,
-          text: 'START MINING',
+          text: isMining ? 'START MINING' : 'already mining',
           loadingText: 'Loading',
           loadedIcon: Icon(Icons.check, color: Colors.white),
           onPressed: () async {
               /// calling your API here and wait for the response.
-              start_mining();
+              if (!isMining) start_mining();
               await Future.delayed(Duration(seconds: 3)); // simulated your API requesting time.
               animatedButtonController.completed(); // call when you get the response
               // await Future.delayed(Duration(seconds: 2));
