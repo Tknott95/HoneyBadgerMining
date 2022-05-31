@@ -12,7 +12,7 @@ while getopts 'p:t:f:m:g:' OPTION; do
       which_gpu=$(echo $OPTARG | grep -Eo "^[0-9]+")
       power_val=$(echo $OPTARG | grep -Eo ':.*' | grep -Eo '[0-9]+.[0-9]+')
       # POWER COMES IN AS FLOAT SO REGEX IT A TAD DIFF
-      | 
+
       nvidia-smi -i $which_gpu -pl $power_val
       ;;
     t)
