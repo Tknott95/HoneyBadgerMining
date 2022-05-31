@@ -19,25 +19,52 @@ class _MiddleSectionState extends State<MiddleSection> {
   final walletAddr = '';
   final poolUsing = '';
 
+  final List<String> ergPools = [
+    'erg.2miners.com:8888',
+    'us-erg.2miners.com:8888',
+    'asia-erg.2miners.com:8888'	
+  ];
+
 
   @override
   Widget build(BuildContext context) {
-    // Future.delayed(Duration(seconds: 5), (){
-    //   Timer mytimer = Timer.periodic(const Duration(seconds: 5), (timer) {
-    //     _fetchLolMiningData();
-      
-    //   });
-    // });
+    String dropdownValue = ergPools[0];
+
     Timer mytimer = Timer.periodic(const Duration(seconds: 5), (timer) {
         _fetchLolMiningData();
       
     });
 
-    return Center(
-      child: Text(
-        'mining here',
-        style: Theme.of(context).textTheme.headline1
-      )
+    return Row(
+      children: [
+        Material(
+          child: DropdownButton<String>(
+            value: dropdownValue,
+            icon: const Icon(Icons.arrow_downward),
+            elevation: 16,
+            style: const TextStyle(color: Colors.black, height: .5, fontWeight: FontWeight.w300),
+            onChanged: (String? newValue) {
+              setState(() {
+                dropdownValue = newValue!;
+              });
+            },
+            items: ergPools
+                .map<DropdownMenuItem<String>>((String value) {
+              return DropdownMenuItem<String>(
+                value: value,
+                child: Text(value),
+              );
+            }).toList(),
+            underline: Container(),
+          ),
+        ),
+        Center(
+          child: Text(
+            'mining here',
+            style: Theme.of(context).textTheme.headline1
+          )
+        ),
+      ],
     );
   }
 }
