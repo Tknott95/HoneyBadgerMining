@@ -132,6 +132,7 @@ class _MiddleSectionState extends State<MiddleSection> {
                         print("\x1B[1;33m  POOL MINING: \x1B[1;37m $poolForMining\x1B[0m");
                         print("\x1B[1;33m  WALLET ADDR: \x1B[1;37m $fxx\x1B[0m");
                         
+                        /* PASS DOWN ADDR AND POOL HERE FOR MVP @TODO */
                         start_mining();
                         isMining = true; 
                       };
