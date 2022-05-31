@@ -162,7 +162,7 @@ class _MiddleSectionState extends State<MiddleSection> {
         //   )
         // ),
 
-        MiningAnalyWidget(),
+        const MiningAnalyWidget(),
 
         // FutureBuilder(
         // future: _fetchAssets(walletID),
