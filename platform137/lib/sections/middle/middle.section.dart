@@ -18,7 +18,7 @@ class _MiddleSectionState extends State<MiddleSection> {
   /* @TODO TURN INTO STATEFUL WIDGET */  
   final walletAddr = '';
   final poolUsing = '';
-  String dropdownValue = '';
+  String? dropdownValue;
 
   final List<String> ergPools = [
     'erg.2miners.com:8888',
@@ -28,7 +28,7 @@ class _MiddleSectionState extends State<MiddleSection> {
 
   @override
   void initState() {
-    dropdownValue = ergPools[0]; //. ergPools[0];
+    dropdownValue = ergPools[0];
 
     super.initState();
   }
