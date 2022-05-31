@@ -17,7 +17,7 @@ import 'package:process_run/shell.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-const bool IS_MINING = false;
+const bool IS_MINING = true;
 
 void main() {
   if (IS_MINING) start_mining();
