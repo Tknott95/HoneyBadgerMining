@@ -9,8 +9,11 @@
 while getopts 'p:t:f:m:g:' OPTION; do
   case "$OPTION" in
     p)
+      which_gpu=$(echo $OPTARG | grep -Eo "^[0-9]+")
+      power_val=$(echo $OPTARG | grep -Eo ':.*' | grep -Eo '[0-9]+.[0-9]+')
       # POWER COMES IN AS FLOAT SO REGEX IT A TAD DIFF
-      nvidia-smi -i 0 -pl $OPTARG ;nvidia-smi -i 1 -pl $OPTARG
+      | 
+      nvidia-smi -i $which_gpu -pl $power_val
       ;;
     t)
       which_gpu=$(echo $OPTARG | grep -Eo "^[0-9]+")
