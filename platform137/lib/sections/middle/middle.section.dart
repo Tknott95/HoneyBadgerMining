@@ -119,15 +119,18 @@ class _MiddleSectionState extends State<MiddleSection> {
         AnimatedButton(
           controller: animatedButtonController,
           // color: Colors.greenAccent,
-          text: isMining ? 'START MINING' : 'already mining',
+          text: isMining ? 'already mining' : 'START MINING',
           loadingText: 'Loading',
           loadedIcon: Icon(Icons.check, color: Colors.white),
           onPressed: () async {
               /// calling your API here and wait for the response.
-              if (!isMining) start_mining();
+              if (!isMining) { 
+                start_mining(); 
+                isMining = true; 
+              };
               await Future.delayed(Duration(seconds: 3)); // simulated your API requesting time.
               animatedButtonController.completed(); // call when you get the response
-              // await Future.delayed(Duration(seconds: 2));
+              // await Future.delayed(Duration(seconds: 5));
               // animatedButtonController.reset(); // call to reset button animation
           },
         ),
