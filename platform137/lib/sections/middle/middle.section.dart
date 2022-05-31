@@ -51,14 +51,14 @@ class _MiddleSectionState extends State<MiddleSection> {
         /* @TODO PULL WIDGETS INTO OWN */
         Container(
           // decoration: const BoxDecoration(color: Color.fromARGB(255, 255, 253, 249)),
-          padding: new EdgeInsets.all(10.0),
+          padding: const EdgeInsets.only(top:  20.0, bottom: 10),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             
             children: <Widget>[
               Center(
                 child: Padding(
-                  padding: const EdgeInsets.all(50.0),
+                  padding: const EdgeInsets.all(20.0),
                   child: Text(
                     'INSERT MINING DATA BELOW',
                     style: Theme.of(context).textTheme.bodySmall
