@@ -80,7 +80,7 @@ class _MiningAnalyWidgetState extends State<MiningAnalyWidget> {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            Text("Total Hash Rate:     ${_minerModel.algorithms![0].totalPerformance..toStringAsFixed(2)}Mh/s", style: Theme.of(context).textTheme.headline6),
+            Text("Total Hash Rate:     ${_minerModel.algorithms![0].totalPerformance.toStringAsFixed(3)}Mh/s", style: Theme.of(context).textTheme.headline6),
             Text("Accepted Shares:     ${_minerModel.algorithms![0].totalAccepted}", style: Theme.of(context).textTheme.headline6),
             Text("Rejected Shares:     ${_minerModel.algorithms![0].totalRejected}", style: Theme.of(context).textTheme.headline6),
             Text("Total Stales:     ${_minerModel.algorithms![0].totalStales}", style: Theme.of(context).textTheme.headline6),
