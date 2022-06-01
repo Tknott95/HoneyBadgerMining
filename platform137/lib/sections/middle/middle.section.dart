@@ -3,7 +3,6 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_phoenix/flutter_phoenix.dart';
 import 'package:http/http.dart' as http;
 import 'package:platform137/models/lolminer.model.dart';
 import 'package:animated_progress_button/animated_progress_button.dart';
@@ -179,14 +178,7 @@ class _MiddleSectionState extends State<MiddleSection> {
 
         const MiningAnalyWidget(),
 
-        FloatingActionButton(
-        onPressed: () {
-          Phoenix.rebirth(context);
-         // Add your onPressed code here!
-        },
-        backgroundColor: Colors.red,
-        child: const Icon(Icons.arrow_back_rounded),
-      ),
+
       ],
     );
   }
