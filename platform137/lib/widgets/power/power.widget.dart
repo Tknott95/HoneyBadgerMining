@@ -42,9 +42,9 @@ class _SliderWidgetStatePower extends State<SliderWidgetPower> {
                   style: Theme.of(context).textTheme.headline6
                 ),
                 SleekCircularSlider(
-                  min: 110,
+                  min: 80,
                   max: 140,
-                  initialValue: 115,
+                  initialValue: 105,
                   innerWidget: (sliderValue) => Center(
                     child: Text(
                         sliderValue.toStringAsFixed(3)+"W",
