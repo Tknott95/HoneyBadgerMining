@@ -18,13 +18,21 @@ void nvidia_set_temp_threshold(int _gpuIndex, int _val) {
 }
 
 class SliderWidgetTempThresh extends StatefulWidget {
-  const SliderWidgetTempThresh({Key? key}) : super(key: key);
+  final gpuIndex;
+  const SliderWidgetTempThresh({Key? key, @required this.gpuIndex}) : super(key: key);
 
   @override
   State<SliderWidgetTempThresh> createState() => _SliderWidgetStateTempThresh();
 }
 
 class _SliderWidgetStateTempThresh extends State<SliderWidgetTempThresh> {
+  var gpuIndex;
+  void initState() {
+    gpuIndex = widget.gpuIndex;
+
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return  Column(
@@ -64,8 +72,8 @@ class _SliderWidgetStateTempThresh extends State<SliderWidgetTempThresh> {
                     ),
                   ),
                   onChange: (double _val) {
-                    nvidia_set_temp_threshold(0, _val.round());
-                    nvidia_set_temp_threshold(1, _val.round());
+                    nvidia_set_temp_threshold(gpuIndex, _val.round());
+                    // nvidia_set_temp_threshold(1, _val.round());
                   }
                 )
               ],
