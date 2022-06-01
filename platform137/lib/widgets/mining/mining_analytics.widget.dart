@@ -76,6 +76,14 @@ class _MiningAnalyWidgetState extends State<MiningAnalyWidget> {
     return Column(
       children: [
         
+
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Text("Total Hash Rate:     ${_minerModel.algorithms![0].totalPerformance}Mh/s", style: Theme.of(context).textTheme.headline5),
+            Text("Accepted Shares:     ${_minerModel.algorithms![0].totalAccepted}", style: Theme.of(context).textTheme.headline5),
+          ]
+        ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
