@@ -96,9 +96,19 @@ class _MiningAnalyWidgetState extends State<MiningAnalyWidget> {
             Text("last update: ${_minerModel.session!.lastUpdate}" , style: Theme.of(context).textTheme.bodySmall),
             // Text("Workers:      ${_minerModel.workers}", style: Theme.of(context).textTheme.bodySmall)
 
-            for(var ijk in _minerModel.workers!) Text("Workers: ${ijk.name}", style: Theme.of(context).textTheme.bodySmall),
           ],
         ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+             for(var ijk in _minerModel.workers!) Text("Workers: ${ijk.name}", style: Theme.of(context).textTheme.bodySmall),
+            for(var ijk in _minerModel.workers!) Text("Power: ${ijk.power}W", style: Theme.of(context).textTheme.bodySmall),
+
+          ],
+        ),
+
+
+
       ],
     );
   } 
