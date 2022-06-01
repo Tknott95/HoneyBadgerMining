@@ -72,6 +72,8 @@ class _MiddleSectionState extends State<MiddleSection> {
               // ),
               // const Divider(),
 
+              Text("ALPHA RELEASE - pick your pool", style: Theme.of(context).textTheme.headline5),
+
               Material(
                 child: DropdownButton<String>(
                   hint: const Text("select a mining pool"),
