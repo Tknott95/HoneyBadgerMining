@@ -19,20 +19,27 @@ void nvidia_set_fans(int _fanIndex, int _fansVal) {
 }
 
 class SliderWidgetFans extends StatefulWidget {
-  final fanIndex;
-  const SliderWidgetFans({Key? key, @required this.fanIndex}) : super(key: key);
+  final gpuIndex;
+  const SliderWidgetFans({Key? key, @required this.gpuIndex}) : super(key: key);
 
   @override
   State<SliderWidgetFans> createState() => _SliderWidgetStateFans();
 }
 
 class _SliderWidgetStateFans extends State<SliderWidgetFans> {
+  var gpuIndex;
+  void initState() {
+    gpuIndex = widget.gpuIndex;
+
+    super.initState();
+  }
+  
   @override
   Widget build(BuildContext context) {
     return Column(
               children: [
                 Text(
-                  'FANS',
+                  'GPU_$gpuIndex FANS CTRL',
                   style: Theme.of(context).textTheme.headline6
                 ),
                 SleekCircularSlider(
@@ -60,7 +67,12 @@ class _SliderWidgetStateFans extends State<SliderWidgetFans> {
                     ),
                   ),
                   onChange: (double value) {
-                    nvidia_set_fans(value.round());
+                    if(gpuIndex == 0) {
+                      nvidia_set_fans(1, value.round());
+                      nvidia_set_fans(2, value.round());
+                    } else {
+                      nvidia_set_fans(0, value.round());
+                    }
                   }
                 )
               ],
