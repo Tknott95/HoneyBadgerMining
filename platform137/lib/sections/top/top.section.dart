@@ -28,12 +28,15 @@ class TopSection extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children:  <Widget>[
                             Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Text(
                                   'STATS FROM OFFICIAL DRIVERS',
                                   style: Theme.of(context).textTheme.bodySmall
                                 ),
                                 Text("ALPHA RELEASE", style: Theme.of(context).textTheme.headline5),
+                                Divider(),
+                                
                               ],
                             ),
                             // Icon(Icons.star, size: 50),

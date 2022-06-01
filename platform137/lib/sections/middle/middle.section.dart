@@ -72,7 +72,7 @@ class _MiddleSectionState extends State<MiddleSection> {
               // ),
               // const Divider(),
 
-              Text("pick your pool", style: Theme.of(context).textTheme.headline5),
+              // Text("pick your pool", style: Theme.of(context).textTheme.headline5),
 
               Material(
                 child: DropdownButton<String>(
