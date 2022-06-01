@@ -15,24 +15,24 @@ class Lolminer {
         required this.session,
         required this.numWorkers,
         this.workers,
-        // required this.numAlgorithms,
-        // required this.algorithms,
+        this.numAlgorithms,
+        this.algorithms,
     });
 
     final String software;
     final Session? session;
     final int numWorkers;
     final List<Worker>? workers;
-    // final int? numAlgorithms;
-    // final List<Algorithm>? algorithms;
+    final int? numAlgorithms;
+    final List<Algorithm>? algorithms;
 
     factory Lolminer.fromJson(Map<String, dynamic> json) => Lolminer(
         software: json["Software"],
         session: json["Session"] == null ? null : Session.fromJson(json["Session"]),
         numWorkers: json["Num_Workers"],
         workers: json["Workers"] == null ? null : List<Worker>.from(json["Workers"].map((x) => Worker.fromJson(x))),
-        // numAlgorithms: json["Num_Algorithms"] == null ? null : json["Num_Algorithms"],
-        // algorithms: json["Algorithms"] == null ? null : List<Algorithm>.from(json["Algorithms"].map((x) => Algorithm.fromJson(x))),
+        numAlgorithms: json["Num_Algorithms"] == null ? null : json["Num_Algorithms"],
+        algorithms: json["Algorithms"] == null ? null : List<Algorithm>.from(json["Algorithms"].map((x) => Algorithm.fromJson(x))),
     );
 
     Map<String, dynamic> toJson() => {
@@ -45,85 +45,85 @@ class Lolminer {
     };
 }
 
-// class Algorithm {
-//     Algorithm({
-//         required this.algorithm,
-//         required this.algorithmAppendix,
-//         required this.pool,
-//         required this.user,
-//         required this.worker,
-//         required this.performanceUnit,
-//         required this.performanceFactor,
-//         required this.totalPerformance,
-//         required this.totalAccepted,
-//         required this.totalRejected,
-//         required this.totalStales,
-//         required this.totalErrors,
-//         required this.workerPerformance,
-//         required this.workerAccepted,
-//         required this.workerRejected,
-//         required this.workerStales,
-//         required this.workerErrors,
-//     });
+class Algorithm {
+    Algorithm({
+        required this.algorithm,
+        required this.algorithmAppendix,
+        required this.pool,
+        required this.user,
+        required this.worker,
+        required this.performanceUnit,
+        required this.performanceFactor,
+        required this.totalPerformance,
+        required this.totalAccepted,
+        required this.totalRejected,
+        required this.totalStales,
+        required this.totalErrors,
+        required this.workerPerformance,
+        required this.workerAccepted,
+        required this.workerRejected,
+        required this.workerStales,
+        required this.workerErrors,
+    });
 
-//     final String algorithm;
-//     final String algorithmAppendix;
-//     final String pool;
-//     final String user;
-//     final String worker;
-//     final String performanceUnit;
-//     final int performanceFactor;
-//     final double totalPerformance;
-//     final int totalAccepted;
-//     final int totalRejected;
-//     final int totalStales;
-//     final int totalErrors;
-//     final List<double>? workerPerformance;
-//     final List<int>? workerAccepted;
-//     final List<int>? workerRejected;
-//     final List<int>? workerStales;
-//     final List<int>? workerErrors;
+    final String algorithm;
+    final String algorithmAppendix;
+    final String pool;
+    final String user;
+    final String worker;
+    final String performanceUnit;
+    final int performanceFactor;
+    final double totalPerformance;
+    final int totalAccepted;
+    final int totalRejected;
+    final int totalStales;
+    final int totalErrors;
+    final List<double>? workerPerformance;
+    final List<int>? workerAccepted;
+    final List<int>? workerRejected;
+    final List<int>? workerStales;
+    final List<int>? workerErrors;
 
-//     factory Algorithm.fromJson(Map<String, dynamic> json) => Algorithm(
-//         algorithm: json["Algorithm"] == null ? null : json["Algorithm"],
-//         algorithmAppendix: json["Algorithm_Appendix"] == null ? null : json["Algorithm_Appendix"],
-//         pool: json["Pool"] == null ? null : json["Pool"],
-//         user: json["User"] == null ? null : json["User"],
-//         worker: json["Worker"] == null ? null : json["Worker"],
-//         performanceUnit: json["Performance_Unit"] == null ? null : json["Performance_Unit"],
-//         performanceFactor: json["Performance_Factor"] == null ? null : json["Performance_Factor"],
-//         totalPerformance: json["Total_Performance"] == null ? null : json["Total_Performance"].toDouble(),
-//         totalAccepted: json["Total_Accepted"] == null ? null : json["Total_Accepted"],
-//         totalRejected: json["Total_Rejected"] == null ? null : json["Total_Rejected"],
-//         totalStales: json["Total_Stales"] == null ? null : json["Total_Stales"],
-//         totalErrors: json["Total_Errors"] == null ? null : json["Total_Errors"],
-//         workerPerformance: json["Worker_Performance"] == null ? null : List<double>.from(json["Worker_Performance"].map((x) => x.toDouble())),
-//         workerAccepted: json["Worker_Accepted"] == null ? null : List<int>.from(json["Worker_Accepted"].map((x) => x)),
-//         workerRejected: json["Worker_Rejected"] == null ? null : List<int>.from(json["Worker_Rejected"].map((x) => x)),
-//         workerStales: json["Worker_Stales"] == null ? null : List<int>.from(json["Worker_Stales"].map((x) => x)),
-//         workerErrors: json["Worker_Errors"] == null ? null : List<int>.from(json["Worker_Errors"].map((x) => x)),
-//     );
+    factory Algorithm.fromJson(Map<String, dynamic> json) => Algorithm(
+        algorithm: json["Algorithm"] == null ? null : json["Algorithm"],
+        algorithmAppendix: json["Algorithm_Appendix"] == null ? null : json["Algorithm_Appendix"],
+        pool: json["Pool"] == null ? null : json["Pool"],
+        user: json["User"] == null ? null : json["User"],
+        worker: json["Worker"] == null ? null : json["Worker"],
+        performanceUnit: json["Performance_Unit"] == null ? null : json["Performance_Unit"],
+        performanceFactor: json["Performance_Factor"] == null ? null : json["Performance_Factor"],
+        totalPerformance: json["Total_Performance"] == null ? null : json["Total_Performance"].toDouble(),
+        totalAccepted: json["Total_Accepted"] == null ? null : json["Total_Accepted"],
+        totalRejected: json["Total_Rejected"] == null ? null : json["Total_Rejected"],
+        totalStales: json["Total_Stales"] == null ? null : json["Total_Stales"],
+        totalErrors: json["Total_Errors"] == null ? null : json["Total_Errors"],
+        workerPerformance: json["Worker_Performance"] == null ? null : List<double>.from(json["Worker_Performance"].map((x) => x.toDouble())),
+        workerAccepted: json["Worker_Accepted"] == null ? null : List<int>.from(json["Worker_Accepted"].map((x) => x)),
+        workerRejected: json["Worker_Rejected"] == null ? null : List<int>.from(json["Worker_Rejected"].map((x) => x)),
+        workerStales: json["Worker_Stales"] == null ? null : List<int>.from(json["Worker_Stales"].map((x) => x)),
+        workerErrors: json["Worker_Errors"] == null ? null : List<int>.from(json["Worker_Errors"].map((x) => x)),
+    );
 
-//     Map<String, dynamic> toJson() => {
-//         "Algorithm": algorithm == null ? null : algorithm,
-//         "Algorithm_Appendix": algorithmAppendix == null ? null : algorithmAppendix,
-//         "Pool": pool == null ? null : pool,
-//         "User": user == null ? null : user,
-//         "Worker": worker == null ? null : worker,
-//         "Performance_Unit": performanceUnit == null ? null : performanceUnit,
-//         "Performance_Factor": performanceFactor == null ? null : performanceFactor,
-//         "Total_Performance": totalPerformance == null ? null : totalPerformance,
-//         "Total_Accepted": totalAccepted == null ? null : totalAccepted,
-//         "Total_Rejected": totalRejected == null ? null : totalRejected,
-//         "Total_Stales": totalStales == null ? null : totalStales,
-//         "Total_Errors": totalErrors == null ? null : totalErrors,
-//         "Worker_Performance": workerPerformance == null ? null : List<dynamic>.from(workerPerformance!.map((x) => x)),
-//         "Worker_Accepted": workerAccepted == null ? null : List<dynamic>.from(workerAccepted!.map((x) => x)),
-//         "Worker_Rejected": workerRejected == null ? null : List<dynamic>.from(workerRejected!.map((x) => x)),
-//         "Worker_Stales": workerStales == null ? null : List<dynamic>.from(workerStales!.map((x) => x)),
-//         "Worker_Errors": workerErrors == null ? null : List<dynamic>.from(workerErrors!.map((x) => x)),
-//     };
-// }
+    Map<String, dynamic> toJson() => {
+        "Algorithm": algorithm == null ? null : algorithm,
+        "Algorithm_Appendix": algorithmAppendix == null ? null : algorithmAppendix,
+        "Pool": pool == null ? null : pool,
+        "User": user == null ? null : user,
+        "Worker": worker == null ? null : worker,
+        "Performance_Unit": performanceUnit == null ? null : performanceUnit,
+        "Performance_Factor": performanceFactor == null ? null : performanceFactor,
+        "Total_Performance": totalPerformance == null ? null : totalPerformance,
+        "Total_Accepted": totalAccepted == null ? null : totalAccepted,
+        "Total_Rejected": totalRejected == null ? null : totalRejected,
+        "Total_Stales": totalStales == null ? null : totalStales,
+        "Total_Errors": totalErrors == null ? null : totalErrors,
+        "Worker_Performance": workerPerformance == null ? null : List<dynamic>.from(workerPerformance!.map((x) => x)),
+        "Worker_Accepted": workerAccepted == null ? null : List<dynamic>.from(workerAccepted!.map((x) => x)),
+        "Worker_Rejected": workerRejected == null ? null : List<dynamic>.from(workerRejected!.map((x) => x)),
+        "Worker_Stales": workerStales == null ? null : List<dynamic>.from(workerStales!.map((x) => x)),
+        "Worker_Errors": workerErrors == null ? null : List<dynamic>.from(workerErrors!.map((x) => x)),
+    };
+}
 
 class Session {
     Session({

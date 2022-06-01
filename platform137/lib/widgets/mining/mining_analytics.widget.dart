@@ -108,6 +108,8 @@ class _MiningAnalyWidgetState extends State<MiningAnalyWidget> {
 
       final miningData = new Lolminer.fromJson(json.decode(response.body));
 
+      print(json.decode(response.body));
+
       print(miningData);
 
       _streamCtrl.sink.add(miningData);
