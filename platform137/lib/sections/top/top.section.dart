@@ -57,8 +57,8 @@ class TopSection extends StatelessWidget {
                             //   ' x137 ',
                             //   style: Theme.of(context).textTheme.headline1
                             // ),
-                            const Icon(Icons.star, size: 37),
-                            const Icon(Icons.star, size: 37),
+                            const Icon(Icons.ac_unit, size: 37),
+                            const Icon(Icons.air, size: 37),
                              Text(
                               'autolykos - BETA - ERGO',
                               style: Theme.of(context).textTheme.bodySmall
