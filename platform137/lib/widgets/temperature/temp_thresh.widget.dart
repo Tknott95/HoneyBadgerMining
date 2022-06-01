@@ -38,7 +38,7 @@ class _SliderWidgetStateTempThresh extends State<SliderWidgetTempThresh> {
     return  Column(
               children: [
                 Text(
-                  'TEMP LIMIT',
+                  'GPU_$gpuIndex TEMP LIMIT',
                   style: Theme.of(context).textTheme.headline6
                 ),
                 SleekCircularSlider(
