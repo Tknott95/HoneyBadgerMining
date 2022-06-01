@@ -15,8 +15,14 @@ class RightSection extends StatelessWidget {
       decoration: const BoxDecoration(color: Color.fromARGB(255, 255, 255, 255)),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: const <Widget>[
-          SliderWidgetPower(),
+        children: <Widget>[
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: const [
+              SliderWidgetPower(gpuIndex: 0),
+              SliderWidgetPower(gpuIndex: 1),
+            ],
+          ),
           SliderWidgetTempThresh(),
           Divider(),
           SliderWidgetFans(),

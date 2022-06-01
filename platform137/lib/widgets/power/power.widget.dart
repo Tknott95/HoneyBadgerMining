@@ -17,19 +17,28 @@ void nvidia_set_power(int _gpuIndex, double _powerVal) {
 }
 
 class SliderWidgetPower extends StatefulWidget {
-  const SliderWidgetPower({Key? key}) : super(key: key);
+  final gpuIndex;
+  const SliderWidgetPower({Key? key, @required this.gpuIndex}) : super(key: key);
 
   @override
   State<SliderWidgetPower> createState() => _SliderWidgetStatePower();
 }
 
 class _SliderWidgetStatePower extends State<SliderWidgetPower> {
+  var gpuIndex;
+  @override
+  void initState() {
+    gpuIndex = widget.gpuIndex;
+
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return  Column(
               children: [
                 Text(
-                  'POWER',
+                  'GPU_$gpuIndex POWER',
                   style: Theme.of(context).textTheme.headline6
                 ),
                 SleekCircularSlider(
@@ -63,8 +72,8 @@ class _SliderWidgetStatePower extends State<SliderWidgetPower> {
                     ),
                   ),
                   onChange: (double value) {
-                    nvidia_set_power(0, value);
-                    nvidia_set_power(1, value);
+                    nvidia_set_power(gpuIndex, value);
+                    // nvidia_set_power(1, value);
                   }
                 )
               ],
