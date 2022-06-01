@@ -31,7 +31,12 @@ class _MiddleSectionState extends State<MiddleSection> {
     'ergo-us-west1.nanopool.org:11111',
     'ergo-eu1.nanopool.org:11111',
     'ergo-eu2.nanopool.org:11111',
-    'ergo-asia1.nanopool.org:11111'
+    'ergo-asia1.nanopool.org:11111',
+    'ca.ergo.herominers.com:1180'
+    'de.ergo.herominers.com:1180'
+    'br.ergo.herominers.com:1180'
+    'us.ergo.herominers.com:1180'
+    'fi.ergo.herominers.com:1180'
   ];
 
   @override
