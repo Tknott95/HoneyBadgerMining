@@ -75,29 +75,7 @@ class _MiningAnalyWidgetState extends State<MiningAnalyWidget> {
   Widget analyticsWidget(Lolminer _minerModel) {
     return Column(
       children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            Text("Software:     ${_minerModel.software}", style: Theme.of(context).textTheme.bodySmall),
-            Text("UPTIME:      ${_minerModel.session!.uptime}s", style: Theme.of(context).textTheme.bodySmall),
-            Text("# of workers: ${_minerModel.numWorkers}" , style: Theme.of(context).textTheme.bodySmall),
-            // Text("Workers:      ${_minerModel.workers}", style: Theme.of(context).textTheme.bodySmall)
-          ],
-        ),
-
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            Text("Algorithm:     ${_minerModel.algorithms![0].algorithm}", style: Theme.of(context).textTheme.bodySmall),
-            Text("Accepted Shares:     ${_minerModel.algorithms![0].totalAccepted}", style: Theme.of(context).textTheme.bodySmall),
-            Text("Hash Rate:     ${_minerModel.algorithms![0].workerPerformance}Mh/s", style: Theme.of(context).textTheme.bodySmall),
-
-            Text("STARTUP:      ${_minerModel.session!.startup}", style: Theme.of(context).textTheme.bodySmall),
-            Text("last update: ${_minerModel.session!.lastUpdate}" , style: Theme.of(context).textTheme.bodySmall),
-            // Text("Workers:      ${_minerModel.workers}", style: Theme.of(context).textTheme.bodySmall)
-
-          ],
-        ),
+        
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
@@ -106,13 +84,44 @@ class _MiningAnalyWidgetState extends State<MiningAnalyWidget> {
             for(var ijk in _minerModel.workers!) Text("LHR Unlock: ${ijk.lhrUnlockPct}%", style: Theme.of(context).textTheme.bodySmall),
           ],
         ),
-
+        const Divider(),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             for(var ijk in _minerModel.workers!) Text("CCLK: ${ijk.cclk}", style: Theme.of(context).textTheme.bodySmall),
             for(var ijk in _minerModel.workers!) Text("MCLK: ${ijk.mclk}W", style: Theme.of(context).textTheme.bodySmall),
             for(var ijk in _minerModel.workers!) Text("CORE_TEMP: ${ijk.coreTemp}%", style: Theme.of(context).textTheme.bodySmall),
+          ],
+        ),
+        const Divider(),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Text("Software:     ${_minerModel.software}", style: Theme.of(context).textTheme.bodySmall),
+            Text("POOL:      ${_minerModel.algorithms![0].pool}s", style: Theme.of(context).textTheme.bodySmall),
+            Text("UPTIME:      ${_minerModel.session!.uptime}s", style: Theme.of(context).textTheme.bodySmall),
+            Text("# of workers: ${_minerModel.numWorkers}" , style: Theme.of(context).textTheme.bodySmall),
+            // Text("Workers:      ${_minerModel.workers}", style: Theme.of(context).textTheme.bodySmall)
+          ],
+        ),
+        const Divider(),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Text("Wallet Mining Into:     ${_minerModel.algorithms![0].user}", style: Theme.of(context).textTheme.headlineSmall),
+          ],
+        ),
+        const Divider(),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Text("Algorithm:     ${_minerModel.algorithms![0].algorithm}", style: Theme.of(context).textTheme.bodySmall),
+            Text("Accepted Shares:     ${_minerModel.algorithms![0].totalAccepted}", style: Theme.of(context).textTheme.headlineSmall),
+            Text("Hash Rate:     ${_minerModel.algorithms![0].workerPerformance}Mh/s", style: Theme.of(context).textTheme.bodySmall),
+
+            Text("STARTUP:      ${_minerModel.session!.startup}", style: Theme.of(context).textTheme.bodySmall),
+            Text("last update: ${_minerModel.session!.lastUpdate}" , style: Theme.of(context).textTheme.bodySmall),
+            // Text("Workers:      ${_minerModel.workers}", style: Theme.of(context).textTheme.bodySmall)
           ],
         ),
 
