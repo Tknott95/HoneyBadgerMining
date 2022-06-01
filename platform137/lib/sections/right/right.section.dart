@@ -33,6 +33,7 @@ class RightSection extends StatelessWidget {
           const Divider(),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: const [
               SliderWidgetFans(gpuIndex: 0),
               SliderWidgetFans(gpuIndex: 1),
@@ -41,6 +42,7 @@ class RightSection extends StatelessWidget {
           Divider(),
            Row(
             mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: const [
               SliderWidgetMemory(gpuIndex: 0),
               SliderWidgetMemory(gpuIndex: 1),
@@ -48,6 +50,7 @@ class RightSection extends StatelessWidget {
           ),
            Row(
             mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: const [
               SliderWidgetGraphics(gpuIndex: 0),
               SliderWidgetGraphics(gpuIndex: 1),
