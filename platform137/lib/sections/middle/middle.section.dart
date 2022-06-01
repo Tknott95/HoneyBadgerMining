@@ -26,7 +26,12 @@ class _MiddleSectionState extends State<MiddleSection> {
   final List<String> ergPools = [
     'erg.2miners.com:8888',
     'us-erg.2miners.com:8888',
-    'asia-erg.2miners.com:8888'	
+    'asia-erg.2miners.com:8888',
+    'ergo-us-east1.nanopool.org:11111',
+    'ergo-us-west1.nanopool.org:11111',
+    'ergo-eu1.nanopool.org:11111',
+    'ergo-eu2.nanopool.org:11111',
+    'ergo-asia1.nanopool.org:11111'
   ];
 
   @override
