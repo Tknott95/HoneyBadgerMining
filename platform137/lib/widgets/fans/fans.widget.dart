@@ -68,6 +68,7 @@ class _SliderWidgetStateFans extends State<SliderWidgetFans> {
                   ),
                   onChange: (double value) {
                     if(gpuIndex == 0) {
+                      /* @TODO make an alg to index fans by gpu - no query atm has been found, yet */
                       nvidia_set_fans(1, value.round());
                       nvidia_set_fans(2, value.round());
                     } else {
