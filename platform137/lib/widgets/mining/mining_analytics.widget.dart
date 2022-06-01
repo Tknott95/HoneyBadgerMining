@@ -89,7 +89,7 @@ class _MiningAnalyWidgetState extends State<MiningAnalyWidget> {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             Text("Software:     ${_minerModel.software}", style: Theme.of(context).textTheme.bodySmall),
-            Text("STARUP:      ${_minerModel..session!.startup}", style: Theme.of(context).textTheme.bodySmall),
+            Text("STARTUP:      ${_minerModel.session!.startup}", style: Theme.of(context).textTheme.bodySmall),
             Text("last update: ${_minerModel.session!.lastUpdate}" , style: Theme.of(context).textTheme.bodySmall),
             // Text("Workers:      ${_minerModel.workers}", style: Theme.of(context).textTheme.bodySmall)
           ],
