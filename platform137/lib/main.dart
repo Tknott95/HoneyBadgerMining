@@ -10,13 +10,17 @@ import 'package:platform137/sections/top/top.section.dart';
 import 'package:process_run/shell.dart';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_phoenix/flutter_phoenix.dart';
 import 'package:provider/provider.dart';
 
 const bool IS_MINING = false;
 
 void main() {
   if (IS_MINING) start_mining(); /* OLD MINER SCRIPT */
-  runApp(const MyApp());
+  runApp(
+    Phoenix(
+      child:const MyApp())
+    );
   print("\x1B[1;33m  IS_MINING: \x1B[1;37m $IS_MINING\x1B[0m");
   // start_mining();
 }
@@ -128,7 +132,7 @@ class MyApp extends StatelessWidget {
         create: ((context) => GPUProvider()), 
       )
     ],
-    child:MaterialApp(
+    child: MaterialApp(
       title: 'Platform137',
       theme: ThemeData(
         fontFamily: 'Montserrat',
