@@ -12,7 +12,7 @@ import 'package:process_run/shell.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-const bool IS_MINING = true;
+const bool IS_MINING = false;
 
 void main() {
   if (IS_MINING) start_mining(); /* OLD MINER SCRIPT */
