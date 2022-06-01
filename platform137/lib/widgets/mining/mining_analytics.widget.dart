@@ -49,7 +49,7 @@ class _MiningAnalyWidgetState extends State<MiningAnalyWidget> {
                 style: Theme.of(context).textTheme.bodySmall
               ),
                SpinKitDancingSquare(
-                 size: 100,
+                size: 100,
                 itemBuilder: (BuildContext context, int index) {
                   return DecoratedBox(
                     decoration: BoxDecoration(
