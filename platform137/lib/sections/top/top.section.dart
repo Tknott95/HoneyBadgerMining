@@ -63,12 +63,18 @@ class TopSection extends StatelessWidget {
                               height: 37,
                               width: 37,
                             ),
-                            const Icon(Icons.ac_unit, size: 37),
-                            const Icon(Icons.air, size: 37),
-                             Text(
-                              'autolykos - BETA - ERGO',
-                              style: Theme.of(context).textTheme.bodySmall
+                             Image.network(
+                              "https://mpng.subpng.com/20190728/lc/kisspng-cloud-mining-transparency-the-noun-project-mining-ha7coin-5d3d1e9dc12695.3439710115642866217912.jpg",
+                              // color: Colors.red,
+                              height: 37,
+                              width: 37,
                             ),
+                            // const Icon(Icons.ac_unit, size: 37),
+                            // const Icon(Icons.air, size: 37),
+                            //  Text(
+                            //   'autolykos - BETA - ERGO',
+                            //   style: Theme.of(context).textTheme.bodySmall
+                            // ),
     
                           ],
                         ),
