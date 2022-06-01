@@ -103,6 +103,7 @@ class _MiningAnalyWidgetState extends State<MiningAnalyWidget> {
           children: [
             for(var ijk in _minerModel.workers!) Text("Workers: ${ijk.name}", style: Theme.of(context).textTheme.bodySmall),
             for(var ijk in _minerModel.workers!) Text("Power: ${ijk.power}W", style: Theme.of(context).textTheme.bodySmall),
+            for(var ijk in _minerModel.workers!) Text("LHR Unlock: ${ijk.lhrUnlockPct}%", style: Theme.of(context).textTheme.bodySmall),
 
           ],
         ),
