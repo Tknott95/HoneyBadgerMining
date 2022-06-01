@@ -41,7 +41,7 @@ class _SliderWidgetStateMemory extends State<SliderWidgetMemory> {
     return Column(
               children: [
                 Text(
-                  'GPU_$gpuIndex MEMORY CLK',
+                  'GPU_$gpuIndex MEMORY',
                   style: Theme.of(context).textTheme.headline6,
                 ),
                 SleekCircularSlider(

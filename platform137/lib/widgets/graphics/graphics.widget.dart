@@ -39,7 +39,7 @@ class _SliderWidgetStateGraphics extends State<SliderWidgetGraphics> {
     return  Column(
               children: [
                 Text(
-                  'GPU_$gpuIndex GRAPHICS CLK',
+                  'GPU_$gpuIndex GRAPHICS',
                   style: Theme.of(context).textTheme.headline6,
                   ),
                 SleekCircularSlider(
