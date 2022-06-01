@@ -4,6 +4,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:platform137/models/lolminer.model.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class MiningAnalyWidget extends StatefulWidget {
   const MiningAnalyWidget({Key? key}) : super(key: key);
@@ -47,7 +48,16 @@ class _MiningAnalyWidgetState extends State<MiningAnalyWidget> {
                 'WAITING FOR MINING TO BEGIN - START MINING ABOVE',
                 style: Theme.of(context).textTheme.bodySmall
               ),
-              const CircularProgressIndicator(),
+               SpinKitDancingSquare(
+                 size: 100,
+                itemBuilder: (BuildContext context, int index) {
+                  return DecoratedBox(
+                    decoration: BoxDecoration(
+                      color: index.isEven ? Color.fromARGB(255, 179, 179, 179) : Color.fromARGB(255, 220, 220, 219),
+                    ),
+                  );
+                },
+              ),
             ],
           ));
           default: if(snapshot.hasError){
