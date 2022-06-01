@@ -54,7 +54,7 @@ class _SliderWidgetStateFans extends State<SliderWidgetFans> {
                     ),
                   appearance: CircularSliderAppearance(
                     size: 85,
-                     customWidths: CustomSliderWidths(
+                    customWidths: CustomSliderWidths(
                       //handlerSize: 20,
                       trackWidth: 1,
                       //shadowWidth: 0,

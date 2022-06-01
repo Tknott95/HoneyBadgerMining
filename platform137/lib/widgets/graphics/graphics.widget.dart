@@ -54,6 +54,12 @@ class _SliderWidgetStateGraphics extends State<SliderWidgetGraphics> {
                     ),
                   appearance: CircularSliderAppearance(
                     size: 85,
+                    customWidths: CustomSliderWidths(
+                      //handlerSize: 20,
+                      trackWidth: 1,
+                      //shadowWidth: 0,
+                      progressBarWidth: 11,
+                    ),
                     customColors: CustomSliderColors(
                       dotColor: const Color.fromARGB(175, 255, 255, 255)/*Theme.of(context).primaryColor*/,
                       trackColor: Color.fromARGB(172, 0, 0, 0),
