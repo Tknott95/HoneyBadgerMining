@@ -90,7 +90,7 @@ class _MiningAnalyWidgetState extends State<MiningAnalyWidget> {
           children: [
             Text("Algorithm:     ${_minerModel.algorithms![0].algorithm}", style: Theme.of(context).textTheme.bodySmall),
             Text("Accepted Shares:     ${_minerModel.algorithms![0].totalAccepted}", style: Theme.of(context).textTheme.bodySmall),
-            Text("Hash Rate:     ${_minerModel.algorithms![0].workerPerformance}", style: Theme.of(context).textTheme.bodySmall),
+            Text("Hash Rate:     ${_minerModel.algorithms![0].workerPerformance}Mh/s", style: Theme.of(context).textTheme.bodySmall),
 
             Text("STARTUP:      ${_minerModel.session!.startup}", style: Theme.of(context).textTheme.bodySmall),
             Text("last update: ${_minerModel.session!.lastUpdate}" , style: Theme.of(context).textTheme.bodySmall),
@@ -104,7 +104,15 @@ class _MiningAnalyWidgetState extends State<MiningAnalyWidget> {
             for(var ijk in _minerModel.workers!) Text("Workers: ${ijk.name}", style: Theme.of(context).textTheme.bodySmall),
             for(var ijk in _minerModel.workers!) Text("Power: ${ijk.power}W", style: Theme.of(context).textTheme.bodySmall),
             for(var ijk in _minerModel.workers!) Text("LHR Unlock: ${ijk.lhrUnlockPct}%", style: Theme.of(context).textTheme.bodySmall),
+          ],
+        ),
 
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            for(var ijk in _minerModel.workers!) Text("CCLK: ${ijk.cclk}", style: Theme.of(context).textTheme.bodySmall),
+            for(var ijk in _minerModel.workers!) Text("MCLK: ${ijk.mclk}W", style: Theme.of(context).textTheme.bodySmall),
+            for(var ijk in _minerModel.workers!) Text("CORE_TEMP: ${ijk.coreTemp}%", style: Theme.of(context).textTheme.bodySmall),
           ],
         ),
 
