@@ -29,8 +29,8 @@ while getopts 'p:t:f:m:g:' OPTION; do
       echo "FAN TARGETING: $which_fan"
       echo "FAN PERCENTAGE: $fan_val"
 
-      # nvidia-settings -a GPUFanControlState=1 -a [fan:$which_fan]/GPUTargetFanSpeed=$fan_val
-      nvidia-settings -a GPUFanControlState=1 -a GPUTargetFanSpeed=$fan_val
+      nvidia-settings -a GPUFanControlState=1 -a [fan:$which_fan]/GPUTargetFanSpeed=$fan_val
+      # nvidia-settings -a GPUFanControlState=1 -a GPUTargetFanSpeed=$fan_val
       ;;
     m)
       which_gpu=$(echo $OPTARG | grep -Eo "^[0-9]+")
