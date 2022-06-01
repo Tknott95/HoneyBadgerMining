@@ -86,6 +86,7 @@ class _MiningAnalyWidgetState extends State<MiningAnalyWidget> {
             Text("Total Stales:     ${_minerModel.algorithms![0].totalStales}", style: Theme.of(context).textTheme.headline6),
           ]
         ),
+        const Divider(),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
@@ -118,10 +119,10 @@ class _MiningAnalyWidgetState extends State<MiningAnalyWidget> {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            Text("Accepted Shares:     ${_minerModel.algorithms![0].totalAccepted}", style: Theme.of(context).textTheme.headlineSmall),
-            Text("Rejected Shares:     ${_minerModel.algorithms![0].totalRejected}", style: Theme.of(context).textTheme.headlineSmall),
-            Text("Total Hash Rate:     ${_minerModel.algorithms![0].totalPerformance}", style: Theme.of(context).textTheme.headlineSmall),
-            Text("Wallet Mining Into:     ${_minerModel.algorithms![0].user}", style: Theme.of(context).textTheme.headlineSmall),
+            // Text("Accepted Shares:     ${_minerModel.algorithms![0].totalAccepted}", style: Theme.of(context).textTheme.headlineSmall),
+            // Text("Rejected Shares:     ${_minerModel.algorithms![0].totalRejected}", style: Theme.of(context).textTheme.headlineSmall),
+            // Text("Total Hash Rate:     ${_minerModel.algorithms![0].totalPerformance}", style: Theme.of(context).textTheme.headlineSmall),
+            Text("Wallet Mining Into:     ${_minerModel.algorithms![0].user}", style: Theme.of(context).textTheme.headline6),
           ],
         ),
         const Divider(),
