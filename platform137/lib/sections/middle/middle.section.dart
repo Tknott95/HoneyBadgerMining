@@ -110,6 +110,7 @@ class _MiddleSectionState extends State<MiddleSection> {
                       decoration: const InputDecoration(
                         border: UnderlineInputBorder(),
                         labelText: 'enter your wallet address',
+                        fillColor: Colors.black38
                       ),
                     ),
                   ),

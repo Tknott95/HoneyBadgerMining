@@ -45,8 +45,8 @@ class _MiningAnalyWidgetState extends State<MiningAnalyWidget> {
           case ConnectionState.waiting: return Center(child: Column(
             children: [
               Text(
-                'WAITING FOR MINING TO BEGIN - START MINING ABOVE',
-                style: Theme.of(context).textTheme.bodySmall
+                'WAITING FOR MINING TO BEGIN - START MINING ABOVE TO UNLOCK',
+                style: Theme.of(context).textTheme.headline6
               ),
                SpinKitDancingSquare(
                 size: 100,
@@ -122,7 +122,7 @@ class _MiningAnalyWidgetState extends State<MiningAnalyWidget> {
             // Text("Accepted Shares:     ${_minerModel.algorithms![0].totalAccepted}", style: Theme.of(context).textTheme.headlineSmall),
             // Text("Rejected Shares:     ${_minerModel.algorithms![0].totalRejected}", style: Theme.of(context).textTheme.headlineSmall),
             // Text("Total Hash Rate:     ${_minerModel.algorithms![0].totalPerformance}", style: Theme.of(context).textTheme.headlineSmall),
-              Text("Uptime:     ${_minerModel.session!.uptime}", style: Theme.of(context).textTheme.headlineSmall),
+            Text("Uptime:     ${_minerModel.session!.uptime}", style: Theme.of(context).textTheme.headline6),
             Text("Wallet Mining Into:     ${_minerModel.algorithms![0].user}", style: Theme.of(context).textTheme.headline6),
           ],
         ),
