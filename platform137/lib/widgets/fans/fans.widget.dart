@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:process_run/shell_run.dart';
 import 'package:sleek_circular_slider/sleek_circular_slider.dart';
 
-void nvidia_set_fans(int fansVal) {
+void nvidia_set_fans(int _fanIndex, int _fansVal) {
   var shell = Shell();
   
-  final fansParam = "1:"+fansVal.toString();
+  final fansParam = "$_fanIndex:$_fansVal";
   /* rmvd sudo on fans */
   shell.run("""
     #!/bin/bash
@@ -19,7 +19,8 @@ void nvidia_set_fans(int fansVal) {
 }
 
 class SliderWidgetFans extends StatefulWidget {
-  const SliderWidgetFans({Key? key}) : super(key: key);
+  final fanIndex;
+  const SliderWidgetFans({Key? key, @required this.fanIndex}) : super(key: key);
 
   @override
   State<SliderWidgetFans> createState() => _SliderWidgetStateFans();
