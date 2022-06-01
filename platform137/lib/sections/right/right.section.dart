@@ -15,6 +15,7 @@ class RightSection extends StatelessWidget {
       decoration: const BoxDecoration(color: Color.fromARGB(255, 255, 255, 255)),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           Row(
             mainAxisAlignment: MainAxisAlignment.center,

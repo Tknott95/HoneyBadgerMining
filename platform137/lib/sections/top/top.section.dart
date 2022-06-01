@@ -64,7 +64,7 @@ class TopSection extends StatelessWidget {
                               width: 37,
                             ),
                              Image.network(
-                              "https://mpng.subpng.com/20190728/lc/kisspng-cloud-mining-transparency-the-noun-project-mining-ha7coin-5d3d1e9dc12695.3439710115642866217912.jpg",
+                              "https://www.mascotdb.com/sites/default/files/images/logos/gillespie.gif",
                               // color: Colors.red,
                               height: 37,
                               width: 37,
