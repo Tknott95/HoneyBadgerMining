@@ -27,9 +27,14 @@ class TopSection extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children:  <Widget>[
-                            Text(
-                              'STATS FROM OFFICIAL DRIVERS',
-                              style: Theme.of(context).textTheme.bodySmall
+                            Column(
+                              children: [
+                                Text(
+                                  'STATS FROM OFFICIAL DRIVERS',
+                                  style: Theme.of(context).textTheme.bodySmall
+                                ),
+                                Text("ALPHA RELEASE", style: Theme.of(context).textTheme.headline5),
+                              ],
                             ),
                             // Icon(Icons.star, size: 50),
                             if (gpuCount > 1)...[
