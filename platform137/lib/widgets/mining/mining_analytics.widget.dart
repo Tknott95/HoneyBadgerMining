@@ -88,7 +88,10 @@ class _MiningAnalyWidgetState extends State<MiningAnalyWidget> {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            Text("Software:     ${_minerModel.software}", style: Theme.of(context).textTheme.bodySmall),
+            Text("Algorithm:     ${_minerModel.algorithms![0].algorithm}", style: Theme.of(context).textTheme.bodySmall),
+            Text("GPU_0 Accepted Shares:     ${_minerModel.algorithms![0].totalAccepted}", style: Theme.of(context).textTheme.bodySmall),
+            Text("GPU_0 Hash Rate:     ${_minerModel.algorithms![0].workerPerformance}", style: Theme.of(context).textTheme.bodySmall),
+
             Text("STARTUP:      ${_minerModel.session!.startup}", style: Theme.of(context).textTheme.bodySmall),
             Text("last update: ${_minerModel.session!.lastUpdate}" , style: Theme.of(context).textTheme.bodySmall),
             // Text("Workers:      ${_minerModel.workers}", style: Theme.of(context).textTheme.bodySmall)
