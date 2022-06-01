@@ -30,15 +30,14 @@ class RightSection extends StatelessWidget {
               SliderWidgetTempThresh(gpuIndex: 1),
             ],
           ),
-          // Row(
-          //   mainAxisAlignment: MainAxisAlignment.center,
-          //   children: const [
-          //     SliderWidgetPower(gpuIndex: 0),
-          //     SliderWidgetPower(gpuIndex: 1),
-          //   ],
-          // ),
-          Divider(),
-          SliderWidgetFans(),
+          const Divider(),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: const [
+              SliderWidgetFans(gpuIndex: 0),
+              SliderWidgetFans(gpuIndex: 1),
+            ],
+          ),
           Divider(),
           SliderWidgetMemory(),
           SliderWidgetGraphics()
