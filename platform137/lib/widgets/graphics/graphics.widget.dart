@@ -19,13 +19,21 @@ void nvidia_set_graphics_clock(int _gpuIndex, int _val) {
 }
 
 class SliderWidgetGraphics extends StatefulWidget {
-  const SliderWidgetGraphics({Key? key}) : super(key: key);
+  final gpuIndex;
+  const SliderWidgetGraphics({Key? key, @required this.gpuIndex}) : super(key: key);
 
   @override
   State<SliderWidgetGraphics> createState() => _SliderWidgetStateGraphics();
 }
 
 class _SliderWidgetStateGraphics extends State<SliderWidgetGraphics> {
+  var gpuIndex;
+  void initState() {
+    gpuIndex = widget.gpuIndex;
+
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return  Column(
@@ -59,7 +67,7 @@ class _SliderWidgetStateGraphics extends State<SliderWidgetGraphics> {
                     ),
                   ),
                   onChange: (double value) {
-                    nvidia_set_graphics_clock(0, value.round());
+                    nvidia_set_graphics_clock(gpuIndex, value.round());
                   }
                 )
               ],
