@@ -57,6 +57,12 @@ class TopSection extends StatelessWidget {
                             //   ' x137 ',
                             //   style: Theme.of(context).textTheme.headline1
                             // ),
+                            Image.network(
+                              "https://cryptologos.cc/logos/ergo-erg-logo.png",
+                              // color: Colors.red,
+                              height: 37,
+                              width: 37,
+                            ),
                             const Icon(Icons.ac_unit, size: 37),
                             const Icon(Icons.air, size: 37),
                              Text(
