@@ -187,87 +187,10 @@ class _MiddleSectionState extends State<MiddleSection> {
         backgroundColor: Colors.red,
         child: const Icon(Icons.arrow_back_rounded),
       ),
-
-        // FutureBuilder(
-        // future: _fetchAssets(walletID),
-        // builder: (context, AsyncSnapshot snapshot) {
-        //   if (snapshot.data == null) {
-        //     return Container(
-        //         child: Center(
-        //             // child: LinearProgressIndicator(
-        //             //   backgroundColor: Colors.black,
-        //             //   color: Colors.blueGrey,
-        //             // ),
-        //             child: Text('L O A D I N G') //CircularProgressIndicator(
-        //             // backgroundColor: Colors.black,
-        //             //color: Colors.blueGrey,
-        //             //),
-        //             ));
-        //   } else {
-        //     Text(snapshot.data.);
-        //   },
-
-        // Center(child: SliderButton(
-        //   action: () {
-        //     ///Do something here
-        //     // Navigator.of(context).pop();
-        //   },
-        //   label: const Text(
-        //       "Slide to begin mining",
-        //       style: TextStyle(
-        //           color: Color(0xff4a4a4a), fontWeight: FontWeight.w600, fontSize: 8),
-        //     ),
-        //     icon: const Text(
-        //       "x",
-        //       style: TextStyle(
-        //         color: Color.fromARGB(255, 19, 19, 19),
-        //         fontWeight: FontWeight.w400,
-        //         fontSize: 14,
-        //       ),
-        //     ),
-        //     )),
-
       ],
     );
   }
 }
-
-// Future _fetchLolMiningData() async {
-//   var _url =
-//       Uri.parse('http://127.0.0.1:1339');
-//   try {
-//     var response = await http.get(_url);
-//     print('Response status: ${response.statusCode}');
-
-//     // Map<String, dynamic> _jsonBody = json.decode(response.body);
-//     // final _jsonBody = json.decode(response.body);
-//     //.cast<Map<String, dynamic>>();
-//     // List<dynamic> _addrsList = Addrs.fromJson(_jsonBody);
-//     // List<Transactions> _transactList = [];
-
-//     final miningData = Lolminer.fromJson(json.decode(response.body));
-
-//     print(miningData);
-
-//     // ${_jsonBody[0]['id']}
-//     // final _newResp = Transactions.fromJson(_jsonBody);
-//     // print(
-//     //     '#######################     ${_newResp}    ################################');
-
-//     // final parsedTrans = transactionsFromJson(_jsonBody);
-//     print(
-//         '#######################     ${miningData.session?.uptime}    /   ${miningData.session?.lastUpdate} ################################');
-//     print(
-//         '#######################     ${miningData.software}    /    ${miningData.numWorkers} ################################');
-
-
-//     print('Response status: ${response.statusCode}');
-
-//     return miningData;
-//   } catch (e) {
-//     print(e);
-//   }
-// }
 
 void start_mining(String _walletAddr, String _pool) async {
   var shell = Shell();
