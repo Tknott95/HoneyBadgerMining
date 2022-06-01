@@ -73,15 +73,28 @@ class _MiningAnalyWidgetState extends State<MiningAnalyWidget> {
             // return Text(snapshot.data.software, style: Theme.of(context).textTheme.headline1);
 
   Widget analyticsWidget(Lolminer _minerModel) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+    return Column(
       children: [
-        Text("Software:     ${_minerModel.software}", style: Theme.of(context).textTheme.bodySmall),
-        Text("UPTIME:      ${_minerModel.session!.uptime}", style: Theme.of(context).textTheme.bodySmall),
-        Text("# of workers: ${_minerModel.numWorkers}" , style: Theme.of(context).textTheme.bodySmall),
-        // Text("Workers:      ${_minerModel.workers}", style: Theme.of(context).textTheme.bodySmall)
-      ],
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Text("Software:     ${_minerModel.software}", style: Theme.of(context).textTheme.bodySmall),
+            Text("UPTIME:      ${_minerModel.session!.uptime}s", style: Theme.of(context).textTheme.bodySmall),
+            Text("# of workers: ${_minerModel.numWorkers}" , style: Theme.of(context).textTheme.bodySmall),
+            // Text("Workers:      ${_minerModel.workers}", style: Theme.of(context).textTheme.bodySmall)
+          ],
+        ),
 
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Text("Software:     ${_minerModel.software}", style: Theme.of(context).textTheme.bodySmall),
+            Text("STARUP:      ${_minerModel..session!.startup}", style: Theme.of(context).textTheme.bodySmall),
+            Text("last update: ${_minerModel.session!.lastUpdate}" , style: Theme.of(context).textTheme.bodySmall),
+            // Text("Workers:      ${_minerModel.workers}", style: Theme.of(context).textTheme.bodySmall)
+          ],
+        ),
+      ],
     );
   } 
 
