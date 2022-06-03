@@ -115,8 +115,11 @@ Future<int> nvidia_get_temp_alt() async {
 /  LIGHT - w300
 */
 
+
+
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
+  
 
   // This widget is the root of your application.
   @override
@@ -133,6 +136,7 @@ class MyApp extends StatelessWidget {
         fontFamily: 'Montserrat',
         primarySwatch: Colors.blue,
         textTheme: const TextTheme(
+
           headline1: TextStyle(fontSize: 50, fontWeight: FontWeight.w800),
           headline2: TextStyle(fontSize: 50, fontWeight: FontWeight.w400,  
             shadows: [
@@ -164,6 +168,23 @@ class MyApp extends StatelessWidget {
               ),
             ]
           ),
+          headline4: TextStyle(fontSize: 50, fontWeight: FontWeight.w400,  
+            shadows: [
+              Shadow( // bottomLeft
+                offset: Offset(-.5, -.5),
+                color: Color.fromARGB(255, 150, 204, 159)
+              ),
+            ]
+          ),
+          // headline5: TextStyle(fontSize: 50, fontWeight: FontWeight.w400,  
+          //   shadows: [
+          //     Shadow( // bottomLeft
+          //       offset: Offset(-.5, -.5),
+          //       color: Color.fromARGB(255, 150, 204, 159)
+          //     ),
+
+          //   ]
+          // ),
           headline6: TextStyle(fontSize: 8, height: 5, fontWeight: FontWeight.w900),
           headline5: TextStyle(fontSize: 8, height: 5, fontWeight: FontWeight.w400),
           bodyText1: TextStyle(fontSize: 10, height: 1, fontWeight: FontWeight.w600),
@@ -173,6 +194,7 @@ class MyApp extends StatelessWidget {
     ))
     ;
   }
+  
 }
 
 class MyHomePage extends StatefulWidget {

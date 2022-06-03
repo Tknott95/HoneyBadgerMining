@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 
+
 /* will have to use future builder and can pass down string so I dont have to parse then toString() */
 Future<int> nvidia_get_fan_speed(int _gpuIndex) async {
   // List all files in the current directory in UNIX-like systems.
@@ -46,6 +47,8 @@ class TempAnalyticsWidgetState extends State<TempAnalyticsWidget> {
   /* needs to become a stream builder probably */
   @override
   Widget build(BuildContext context) {
+
+    int gpuTempVal = int.parse(gpuTemp);
     return SizedBox(height: 100, width: 250, 
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -53,9 +56,15 @@ class TempAnalyticsWidgetState extends State<TempAnalyticsWidget> {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(
+              if (gpuTempVal > 35) Text(
                 gpuTemp,
-                style: Theme.of(context).textTheme.headline3,
+                style: Theme.of(context).textTheme.headline3?.copyWith(color: Color.fromARGB(255, 3, 20, 119)),
+              ) else if (gpuTempVal < 35 && gpuTempVal > 60) Text(
+                gpuTemp,
+                style: Theme.of(context).textTheme.headline3?.copyWith(color: Color.fromARGB(255, 158, 122, 1)),
+              ) else Text(
+                gpuTemp,
+                style: Theme.of(context).textTheme.headline3?.copyWith(color: Color.fromARGB(255, 15, 80, 2)),
               ),
               Text('°C', style: Theme.of(context).textTheme.bodyText2)
             ],
