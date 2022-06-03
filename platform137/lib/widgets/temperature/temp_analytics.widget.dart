@@ -56,12 +56,12 @@ class TempAnalyticsWidgetState extends State<TempAnalyticsWidget> {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              if (gpuTempVal > 35) Text(
+              if (gpuTempVal < 35) Text(
+                gpuTemp,
+                style: Theme.of(context).textTheme.headline3?.copyWith(color: Color.fromARGB(255, 1, 73, 4)),
+              ) else if (gpuTempVal > 35 && gpuTempVal < 60) Text(
                 gpuTemp,
                 style: Theme.of(context).textTheme.headline3?.copyWith(color: Color.fromARGB(255, 3, 20, 119)),
-              ) else if (gpuTempVal < 35 && gpuTempVal > 60) Text(
-                gpuTemp,
-                style: Theme.of(context).textTheme.headline3?.copyWith(color: Color.fromARGB(255, 158, 122, 1)),
               ) else Text(
                 gpuTemp,
                 style: Theme.of(context).textTheme.headline3?.copyWith(color: Color.fromARGB(255, 15, 80, 2)),
