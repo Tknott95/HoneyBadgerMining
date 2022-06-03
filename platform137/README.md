@@ -16,6 +16,7 @@ For help getting started with Flutter, view our
 samples, guidance on mobile development, and a full API reference.
 
 
+## CURRENTLY EVERYTHING HAS CUSTOMM SHELL REGEX AND I NEED TO UPDATE THESE DOCS ON HOW PARAMS ARE FIRED INTO BASH SCRIPTS
 
 #### NVIDIA_SMI - nvidia_set.sh
   * p - power draw
