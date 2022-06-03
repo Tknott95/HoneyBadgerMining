@@ -17,6 +17,8 @@ class RightSection extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
+     
+         
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: const [
