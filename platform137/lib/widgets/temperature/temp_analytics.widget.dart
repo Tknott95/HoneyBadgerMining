@@ -48,7 +48,7 @@ class TempAnalyticsWidgetState extends State<TempAnalyticsWidget> {
   @override
   Widget build(BuildContext context) {
 
-    int gpuTempVal = int.parse(gpuTemp);
+    final int gpuTempVal = int.parse(gpuTemp);
     return SizedBox(height: 100, width: 250, 
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,

@@ -46,6 +46,8 @@ class FanAnalyticsWidgetState extends State<FanAnalyticsWidget> {
   /* needs to become a stream builder probably */
   @override
   Widget build(BuildContext context) {
+    final int gpuFanVal = int.parse(gpuFanSpeed);
+
     return SizedBox(height: 100, width: 250, 
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -53,9 +55,15 @@ class FanAnalyticsWidgetState extends State<FanAnalyticsWidget> {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(
+              if (gpuFanVal > 35) Text(
                 gpuFanSpeed,
                 style: Theme.of(context).textTheme.headline2,
+              ) else if (gpuFanVal < 35 && gpuFanVal > 70) Text(
+                gpuFanSpeed,
+                style: Theme.of(context).textTheme.headline2?.copyWith(color: Color.fromARGB(255, 3, 20, 119)),
+              ) else Text(
+                gpuFanSpeed,
+                style: Theme.of(context).textTheme.headline2?.copyWith(color: Color.fromARGB(255, 184, 141, 0)),
               ),
               Text('%', style: Theme.of(context).textTheme.bodyText2)
             ],
