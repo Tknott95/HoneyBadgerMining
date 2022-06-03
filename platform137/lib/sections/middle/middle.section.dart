@@ -1,10 +1,7 @@
 
 import 'dart:async';
-import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
-import 'package:platform137/models/lolminer.model.dart';
 import 'package:animated_progress_button/animated_progress_button.dart';
 import 'package:platform137/widgets/mining/mining_analytics.widget.dart';
 import 'package:process_run/shell_run.dart';
@@ -72,6 +69,7 @@ class _MiddleSectionState extends State<MiddleSection> {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             
             children: <Widget>[
+
               // Center(
               //   child: Padding(
               //     padding:const EdgeInsets.only(top: 0, bottom: 50),
@@ -138,7 +136,7 @@ class _MiddleSectionState extends State<MiddleSection> {
                   // color: Colors.greenAccent,
                   text: isMining ? 'already mining' : 'START MINING',
                   loadingText: 'MINER RUNNING',
-                  loadedIcon: Icon(Icons.check, color: Colors.white),
+                  loadedIcon: const Icon(Icons.check, color: Colors.white),
                   onPressed: () async {
                       /// calling your API here and wait for the response.
                       if (!isMining) { 
@@ -149,8 +147,8 @@ class _MiddleSectionState extends State<MiddleSection> {
                         /* PASS DOWN ADDR AND POOL HERE FOR MVP @TODO */
                         start_mining(poolForMining, walletAddr);
                         isMining = true; 
-                      };
-                      await Future.delayed(Duration(seconds: 3)); // simulated your API requesting time.
+                      }
+                      await Future.delayed(const Duration(seconds: 3)); // simulated your API requesting time.
                       animatedButtonController.completed(); // call when you get the response
                       // await Future.delayed(Duration(seconds: 5));
                       // animatedButtonController.reset(); // call to reset button animation

@@ -35,7 +35,7 @@ class TopSection extends StatelessWidget {
                                   style: Theme.of(context).textTheme.bodySmall
                                 ),
                                 Text("ALPHA RELEASE", style: Theme.of(context).textTheme.headline5),
-                                Divider(),
+                                const Divider(),
                                 
                               ],
                             ),

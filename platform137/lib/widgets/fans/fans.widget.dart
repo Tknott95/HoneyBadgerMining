@@ -28,6 +28,7 @@ class SliderWidgetFans extends StatefulWidget {
 
 class _SliderWidgetStateFans extends State<SliderWidgetFans> {
   var gpuIndex;
+  @override
   void initState() {
     gpuIndex = widget.gpuIndex;
 

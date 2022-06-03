@@ -27,6 +27,7 @@ class SliderWidgetTempThresh extends StatefulWidget {
 
 class _SliderWidgetStateTempThresh extends State<SliderWidgetTempThresh> {
   var gpuIndex;
+  @override
   void initState() {
     gpuIndex = widget.gpuIndex;
 

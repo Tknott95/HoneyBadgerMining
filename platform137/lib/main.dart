@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'dart:io';
 
 // import 'package:process_run/which.dart';
@@ -98,10 +97,10 @@ void start_mining() async {
 
 Future<int> nvidia_get_temp_alt() async {
   var result = await Process.run('./nvidia_smi.sh', ['-t']); /* second arr takes flags and params? */
-  int gpu_one = int.parse(""+result.stdout[0]+result.stdout[1]+"");
+  int gpuOne = int.parse(""+result.stdout[0]+result.stdout[1]+"");
 
-  print("\n gpu_one: " + gpu_one.toString() + "C");
-  return gpu_one;
+  print("\n gpu_one: " + gpuOne.toString() + "C");
+  return gpuOne;
 }
 
 // void nvidia_get_fan_speed(int _gpuIndex) async {

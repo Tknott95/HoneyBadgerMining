@@ -17,7 +17,7 @@ class MiningAnalyWidget extends StatefulWidget {
 
 // @TODO modularize this
 class _MiningAnalyWidgetState extends State<MiningAnalyWidget> {
-  StreamController<Lolminer> _streamCtrl = StreamController();
+  final StreamController<Lolminer> _streamCtrl = StreamController();
 
 
   @override
@@ -53,7 +53,7 @@ class _MiningAnalyWidgetState extends State<MiningAnalyWidget> {
                 itemBuilder: (BuildContext context, int index) {
                   return DecoratedBox(
                     decoration: BoxDecoration(
-                      color: index.isEven ? Color.fromARGB(255, 179, 179, 179) : Color.fromARGB(255, 220, 220, 219),
+                      color: index.isEven ? const Color.fromARGB(255, 179, 179, 179) : const Color.fromARGB(255, 220, 220, 219),
                     ),
                   );
                 },
@@ -153,7 +153,7 @@ class _MiningAnalyWidgetState extends State<MiningAnalyWidget> {
       var response = await http.get(_url);
       print('Response status: ${response.statusCode}');
 
-      final miningData = new Lolminer.fromJson(json.decode(response.body));
+      final miningData = Lolminer.fromJson(json.decode(response.body));
 
       print(json.decode(response.body));
 

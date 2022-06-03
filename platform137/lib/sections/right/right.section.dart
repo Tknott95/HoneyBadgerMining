@@ -44,7 +44,7 @@ class RightSection extends StatelessWidget {
               SliderWidgetFans(gpuIndex: 1),
             ],
           ),
-          Divider(),
+          const Divider(),
            Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: const [

@@ -28,6 +28,7 @@ class SliderWidgetGraphics extends StatefulWidget {
 
 class _SliderWidgetStateGraphics extends State<SliderWidgetGraphics> {
   var gpuIndex;
+  @override
   void initState() {
     gpuIndex = widget.gpuIndex;
 
@@ -62,7 +63,7 @@ class _SliderWidgetStateGraphics extends State<SliderWidgetGraphics> {
                     ),
                     customColors: CustomSliderColors(
                       dotColor: const Color.fromARGB(175, 255, 255, 255)/*Theme.of(context).primaryColor*/,
-                      trackColor: Color.fromARGB(172, 0, 0, 0),
+                      trackColor: const Color.fromARGB(172, 0, 0, 0),
                       progressBarColors: const [
                       Color.fromARGB(255, 240, 40, 13),
                       Color.fromARGB(255, 238, 169, 20),

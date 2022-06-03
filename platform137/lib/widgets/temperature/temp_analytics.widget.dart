@@ -54,7 +54,7 @@ class TempAnalyticsWidgetState extends State<TempAnalyticsWidget> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                "$gpuTemp",
+                gpuTemp,
                 style: Theme.of(context).textTheme.headline3,
               ),
               Text('°C', style: Theme.of(context).textTheme.bodyText2)

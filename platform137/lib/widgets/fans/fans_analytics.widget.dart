@@ -54,7 +54,7 @@ class FanAnalyticsWidgetState extends State<FanAnalyticsWidget> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                "$gpuFanSpeed",
+                gpuFanSpeed,
                 style: Theme.of(context).textTheme.headline2,
               ),
               Text('%', style: Theme.of(context).textTheme.bodyText2)
