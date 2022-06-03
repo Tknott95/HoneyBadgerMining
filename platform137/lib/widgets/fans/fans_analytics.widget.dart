@@ -55,10 +55,10 @@ class FanAnalyticsWidgetState extends State<FanAnalyticsWidget> {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              if (gpuFanVal > 35) Text(
+              if (gpuFanVal < 35) Text(
                 gpuFanSpeed,
                 style: Theme.of(context).textTheme.headline2,
-              ) else if (gpuFanVal < 35 && gpuFanVal > 70) Text(
+              ) else if (gpuFanVal > 35 && gpuFanVal < 70) Text(
                 gpuFanSpeed,
                 style: Theme.of(context).textTheme.headline2?.copyWith(color: Color.fromARGB(255, 3, 20, 119)),
               ) else Text(
