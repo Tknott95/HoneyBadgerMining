@@ -75,7 +75,7 @@ class _MiningAnalyWidgetState extends State<MiningAnalyWidget> {
   Widget analyticsWidget(Lolminer _minerModel) {
     return Column(
       children: [
-        
+        /* Make a col of workers inside an if state @TODO */
 
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
