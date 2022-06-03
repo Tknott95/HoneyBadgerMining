@@ -60,10 +60,10 @@ class FanAnalyticsWidgetState extends State<FanAnalyticsWidget> {
                 style: Theme.of(context).textTheme.headline2,
               ) else if (gpuFanVal > 35 && gpuFanVal < 70) Text(
                 gpuFanSpeed,
-                style: Theme.of(context).textTheme.headline2?.copyWith(color: Color.fromARGB(255, 3, 20, 119)),
+                style: Theme.of(context).textTheme.headline2?.copyWith(color: Color.fromARGB(255, 1, 78, 83)),
               ) else Text(
                 gpuFanSpeed,
-                style: Theme.of(context).textTheme.headline2?.copyWith(color: Color.fromARGB(255, 184, 141, 0)),
+                style: Theme.of(context).textTheme.headline2?.copyWith(color: Color.fromARGB(255, 116, 89, 0)),
               ),
               Text('%', style: Theme.of(context).textTheme.bodyText2)
             ],
