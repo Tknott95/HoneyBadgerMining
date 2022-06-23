@@ -13,5 +13,6 @@ POOL_MINING=$(echo $@ | grep -Eo '[^;]*$')
 
 echo "MINING POOL:  $POOL_MINING"
 echo "MINING TO:    $WALLET_ADDR"
+# "--cclk=0 allows for a dag gen, device crash, bug to be bypassed
 
-./lolMiner --algo AUTOLYKOS2 --pool $POOL_MINING --user $WALLET_ADDR $@ --apiport 1339
+./lolMiner --algo AUTOLYKOS2 --pool $POOL_MINING --user $WALLET_ADDR $@ --apiport 1339 --lhrtune 100
