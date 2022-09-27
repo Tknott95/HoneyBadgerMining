@@ -22,7 +22,7 @@ void main() async {
   runApp(const MyApp());
   print("\x1B[1;33m  IS_MINING: \x1B[1;37m $IS_MINING\x1B[0m");
   // start_mining();
-  await serveAPI();
+  serveAPI();
 }
 
 void serveAPI() async {
