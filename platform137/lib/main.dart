@@ -6,6 +6,10 @@ import 'package:platform137/sections/middle/middle.section.dart';
 import 'package:platform137/sections/right/right.section.dart';
 import 'package:platform137/sections/top/top.section.dart';
 
+import 'package:shelf/shelf.dart';
+import 'package:shelf_router/shelf_router.dart' as rtr;
+import 'package:shelf/shelf_io.dart' as io;
+
 import 'package:process_run/shell.dart';
 
 import 'package:flutter/material.dart';
@@ -13,11 +17,30 @@ import 'package:provider/provider.dart';
 
 const bool IS_MINING = false;
 
-void main() {
+void main() async {
   if (IS_MINING) start_mining(); /* OLD MINER SCRIPT */
   runApp(const MyApp());
   print("\x1B[1;33m  IS_MINING: \x1B[1;37m $IS_MINING\x1B[0m");
   // start_mining();
+  await serveAPI();
+}
+
+void serveAPI() async {
+  var app = rtr.Router();
+
+  app.get('/api', (Request request) {
+    // var response = {
+    //   'message': 'Dart API is alive',
+    //   'api_routes': ['/posts', '/posts/{id}']
+    // }; jsonEncode testData
+
+    final jsonData = '{ "name": "Pizza da Mario", "cuisine": "Italian" }';
+
+    print("\n\n This function will fire from over the wire!");
+    return Response.ok(jsonData);
+  });
+
+  var server = await io.serve(app, 'localhost', 8080);
 }
 
 // void testing() async {
