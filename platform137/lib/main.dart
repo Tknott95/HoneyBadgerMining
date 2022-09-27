@@ -31,6 +31,9 @@ void main() async {
 void serveAPI() async {
   var app = rtr.Router();
 
+
+  // EXAMPLE of header auth
+  // curl -H "alice: top_secret_key<kdkljsdljkdsjklkljsdkjlsdkljsdjklsdjklkjlsdjksdkjlsdkjlklsjdkjlsdljk>" localhost:8080/api
   app.get('/api', (Request request) {
     var response = {
       'message': 'API is alive',
@@ -40,13 +43,17 @@ void serveAPI() async {
 
     final reqHeaders = request.headers['alice'];
 
-    print("\n HEADERS: $reqHeaders \n");
-    print("\n HEADERS: $reqHeaders \n");
+    if (reqHeaders == "top_secret_key<kdkljsdljkdsjklkljsdkjlsdkljsdjklsdjklkjlsdjksdkjlsdkjlklsjdkjlsdljk>") {
+      print("\n HEADERS: $reqHeaders \n");
+      print("\n HEADERS: $reqHeaders \n");
 
-    // final jsonData = '{ "name": "Pizza da Mario", "cuisine": "Italian" }';
+      // final jsonData = '{ "name": "Pizza da Mario", "cuisine": "Italian" }';
 
-    print("\n\n This function will fire from over the wire!");
-    return Response.ok(jsonEncode(response));
+      print("\n\n This function will fire from over the wire!");
+      return Response.ok(jsonEncode(response));
+    } else {
+      return Response.forbidden(jsonEncode({'entry': 'DENIED'}));
+    }
   });
 
   app.get('/api/id/<id>', (Request request, String _id) {
