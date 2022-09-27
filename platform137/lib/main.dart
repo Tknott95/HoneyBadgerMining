@@ -25,6 +25,8 @@ void main() async {
   serveAPI();
 }
 
+/* GETS with header auth works perfect for mvp */
+/* will add future sec after MVP */
 void serveAPI() async {
   var app = rtr.Router();
 
@@ -37,6 +39,43 @@ void serveAPI() async {
     final jsonData = '{ "name": "Pizza da Mario", "cuisine": "Italian" }';
 
     print("\n\n This function will fire from over the wire!");
+    return Response.ok(jsonData);
+  });
+
+  app.get('/api', (Request request) {
+    var response = {
+      'message': 'API is alive',
+      'api_routes': ['/api', '/api/id/<id>', '/api/setFans/<fanIndex>/<fanVal>'
+      ]
+    };
+
+    final reqHeaders = request.headers['alice'];
+
+    print("\n HEADERS: $reqHeaders \n");
+    print("\n HEADERS: $reqHeaders \n");
+
+    // final jsonData = '{ "name": "Pizza da Mario", "cuisine": "Italian" }';
+
+    print("\n\n This function will fire from over the wire!");
+    return Response.ok(jsonEncode(response));
+  });
+
+  app.get('/api/id/<id>', (Request request, String _id) {
+    final parseID = int.tryParse(_id);
+
+    final jsonData = '{ "fanIndex": "$_id fanIndex", "alice": "$_id in wonderland" }';
+
+    print("\n\n $_id This function will fire from over the wire!");
+    return Response.ok(jsonData);
+  });
+
+   app.get('/api/setFans/<fanIndex>/<fanVal>', (Request request, String _fanIndex, String _fanVal) {
+    final parseID = int.tryParse(_fanIndex);
+    final parseFanVal = double.tryParse(_fanVal);
+
+    final jsonData = '{ "fanIndex": "$_fanIndex", "fanVal": "$_fanVal" }';
+
+    print("\n\n $_fanIndex is the fanIndex changing fans to  $_fanVal%");
     return Response.ok(jsonData);
   });
 
