@@ -32,18 +32,6 @@ void serveAPI() async {
   var app = rtr.Router();
 
   app.get('/api', (Request request) {
-    // var response = {
-    //   'message': 'Dart API is alive',
-    //   'api_routes': ['/posts', '/posts/{id}']
-    // }; jsonEncode testData
-
-    final jsonData = '{ "name": "Pizza da Mario", "cuisine": "Italian" }';
-
-    print("\n\n This function will fire from over the wire!");
-    return Response.ok(jsonData);
-  });
-
-  app.get('/api', (Request request) {
     var response = {
       'message': 'API is alive',
       'api_routes': ['/api', '/api/id/<id>', '/api/setFans/<fanIndex>/<fanVal>'
