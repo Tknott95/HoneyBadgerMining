@@ -41,3 +41,17 @@ void NvidiaSetGraphicsClock(int _gpuIndex, int _val) {
       print(onError);
     });
 }
+
+void NvidiaSetMemoryClock(int _gpuIndex, int _val) {
+  var shell = Shell();
+
+  shell.run("""
+    #!/bin/bash
+    ./nvidia_set.sh -m $_gpuIndex:$_val
+    """).then((result){
+      print('Shell script done!');
+    }).catchError((onError) {
+      print('Shell.run error!');
+      print(onError);
+    });
+}
