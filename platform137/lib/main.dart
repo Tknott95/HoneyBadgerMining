@@ -70,6 +70,7 @@ void serveAPI() async {
     var parseID = int.tryParse(_fanIndex);
     final parseFanVal = int.tryParse(_fanVal);
 
+    final reqHeaders = request.headers['alice'];
     if (parseID == null) parseID = 0;
     /* int instead of double */
 
