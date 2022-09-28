@@ -31,6 +31,7 @@ void main() async {
 
 /* GETS with header auth works perfect for mvp */
 /* will add future sec after MVP */
+/* wrap header auth instead of using in each function after MVP */
 void serveAPI() async {
   var app = rtr.Router();
 
