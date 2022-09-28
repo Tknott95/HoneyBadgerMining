@@ -17,6 +17,8 @@ import 'package:process_run/shell_run.dart';
  - nvidia_set_temp_threshold
 */
 
+/* if null set val - set max clock vals for safety */
+
 void NvidiaSetFans(int? _fanIndex, int? _fansVal) {
   var shell = Shell();
   
@@ -35,7 +37,7 @@ void NvidiaSetFans(int? _fanIndex, int? _fansVal) {
 
 
 /* CLOCKING */
-void NvidiaSetGraphicsClock(int _gpuIndex, int _val) {
+void NvidiaSetGraphicsClock(int? _gpuIndex, int? _val) {
   var shell = Shell();
 
   shell.run("""
