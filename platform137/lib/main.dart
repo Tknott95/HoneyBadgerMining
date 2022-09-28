@@ -69,7 +69,7 @@ void serveAPI() async {
     return Response.ok(jsonData);
   });
 
-   app.get('/api/setFans/<fanIndex>/<fanVal>', (Request request, String _fanIndex, String _fanVal) {
+  app.get('/api/setFans/<fanIndex>/<fanVal>', (Request request, String _fanIndex, String _fanVal) {
     var parseID = int.tryParse(_fanIndex);
     final parseFanVal = int.tryParse(_fanVal);
 
@@ -87,6 +87,30 @@ void serveAPI() async {
       final jsonData = '{ "fanIndex": "$_fanIndex", "fanVal": "$_fanVal" }';
 
       print("\n\n $_fanIndex is the fanIndex changing fans to  $_fanVal%");
+      return Response.ok(jsonData);
+    } else {
+      return Response.forbidden(jsonEncode({'entry': 'DENIED'}));
+    }
+  });
+
+  app.get('/api/setGraphicsClock/<gpuIndex>/<gpuVal>', (Request request, String _gpuIndex, String _gpuVal) {
+    var parseID = int.tryParse(_gpuIndex);
+    final parseGPUVal = int.tryParse(_gpuVal);
+
+    final reqHeaders = request.headers['alice'];
+    if (parseID == null) parseID = 0;
+    /* int instead of double */
+
+  
+    if (reqHeaders == "top_secret_key<kdkljsdljkdsjklkljsdkjlsdkljsdjklsdjklkjlsdjksdkjlsdkjlklsjdkjlsdljk>") {
+      print("\n HEADERS: $reqHeaders \n");
+      print("\n HEADERS: $reqHeaders \n");
+
+      gbl.NvidiaSetGraphicsClock(parseID, parseGPUVal);
+
+      final jsonData = '{ "gpuIndex": "$_gpuIndex", "gpuVal": "$_gpuVal" }';
+
+      print("\n\n $_gpuIndex is the gpuIndex changing clock val to  $_gpuVal%");
       return Response.ok(jsonData);
     } else {
       return Response.forbidden(jsonEncode({'entry': 'DENIED'}));
