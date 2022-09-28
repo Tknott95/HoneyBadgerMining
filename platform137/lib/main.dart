@@ -7,6 +7,8 @@ import 'package:platform137/sections/middle/middle.section.dart';
 import 'package:platform137/sections/right/right.section.dart';
 import 'package:platform137/sections/top/top.section.dart';
 
+import 'package:platform137/globals/set_globals.dart' as gbl;
+
 import 'package:shelf/shelf.dart';
 import 'package:shelf_router/shelf_router.dart' as rtr;
 import 'package:shelf/shelf_io.dart' as io;
@@ -15,6 +17,7 @@ import 'package:process_run/shell.dart';
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
 
 const bool IS_MINING = false;
 
@@ -47,8 +50,6 @@ void serveAPI() async {
       print("\n HEADERS: $reqHeaders \n");
       print("\n HEADERS: $reqHeaders \n");
 
-      // final jsonData = '{ "name": "Pizza da Mario", "cuisine": "Italian" }';
-
       print("\n\n This function will fire from over the wire!");
       return Response.ok(jsonEncode(response));
     } else {
@@ -66,8 +67,13 @@ void serveAPI() async {
   });
 
    app.get('/api/setFans/<fanIndex>/<fanVal>', (Request request, String _fanIndex, String _fanVal) {
-    final parseID = int.tryParse(_fanIndex);
-    final parseFanVal = double.tryParse(_fanVal);
+    var parseID = int.tryParse(_fanIndex);
+    final parseFanVal = int.tryParse(_fanVal);
+
+    if (parseID == null) parseID = 0;
+    /* int instead of double */
+
+    gbl.NvidiaSetFans(parseID, parseFanVal);
 
     final jsonData = '{ "fanIndex": "$_fanIndex", "fanVal": "$_fanVal" }';
 
