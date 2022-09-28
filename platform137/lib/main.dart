@@ -73,12 +73,20 @@ void serveAPI() async {
     if (parseID == null) parseID = 0;
     /* int instead of double */
 
-    gbl.NvidiaSetFans(parseID, parseFanVal);
+  
+    if (reqHeaders == "top_secret_key<kdkljsdljkdsjklkljsdkjlsdkljsdjklsdjklkjlsdjksdkjlsdkjlklsjdkjlsdljk>") {
+      print("\n HEADERS: $reqHeaders \n");
+      print("\n HEADERS: $reqHeaders \n");
 
-    final jsonData = '{ "fanIndex": "$_fanIndex", "fanVal": "$_fanVal" }';
+      gbl.NvidiaSetFans(parseID, parseFanVal);
 
-    print("\n\n $_fanIndex is the fanIndex changing fans to  $_fanVal%");
-    return Response.ok(jsonData);
+      final jsonData = '{ "fanIndex": "$_fanIndex", "fanVal": "$_fanVal" }';
+
+      print("\n\n $_fanIndex is the fanIndex changing fans to  $_fanVal%");
+      return Response.ok(jsonData);
+    } else {
+      return Response.forbidden(jsonEncode({'entry': 'DENIED'}));
+    }
   });
 
   var server = await io.serve(app, 'localhost', 8080);
