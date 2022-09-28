@@ -18,9 +18,9 @@ void NvidiaSetFans(int? _fanIndex, int? _fansVal) {
     #!/bin/bash
     ./nvidia_set.sh -f $fansParam
     """).then((result){
-      print('Shell script done!');
+      print('NvidiaSetFans script done!');
     }).catchError((onError) {
-      print('Shell.run error!');
+      print('NvidiaSetFans Shell.run error!');
       print(onError);
     });
 }
@@ -35,9 +35,9 @@ void NvidiaSetGraphicsClock(int _gpuIndex, int _val) {
     #!/bin/bash
     ./nvidia_set.sh -g $_gpuIndex:$_val
     """).then((result){
-      print('Shell script done!');
+      print('NvidiaSetGraphicsClock script done!');
     }).catchError((onError) {
-      print('Shell.run error!');
+      print('NvidiaSetGraphicsClock Shell.run error!');
       print(onError);
     });
 }
@@ -49,9 +49,9 @@ void NvidiaSetMemoryClock(int _gpuIndex, int _val) {
     #!/bin/bash
     ./nvidia_set.sh -m $_gpuIndex:$_val
     """).then((result){
-      print('Shell script done!');
+      print('NvidiaSetMemoryClock script done!');
     }).catchError((onError) {
-      print('Shell.run error!');
+      print('NvidiaSetMemoryClock Shell.run error!');
       print(onError);
     });
 }
