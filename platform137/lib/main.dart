@@ -74,6 +74,8 @@ void serveAPI() async {
     final parseFanVal = int.tryParse(_fanVal);
 
     final reqHeaders = request.headers['alice'];
+
+    print('\n SET FANS HIT\n SET FANS HIT\n SET FANS HIT\n SET FANS HIT');
     if (parseID == null) parseID = 0;
     /* int instead of double */
 
@@ -117,7 +119,7 @@ void serveAPI() async {
     }
   });
 
-  var server = await io.serve(app, 'localhost', 8080);
+  var server = await io.serve(app, '192.168.0.8', 8080);
 }
 
 // void testing() async {
