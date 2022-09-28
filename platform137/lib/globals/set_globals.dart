@@ -14,6 +14,7 @@ import 'package:process_run/shell_run.dart';
 
 * MISC
  - nvidia_set_power
+ - nvidia_set_temp_threshold
 */
 
 void NvidiaSetFans(int? _fanIndex, int? _fansVal) {
@@ -34,7 +35,6 @@ void NvidiaSetFans(int? _fanIndex, int? _fansVal) {
 
 
 /* CLOCKING */
-
 void NvidiaSetGraphicsClock(int _gpuIndex, int _val) {
   var shell = Shell();
 
@@ -70,6 +70,20 @@ void NvidiaSetPower(int _gpuIndex, double _powerVal) {
   shell.run("""
     #!/bin/bash
     sudo ./nvidia_set.sh -p $_gpuIndex:$_powerVal
+    """).then((result){
+      print('Shell script done!');
+    }).catchError((onError) {
+      print('Shell.run error!');
+      print(onError);
+    });
+}
+
+void NvidiaSetTempThreshold(int _gpuIndex, int _val) {
+  var shell = Shell();
+
+  shell.run("""
+    #!/bin/bash
+    sudo ./nvidia_set.sh -t $_gpuIndex:$_val
     """).then((result){
       print('Shell script done!');
     }).catchError((onError) {
