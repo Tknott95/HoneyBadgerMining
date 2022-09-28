@@ -4,9 +4,13 @@ import 'package:process_run/shell_run.dart';
 
 /* Done
  - Changed to CapitalCase/Public camelCase
+
+* FANS
  - nvidia_set_fans
+
+* CLOCKING
  - nvidia_set_graphics_clock
- -
+ - nvidia_set_memory_clock
 */
 
 void NvidiaSetFans(int? _fanIndex, int? _fansVal) {
