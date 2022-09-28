@@ -11,6 +11,9 @@ import 'package:process_run/shell_run.dart';
 * CLOCKING
  - nvidia_set_graphics_clock
  - nvidia_set_memory_clock
+
+* MISC
+ - nvidia_set_power
 */
 
 void NvidiaSetFans(int? _fanIndex, int? _fansVal) {
@@ -56,6 +59,21 @@ void NvidiaSetMemoryClock(int _gpuIndex, int _val) {
       print('NvidiaSetMemoryClock script done!');
     }).catchError((onError) {
       print('NvidiaSetMemoryClock Shell.run error!');
+      print(onError);
+    });
+}
+
+/* POWER */
+void NvidiaSetPower(int _gpuIndex, double _powerVal) {
+  var shell = Shell();
+
+  shell.run("""
+    #!/bin/bash
+    sudo ./nvidia_set.sh -p $_gpuIndex:$_powerVal
+    """).then((result){
+      print('Shell script done!');
+    }).catchError((onError) {
+      print('Shell.run error!');
       print(onError);
     });
 }
