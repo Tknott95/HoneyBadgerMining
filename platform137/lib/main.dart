@@ -36,8 +36,10 @@ void serveAPI() async {
   var app = rtr.Router();
 
 
-  // EXAMPLE of header auth
+  // EXAMPLES
   // curl -H "alice: top_secret_key<kdkljsdljkdsjklkljsdkjlsdkljsdjklsdjklkjlsdjksdkjlsdkjlklsjdkjlsdljk>" localhost:8080/api
+  // curl -H "alice: top_secret_key<kdkljsdljkdsjklkljsdkjlsdkljsdjklsdjklkjlsdjksdkjlsdkjlklsjdkjlsdljk>" localhost:8080/api/setFans/0/50
+  
   app.get('/api', (Request request) {
     var response = {
       'message': 'API is alive',
