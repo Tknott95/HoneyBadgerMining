@@ -2,9 +2,12 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:animated_progress_button/animated_progress_button.dart';
+// import 'package:animated_progress_button/animated_progress_button.dart';
 import 'package:platform137/widgets/mining/mining_analytics.widget.dart';
 import 'package:process_run/shell_run.dart';
+
+
+/* NEW FLUTTER UPDATE BROKE PROG BUTTON. USE NEW ONE */
 
 class MiddleSection extends StatefulWidget {
   const MiddleSection({Key? key}) : super(key: key);
@@ -48,7 +51,7 @@ class _MiddleSectionState extends State<MiddleSection> {
 
   @override
   Widget build(BuildContext context) {
-    final AnimatedButtonController animatedButtonController = AnimatedButtonController();
+    // final AnimatedButtonController animatedButtonController = AnimatedButtonController();
 
     TextEditingController walletAddrCtrl = TextEditingController();
 
@@ -129,32 +132,32 @@ class _MiddleSectionState extends State<MiddleSection> {
               ),
 
 
-              Padding(
-                padding: const EdgeInsets.only(top: 20),
-                child: AnimatedButton(
-                  controller: animatedButtonController,
-                  // color: Colors.greenAccent,
-                  text: isMining ? 'already mining' : 'START MINING',
-                  loadingText: 'MINER RUNNING',
-                  loadedIcon: const Icon(Icons.check, color: Colors.white),
-                  onPressed: () async {
-                      /// calling your API here and wait for the response.
-                      if (!isMining) { 
-                        final walletAddr = walletAddrCtrl.value.text;
-                        print("\x1B[1;33m  POOL MINING: \x1B[1;37m $poolForMining\x1B[0m");
-                        print("\x1B[1;33m  WALLET ADDR: \x1B[1;37m $walletAddr\x1B[0m");
+              // Padding(
+              //   padding: const EdgeInsets.only(top: 20),
+              //   child: AnimatedButton(
+              //     controller: animatedButtonController,
+              //     // color: Colors.greenAccent,
+              //     text: isMining ? 'already mining' : 'START MINING',
+              //     loadingText: 'MINER RUNNING',
+              //     loadedIcon: const Icon(Icons.check, color: Colors.white),
+              //     onPressed: () async {
+              //         /// calling your API here and wait for the response.
+              //         if (!isMining) { 
+              //           final walletAddr = walletAddrCtrl.value.text;
+              //           print("\x1B[1;33m  POOL MINING: \x1B[1;37m $poolForMining\x1B[0m");
+              //           print("\x1B[1;33m  WALLET ADDR: \x1B[1;37m $walletAddr\x1B[0m");
                         
-                        /* PASS DOWN ADDR AND POOL HERE FOR MVP @TODO */
-                        start_mining(poolForMining, walletAddr);
-                        isMining = true; 
-                      }
-                      await Future.delayed(const Duration(seconds: 3)); // simulated your API requesting time.
-                      animatedButtonController.completed(); // call when you get the response
-                      // await Future.delayed(Duration(seconds: 5));
-                      // animatedButtonController.reset(); // call to reset button animation
-                  },
-                ),
-              ),
+              //           /* PASS DOWN ADDR AND POOL HERE FOR MVP @TODO */
+              //           start_mining(poolForMining, walletAddr);
+              //           isMining = true; 
+              //         }
+              //         await Future.delayed(const Duration(seconds: 3)); // simulated your API requesting time.
+              //         animatedButtonController.completed(); // call when you get the response
+              //         // await Future.delayed(Duration(seconds: 5));
+              //         // animatedButtonController.reset(); // call to reset button animation
+              //     },
+              //   ),
+              // ),
 
             ],
           ),
