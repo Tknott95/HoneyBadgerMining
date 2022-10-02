@@ -7,7 +7,7 @@ import 'package:platform137/widgets/mining/mining_analytics.widget.dart';
 import 'package:process_run/shell_run.dart';
 
 
-/* NEW FLUTTER UPDATE BROKE PROG BUTTON. USE NEW ONE */
+/* NEW FLUTTER UPDATE (from 3.0.3 - 3.3.3) BROKE PROG BUTTON. USE NEW ONE */
 
 class MiddleSection extends StatefulWidget {
   const MiddleSection({Key? key}) : super(key: key);
