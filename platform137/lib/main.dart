@@ -102,7 +102,6 @@ void serveAPI() async {
     final reqHeaders = request.headers['alice'];
     if (parseID == null) parseID = 0;
     /* int instead of double */
-
   
     if (reqHeaders == "top_secret_key<kdkljsdljkdsjklkljsdkjlsdkljsdjklsdjklkjlsdjksdkjlsdkjlklsjdkjlsdljk>") {
       print("\n HEADERS: $reqHeaders \n");
