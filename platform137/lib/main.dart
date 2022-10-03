@@ -37,7 +37,6 @@ void serveAPI() async {
 
   const String TOP_SECRET_KEY = "top_secret_key<kdkljsdljkdsjklkljsdkjlsdkljsdjklsdjklkjlsdjksdkjlsdkjlklsjdkjlsdljk>";
 
-
   // EXAMPLES
   // curl -H "alice: top_secret_key<kdkljsdljkdsjklkljsdkjlsdkljsdjklsdjklkjlsdjksdkjlsdkjlklsjdkjlsdljk>" localhost:8080/api
   // curl -H "alice: top_secret_key<kdkljsdljkdsjklkljsdkjlsdkljsdjklsdjklkjlsdjksdkjlsdkjlklsjdkjlsdljk>" localhost:8080/api/setFans/0/50
@@ -114,6 +113,29 @@ void serveAPI() async {
       final jsonData = '{ "gpuIndex": "$_gpuIndex", "gpuVal": "$_gpuVal" }';
 
       print("\n\n $_gpuIndex is the gpuIndex changing clock val to  $_gpuVal%");
+      return Response.ok(jsonData);
+    } else {
+      return Response.forbidden(jsonEncode({'entry': 'DENIED'}));
+    }
+  });
+
+  app.get('/api/setMemoryClock/<gpuIndex>/<gpuVal>', (Request request, String _gpuIndex, String _gpuVal) {
+    var parseID = int.tryParse(_gpuIndex);
+    final parseGPUVal = int.tryParse(_gpuVal);
+
+    final reqHeaders = request.headers['alice'];
+    if (parseID == null) parseID = 0;
+    /* int instead of double */
+  
+    if (reqHeaders == TOP_SECRET_KEY) {
+      print("\n HEADERS: $reqHeaders \n");
+      print("\n HEADERS: $reqHeaders \n");
+
+      gbl.NvidiaSetMemoryClock(parseID, parseGPUVal);
+
+      final jsonData = '{ "gpuIndex": "$_gpuIndex", "gpuVal": "$_gpuVal" }';
+
+      print("\n\n $_gpuIndex is the gpuIndex changing mem clock val to  $_gpuVal%");
       return Response.ok(jsonData);
     } else {
       return Response.forbidden(jsonEncode({'entry': 'DENIED'}));
