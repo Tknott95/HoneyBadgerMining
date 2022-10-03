@@ -25,7 +25,8 @@ void main() async {
   if (IS_MINING) start_mining(); /* OLD MINER SCRIPT */
   runApp(const MyApp());
   print("\x1B[1;33m  IS_MINING: \x1B[1;37m $IS_MINING\x1B[0m");
-
+ 
+  /* @TODO - code itself needs to be cleaned yet below is an important first step */
   /* @TODO - refactor api serve code into another folder/file */
   serveAPI();
 }
