@@ -167,6 +167,29 @@ void serveAPI() async {
     }
   });
 
+  app.get('/api/setPowerDraw/<gpuIndex>/<gpuVal>', (Request request, String _gpuIndex, String _gpuVal) {
+    var parseID = int.tryParse(_gpuIndex);
+    final parseGPUVal = double.tryParse(_gpuVal);
+
+    final reqHeaders = request.headers['alice'];
+    if (parseID == null) parseID = 0;
+    /* int instead of double */
+  
+    if (reqHeaders == TOP_SECRET_KEY) {
+      print("\n HEADERS: $reqHeaders \n");
+      print("\n HEADERS: $reqHeaders \n");
+
+      gbl.NvidiaSetPowerDraw(parseID, parseGPUVal);
+
+      final jsonData = '{ "gpuIndex": "$_gpuIndex", "gpuVal": "$_gpuVal" }';
+
+      print("\n\n $_gpuIndex is the gpuIndex changing power draw val to  $_gpuVal%");
+      return Response.ok(jsonData);
+    } else {
+      return Response.forbidden(jsonEncode({'entry': 'DENIED'}));
+    }
+  });
+
   var server = await io.serve(app, '192.168.0.8', 8080);
 }
 

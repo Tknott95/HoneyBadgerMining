@@ -66,7 +66,7 @@ void NvidiaSetMemoryClock(int _gpuIndex, int _val) {
 }
 
 /* POWER */
-void NvidiaSetPower(int _gpuIndex, double _powerVal) {
+void NvidiaSetPowerDraw(int _gpuIndex, double _powerVal) {
   var shell = Shell();
 
   shell.run("""
