@@ -19,6 +19,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 
+const String TOP_SECRET_KEY = "top_secret_key<kdkljsdljkdsjklkljsdkjlsdkljsdjklsdjklkjlsdjksdkjlsdkjlklsjdkjlsdljk>";
 const bool IS_MINING = false;
 
 void main() async {
@@ -49,7 +50,7 @@ void serveAPI() async {
 
     final reqHeaders = request.headers['alice'];
 
-    if (reqHeaders == "top_secret_key<kdkljsdljkdsjklkljsdkjlsdkljsdjklsdjklkjlsdjksdkjlsdkjlklsjdkjlsdljk>") {
+    if (reqHeaders == TOP_SECRET_KEY) {
       print("\n HEADERS: $reqHeaders \n");
       print("\n HEADERS: $reqHeaders \n");
 
@@ -80,7 +81,7 @@ void serveAPI() async {
     /* int instead of double */
 
   
-    if (reqHeaders == "top_secret_key<kdkljsdljkdsjklkljsdkjlsdkljsdjklsdjklkjlsdjksdkjlsdkjlklsjdkjlsdljk>") {
+    if (reqHeaders == TOP_SECRET_KEY) {
       print("\n HEADERS: $reqHeaders \n");
       print("\n HEADERS: $reqHeaders \n");
 
@@ -103,7 +104,7 @@ void serveAPI() async {
     if (parseID == null) parseID = 0;
     /* int instead of double */
   
-    if (reqHeaders == "top_secret_key<kdkljsdljkdsjklkljsdkjlsdkljsdjklsdjklkjlsdjksdkjlsdkjlklsjdkjlsdljk>") {
+    if (reqHeaders == TOP_SECRET_KEY) {
       print("\n HEADERS: $reqHeaders \n");
       print("\n HEADERS: $reqHeaders \n");
 
