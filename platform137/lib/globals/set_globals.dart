@@ -51,7 +51,7 @@ void NvidiaSetGraphicsClock(int? _gpuIndex, int? _val) {
     });
 }
 
-void NvidiaSetMemoryClock(int _gpuIndex, int _val) {
+void NvidiaSetMemoryClock(int? _gpuIndex, int? _val) {
   var shell = Shell();
 
   shell.run("""
@@ -66,7 +66,7 @@ void NvidiaSetMemoryClock(int _gpuIndex, int _val) {
 }
 
 /* POWER */
-void NvidiaSetPowerDraw(int _gpuIndex, double _powerVal) {
+void NvidiaSetPowerDraw(int? _gpuIndex, double? _powerVal) {
   var shell = Shell();
 
   shell.run("""
@@ -80,7 +80,7 @@ void NvidiaSetPowerDraw(int _gpuIndex, double _powerVal) {
     });
 }
 
-void NvidiaSetTempThreshold(int _gpuIndex, int _val) {
+void NvidiaSetTempThreshold(int? _gpuIndex, int? _val) {
   var shell = Shell();
 
   shell.run("""
