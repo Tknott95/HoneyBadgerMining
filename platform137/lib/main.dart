@@ -18,6 +18,7 @@ import 'package:process_run/shell.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+/* @TODO - refactor api serve code into another folder/file */
 
 const bool IS_MINING = false;
 
