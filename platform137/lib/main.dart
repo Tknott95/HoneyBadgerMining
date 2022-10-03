@@ -19,7 +19,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 
-const String TOP_SECRET_KEY = "top_secret_key<kdkljsdljkdsjklkljsdkjlsdkljsdjklsdjklkjlsdjksdkjlsdkjlklsjdkjlsdljk>";
 const bool IS_MINING = false;
 
 void main() async {
@@ -35,6 +34,8 @@ void main() async {
 /* wrap header auth instead of using in each function after MVP */
 void serveAPI() async {
   var app = rtr.Router();
+
+  const String TOP_SECRET_KEY = "top_secret_key<kdkljsdljkdsjklkljsdkjlsdkljsdjklsdjklkjlsdjksdkjlsdkjlklsjdkjlsdljk>";
 
 
   // EXAMPLES
