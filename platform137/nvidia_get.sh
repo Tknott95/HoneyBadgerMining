@@ -8,7 +8,7 @@
 
 
 # : after the flag makes you have to have a param
-while getopts 't:f:a:l:m:p:g' OPTION; do
+while getopts 't:f:a:l:m:p:g:' OPTION; do
   case "$OPTION" in
     t)
       nvidia-smi --query-gpu=temperature.gpu --format=csv,noheader -i $OPTARG
