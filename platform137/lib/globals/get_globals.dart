@@ -21,3 +21,5 @@ Future<int>  nvidia_get_gpu_count() async {
   
   return _gpuCount;
 }
+
+/* NEED GPU POWER - NEED GPU MEMORY */

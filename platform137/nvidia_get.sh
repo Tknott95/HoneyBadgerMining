@@ -1,5 +1,6 @@
 #!/bin/bash
 
+Erg
 # f - is fan speed by provding a gpu-index-#
 # l - list amount of GPUs
 
@@ -17,6 +18,13 @@ while getopts 't:f:a:l' OPTION; do
       ;;
     l)
       nvidia-smi --list-gpus | wc -l
+      ;;
+    m)
+      nvidia-smi --query-gpu=clocks.mem --format=csv,noheader -i $OPTARG | grep -Eo "^[0-9]+"
+      ;;
+    p)
+      # @TODO - REMOVE REGEX AND MAKE IT FOR A FLOAT INSTEA OF INT  
+      nvidia-smi --query-gpu=power.draw --format=csv,noheader -i $OPTARG | grep -Eo "^[0-9]+"
       ;;
     ?)
       echo "script usage: $(basename \$0) [-l] [-h] [-a somevalue]" >&2
