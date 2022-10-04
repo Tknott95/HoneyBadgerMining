@@ -284,6 +284,7 @@ void serveAPI() async {
     });
 
     app.get('/api/get/graphicsClock', (Request request) async {
+      /* this will be called by indexVal prob then code instantiated on fly modular */
       var _gpuIndex = 0;
       var _gpuVal = 50;
 
