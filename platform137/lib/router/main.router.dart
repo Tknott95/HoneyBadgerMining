@@ -17,152 +17,161 @@ void serveAPI() async {
   // curl -H "alice: top_secret_key<kdkljsdljkdsjklkljsdkjlsdkljsdjklsdjklkjlsdjksdkjlsdkjlklsjdkjlsdljk>" localhost:8080/api
   // curl -H "alice: top_secret_key<kdkljsdljkdsjklkljsdkjlsdkljsdjklsdjklkjlsdjksdkjlsdkjlklsjdkjlsdljk>" localhost:8080/api/setFans/0/50
   
-  app.get('/api', (Request request) {
-    var response = {
-      'message': 'API is alive',
-      'api_routes': ['/api', '/api/id/<id>', '/api/setFans/<fanIndex>/<fanVal>'
-      ]
-    };
+  void setterFuncs() {
+    app.get('/api/id/<id>', (Request request, String _id) {
+      final parseID = int.tryParse(_id);
 
-    final reqHeaders = request.headers['alice'];
+      final jsonData = '{ "fanIndex": "$_id fanIndex", "alice": "$_id in wonderland" }';
 
-    if (reqHeaders == TOP_SECRET_KEY) {
-      print("\n HEADERS: $reqHeaders \n");
-      print("\n HEADERS: $reqHeaders \n");
-
-      print("\n\n This function will fire from over the wire!");
-      return Response.ok(jsonEncode(response));
-    } else {
-      return Response.forbidden(jsonEncode({'entry': 'DENIED'}));
-    }
-  });
-
-  app.get('/api/id/<id>', (Request request, String _id) {
-    final parseID = int.tryParse(_id);
-
-    final jsonData = '{ "fanIndex": "$_id fanIndex", "alice": "$_id in wonderland" }';
-
-    print("\n\n $_id This function will fire from over the wire!");
-    return Response.ok(jsonData);
-  });
-
-  app.get('/api/setFans/<fanIndex>/<fanVal>', (Request request, String _fanIndex, String _fanVal) {
-    var parseID = int.tryParse(_fanIndex);
-    final parseFanVal = int.tryParse(_fanVal);
-
-    final reqHeaders = request.headers['alice'];
-
-    print('\n SET FANS HIT\n SET FANS HIT\n SET FANS HIT\n SET FANS HIT');
-    if (parseID == null) parseID = 0;
-    /* int instead of double */
-
-  
-    if (reqHeaders == TOP_SECRET_KEY) {
-      print("\n HEADERS: $reqHeaders \n");
-      print("\n HEADERS: $reqHeaders \n");
-
-      gbl.NvidiaSetFans(parseID, parseFanVal);
-
-      final jsonData = '{ "fanIndex": "$_fanIndex", "fanVal": "$_fanVal" }';
-
-      print("\n\n $_fanIndex is the fanIndex changing fans to  $_fanVal%");
+      print("\n\n $_id This function will fire from over the wire!");
       return Response.ok(jsonData);
-    } else {
-      return Response.forbidden(jsonEncode({'entry': 'DENIED'}));
-    }
-  });
+    });
 
-  app.get('/api/setGraphicsClock/<gpuIndex>/<gpuVal>', (Request request, String _gpuIndex, String _gpuVal) {
-    var parseID = int.tryParse(_gpuIndex);
-    final parseGPUVal = int.tryParse(_gpuVal);
+    app.get('/api/setFans/<fanIndex>/<fanVal>', (Request request, String _fanIndex, String _fanVal) {
+      var parseID = int.tryParse(_fanIndex);
+      final parseFanVal = int.tryParse(_fanVal);
 
-    final reqHeaders = request.headers['alice'];
-    if (parseID == null) parseID = 0;
-    /* int instead of double */
-  
-    if (reqHeaders == TOP_SECRET_KEY) {
-      print("\n HEADERS: $reqHeaders \n");
-      print("\n HEADERS: $reqHeaders \n");
+      final reqHeaders = request.headers['alice'];
 
-      gbl.NvidiaSetGraphicsClock(parseID, parseGPUVal);
+      print('\n SET FANS HIT\n SET FANS HIT\n SET FANS HIT\n SET FANS HIT');
+      if (parseID == null) parseID = 0;
+      /* int instead of double */
 
-      final jsonData = '{ "gpuIndex": "$_gpuIndex", "gpuVal": "$_gpuVal" }';
+    
+      if (reqHeaders == TOP_SECRET_KEY) {
+        print("\n HEADERS: $reqHeaders \n");
+        print("\n HEADERS: $reqHeaders \n");
 
-      print("\n\n $_gpuIndex is the gpuIndex changing clock val to  $_gpuVal%");
-      return Response.ok(jsonData);
-    } else {
-      return Response.forbidden(jsonEncode({'entry': 'DENIED'}));
-    }
-  });
+        gbl.NvidiaSetFans(parseID, parseFanVal);
 
-  app.get('/api/setMemoryClock/<gpuIndex>/<gpuVal>', (Request request, String _gpuIndex, String _gpuVal) {
-    var parseID = int.tryParse(_gpuIndex);
-    final parseGPUVal = int.tryParse(_gpuVal);
+        final jsonData = '{ "fanIndex": "$_fanIndex", "fanVal": "$_fanVal" }';
 
-    final reqHeaders = request.headers['alice'];
-    if (parseID == null) parseID = 0;
-    /* int instead of double */
-  
-    if (reqHeaders == TOP_SECRET_KEY) {
-      print("\n HEADERS: $reqHeaders \n");
-      print("\n HEADERS: $reqHeaders \n");
+        print("\n\n $_fanIndex is the fanIndex changing fans to  $_fanVal%");
+        return Response.ok(jsonData);
+      } else {
+        return Response.forbidden(jsonEncode({'entry': 'DENIED'}));
+      }
+    });
 
-      gbl.NvidiaSetMemoryClock(parseID, parseGPUVal);
+    app.get('/api/setGraphicsClock/<gpuIndex>/<gpuVal>', (Request request, String _gpuIndex, String _gpuVal) {
+      var parseID = int.tryParse(_gpuIndex);
+      final parseGPUVal = int.tryParse(_gpuVal);
 
-      final jsonData = '{ "gpuIndex": "$_gpuIndex", "gpuVal": "$_gpuVal" }';
+      final reqHeaders = request.headers['alice'];
+      if (parseID == null) parseID = 0;
+      /* int instead of double */
+    
+      if (reqHeaders == TOP_SECRET_KEY) {
+        print("\n HEADERS: $reqHeaders \n");
+        print("\n HEADERS: $reqHeaders \n");
 
-      print("\n\n $_gpuIndex is the gpuIndex changing mem clock val to  $_gpuVal%");
-      return Response.ok(jsonData);
-    } else {
-      return Response.forbidden(jsonEncode({'entry': 'DENIED'}));
-    }
-  });
+        gbl.NvidiaSetGraphicsClock(parseID, parseGPUVal);
 
-  app.get('/api/setTempThresh/<gpuIndex>/<gpuVal>', (Request request, String _gpuIndex, String _gpuVal) {
-    var parseID = int.tryParse(_gpuIndex);
-    final parseGPUVal = int.tryParse(_gpuVal);
+        final jsonData = '{ "gpuIndex": "$_gpuIndex", "gpuVal": "$_gpuVal" }';
 
-    final reqHeaders = request.headers['alice'];
-    if (parseID == null) parseID = 0;
-    /* int instead of double */
-  
-    if (reqHeaders == TOP_SECRET_KEY) {
-      print("\n HEADERS: $reqHeaders \n");
-      print("\n HEADERS: $reqHeaders \n");
+        print("\n\n $_gpuIndex is the gpuIndex changing clock val to  $_gpuVal%");
+        return Response.ok(jsonData);
+      } else {
+        return Response.forbidden(jsonEncode({'entry': 'DENIED'}));
+      }
+    });
 
-      gbl.NvidiaSetTempThreshold(parseID, parseGPUVal);
+    app.get('/api/setMemoryClock/<gpuIndex>/<gpuVal>', (Request request, String _gpuIndex, String _gpuVal) {
+      var parseID = int.tryParse(_gpuIndex);
+      final parseGPUVal = int.tryParse(_gpuVal);
 
-      final jsonData = '{ "gpuIndex": "$_gpuIndex", "gpuVal": "$_gpuVal" }';
+      final reqHeaders = request.headers['alice'];
+      if (parseID == null) parseID = 0;
+      /* int instead of double */
+    
+      if (reqHeaders == TOP_SECRET_KEY) {
+        print("\n HEADERS: $reqHeaders \n");
+        print("\n HEADERS: $reqHeaders \n");
 
-      print("\n\n $_gpuIndex is the gpuIndex changing temp thresh val to  $_gpuVal%");
-      return Response.ok(jsonData);
-    } else {
-      return Response.forbidden(jsonEncode({'entry': 'DENIED'}));
-    }
-  });
+        gbl.NvidiaSetMemoryClock(parseID, parseGPUVal);
 
-  app.get('/api/setPowerDraw/<gpuIndex>/<gpuVal>', (Request request, String _gpuIndex, String _gpuVal) {
-    var parseID = int.tryParse(_gpuIndex);
-    final parseGPUVal = double.tryParse(_gpuVal);
+        final jsonData = '{ "gpuIndex": "$_gpuIndex", "gpuVal": "$_gpuVal" }';
 
-    final reqHeaders = request.headers['alice'];
-    if (parseID == null) parseID = 0;
-    /* int instead of double */
-  
-    if (reqHeaders == TOP_SECRET_KEY) {
-      print("\n HEADERS: $reqHeaders \n");
-      print("\n HEADERS: $reqHeaders \n");
+        print("\n\n $_gpuIndex is the gpuIndex changing mem clock val to  $_gpuVal%");
+        return Response.ok(jsonData);
+      } else {
+        return Response.forbidden(jsonEncode({'entry': 'DENIED'}));
+      }
+    });
 
-      gbl.NvidiaSetPowerDraw(parseID, parseGPUVal);
+    app.get('/api/setTempThresh/<gpuIndex>/<gpuVal>', (Request request, String _gpuIndex, String _gpuVal) {
+      var parseID = int.tryParse(_gpuIndex);
+      final parseGPUVal = int.tryParse(_gpuVal);
 
-      final jsonData = '{ "gpuIndex": "$_gpuIndex", "gpuVal": "$_gpuVal" }';
+      final reqHeaders = request.headers['alice'];
+      if (parseID == null) parseID = 0;
+      /* int instead of double */
+    
+      if (reqHeaders == TOP_SECRET_KEY) {
+        print("\n HEADERS: $reqHeaders \n");
+        print("\n HEADERS: $reqHeaders \n");
 
-      print("\n\n $_gpuIndex is the gpuIndex changing power draw val to  $_gpuVal%");
-      return Response.ok(jsonData);
-    } else {
-      return Response.forbidden(jsonEncode({'entry': 'DENIED'}));
-    }
-  });
+        gbl.NvidiaSetTempThreshold(parseID, parseGPUVal);
 
+        final jsonData = '{ "gpuIndex": "$_gpuIndex", "gpuVal": "$_gpuVal" }';
+
+        print("\n\n $_gpuIndex is the gpuIndex changing temp thresh val to  $_gpuVal%");
+        return Response.ok(jsonData);
+      } else {
+        return Response.forbidden(jsonEncode({'entry': 'DENIED'}));
+      }
+    });
+
+    app.get('/api/setPowerDraw/<gpuIndex>/<gpuVal>', (Request request, String _gpuIndex, String _gpuVal) {
+      var parseID = int.tryParse(_gpuIndex);
+      final parseGPUVal = double.tryParse(_gpuVal);
+
+      final reqHeaders = request.headers['alice'];
+      if (parseID == null) parseID = 0;
+      /* int instead of double */
+    
+      if (reqHeaders == TOP_SECRET_KEY) {
+        print("\n HEADERS: $reqHeaders \n");
+        print("\n HEADERS: $reqHeaders \n");
+
+        gbl.NvidiaSetPowerDraw(parseID, parseGPUVal);
+
+        final jsonData = '{ "gpuIndex": "$_gpuIndex", "gpuVal": "$_gpuVal" }';
+
+        print("\n\n $_gpuIndex is the gpuIndex changing power draw val to  $_gpuVal%");
+        return Response.ok(jsonData);
+      } else {
+        return Response.forbidden(jsonEncode({'entry': 'DENIED'}));
+      }
+    });
+
+  }
+
+  void getterFuncs() {
+    app.get('/api', (Request request) {
+      var response = {
+        'message': 'API is alive',
+        'api_routes': ['/api', '/api/id/<id>', '/api/setFans/<fanIndex>/<fanVal>'
+        ]
+      };
+
+      final reqHeaders = request.headers['alice'];
+
+      if (reqHeaders == TOP_SECRET_KEY) {
+        print("\n HEADERS: $reqHeaders \n");
+        print("\n HEADERS: $reqHeaders \n");
+
+        print("\n\n This function will fire from over the wire!");
+        return Response.ok(jsonEncode(response));
+      } else {
+        return Response.forbidden(jsonEncode({'entry': 'DENIED'}));
+      }
+    });
+  }
+
+
+
+  getterFuncs();  
+  setterFuncs();
   var server = await io.serve(app, '192.168.0.8', 8080);
 }
