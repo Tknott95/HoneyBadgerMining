@@ -237,6 +237,75 @@ void serveAPI() async {
       }
     });
 
+    app.get('/api/get/powerDraw', (Request request) async {
+      var _gpuIndex = 0;
+      var _gpuVal = 50;
+
+      var _tempGPU00 = await gbl.nvidia_get_gpu_temp(0);
+      var _tempGPU01 = await gbl.nvidia_get_gpu_temp(1);
+
+      final jsonData = {"gpuTemp": [ { "gpuIndex0": "00", "gpuVal": "$_tempGPU00" }, { "gpuIndex1": "01", "gpuVal": "$_tempGPU01" } ]};
+
+
+      final reqHeaders = request.headers['alice'];
+
+      if (reqHeaders == TOP_SECRET_KEY) {
+        print("\n HEADERS: $reqHeaders \n");
+        print("\n HEADERS: $reqHeaders \n");
+
+        print("\n\n This function will fire from over the wire!");
+        return Response.ok(jsonEncode(jsonData));
+      } else {
+        return Response.forbidden(jsonEncode({'entry': 'DENIED'}));
+      }
+    });
+
+    app.get('/api/get/memoryClock', (Request request) async {
+      var _gpuIndex = 0;
+      var _gpuVal = 50;
+
+      var _tempGPU00 = await gbl.nvidia_get_gpu_temp(0);
+      var _tempGPU01 = await gbl.nvidia_get_gpu_temp(1);
+
+      final jsonData = {"gpuTemp": [ { "gpuIndex0": "00", "gpuVal": "$_tempGPU00" }, { "gpuIndex1": "01", "gpuVal": "$_tempGPU01" } ]};
+
+
+      final reqHeaders = request.headers['alice'];
+
+      if (reqHeaders == TOP_SECRET_KEY) {
+        print("\n HEADERS: $reqHeaders \n");
+        print("\n HEADERS: $reqHeaders \n");
+
+        print("\n\n This function will fire from over the wire!");
+        return Response.ok(jsonEncode(jsonData));
+      } else {
+        return Response.forbidden(jsonEncode({'entry': 'DENIED'}));
+      }
+    });
+
+    app.get('/api/get/graphicsClock', (Request request) async {
+      var _gpuIndex = 0;
+      var _gpuVal = 50;
+
+      var _tempGPU00 = await gbl.nvidia_get_gpu_temp(0);
+      var _tempGPU01 = await gbl.nvidia_get_gpu_temp(1);
+
+      final jsonData = {"gpuTemp": [ { "gpuIndex0": "00", "gpuVal": "$_tempGPU00" }, { "gpuIndex1": "01", "gpuVal": "$_tempGPU01" } ]};
+
+
+      final reqHeaders = request.headers['alice'];
+
+      if (reqHeaders == TOP_SECRET_KEY) {
+        print("\n HEADERS: $reqHeaders \n");
+        print("\n HEADERS: $reqHeaders \n");
+
+        print("\n\n This function will fire from over the wire!");
+        return Response.ok(jsonEncode(jsonData));
+      } else {
+        return Response.forbidden(jsonEncode({'entry': 'DENIED'}));
+      }
+    });
+
   }
 
 
