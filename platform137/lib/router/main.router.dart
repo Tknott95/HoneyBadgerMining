@@ -7,6 +7,8 @@ import 'package:shelf/shelf.dart';
 import 'package:shelf_router/shelf_router.dart' as rtr;
 import 'package:shelf/shelf_io.dart' as io;
 
+/* @TODO - NEED TO CHECK HOW MANY GPUS BEFORE RETURNING. INSTANTIATE CODE ON FLY. */
+
 
 void serveAPI() async {
   var app = rtr.Router();
@@ -168,6 +170,7 @@ void serveAPI() async {
       }
     });
 
+    /* curl -H "alice: top_secret_key<kdkljsdljkdsjklkljsdkjlsdkljsdjklsdjklkjlsdjksdkjlsdkjlklsjdkjlsdljk>" 192.168.0.8:8080/api/get/fans  */
     app.get('/api/get/fans', (Request request) {
       // var response = {
       //   'message': 'API is alive',
@@ -190,8 +193,8 @@ void serveAPI() async {
         print("\n\n This function will fire from over the wire!");
         return Response.ok(jsonEncode(jsonData));
       } else {
-        return Response.ok(jsonEncode(jsonData));
-        // return Response.forbidden(jsonEncode({'entry': 'DENIED'}));
+        // return Response.ok(jsonEncode(jsonData));
+        return Response.forbidden(jsonEncode({'entry': 'DENIED'}));
       }
     });
   }
