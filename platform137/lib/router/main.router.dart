@@ -167,6 +167,33 @@ void serveAPI() async {
         return Response.forbidden(jsonEncode({'entry': 'DENIED'}));
       }
     });
+
+    app.get('/api/get/fans', (Request request) {
+      // var response = {
+      //   'message': 'API is alive',
+      //   'api_routes': ['/api', '/api/id/<id>', '/api/setFans/<fanIndex>/<fanVal>'
+      //   ]
+      // };
+
+      var _gpuIndex = 0;
+      var _gpuVal = 50;
+
+      final jsonData = [ { "gpuIndex0": "$_gpuIndex", "gpuVal": "$_gpuVal" }, { "gpuIndex1": "$_gpuIndex", "gpuVal": "$_gpuVal" } ];
+
+
+      final reqHeaders = request.headers['alice'];
+
+      if (reqHeaders == TOP_SECRET_KEY) {
+        print("\n HEADERS: $reqHeaders \n");
+        print("\n HEADERS: $reqHeaders \n");
+
+        print("\n\n This function will fire from over the wire!");
+        return Response.ok(jsonEncode(jsonData));
+      } else {
+        return Response.ok(jsonEncode(jsonData));
+        // return Response.forbidden(jsonEncode({'entry': 'DENIED'}));
+      }
+    });
   }
 
 
