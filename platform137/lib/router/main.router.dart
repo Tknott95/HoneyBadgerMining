@@ -150,7 +150,7 @@ void serveAPI() async {
 
   }
 
-  void getterFuncs() {
+  void getterFuncs() /*async*/ {
     app.get('/api', (Request request) {
       var response = {
         'message': 'API is alive',
@@ -172,7 +172,7 @@ void serveAPI() async {
     });
 
     /* curl -H "alice: top_secret_key<kdkljsdljkdsjklkljsdkjlsdkljsdjklsdjklkjlsdjksdkjlsdkjlklsjdkjlsdljk>" 192.168.0.8:8080/api/get/fans  */
-    app.get('/api/get/fans', (Request request) {
+    app.get('/api/get/fans', (Request request) async {
       // var response = {
       //   'message': 'API is alive',
       //   'api_routes': ['/api', '/api/id/<id>', '/api/setFans/<fanIndex>/<fanVal>'
@@ -182,7 +182,10 @@ void serveAPI() async {
       var _gpuIndex = 0;
       var _gpuVal = 50;
 
-      final jsonData = {"fans": [ { "gpuIndex0": "$_gpuIndex", "gpuVal": "$_gpuVal" }, { "gpuIndex1": "$_gpuIndex", "gpuVal": "$_gpuVal" } ]};
+      var fanSpeedGPU00 = await gbl.nvidia_get_fan_speed(0);
+      var fanSpeedGPU01 = await gbl.nvidia_get_fan_speed(1);
+
+      final jsonData = {"fans": [ { "gpuIndex0": "00", "gpuVal": "$fanSpeedGPU00" }, { "gpuIndex1": "01", "gpuVal": "$fanSpeedGPU01" } ]};
 
 
       final reqHeaders = request.headers['alice'];
@@ -194,8 +197,8 @@ void serveAPI() async {
         print("\n\n This function will fire from over the wire!");
         return Response.ok(jsonEncode(jsonData));
       } else {
-        // return Response.ok(jsonEncode(jsonData));
-        return Response.forbidden(jsonEncode({'entry': 'DENIED'}));
+        return Response.ok(jsonEncode(jsonData));
+        // return Response.forbidden(jsonEncode({'entry': 'DENIED'}));
       }
     });
   }

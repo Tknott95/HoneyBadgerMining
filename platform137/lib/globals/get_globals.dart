@@ -1,5 +1,6 @@
 import 'package:process_run/shell_run.dart';
-
+import 'dart:async';
+import 'dart:io';
 
 Future<int> nvidia_get_fan_speed(int _gpuIndex) async {
   // List all files in the current directory in UNIX-like systems.
