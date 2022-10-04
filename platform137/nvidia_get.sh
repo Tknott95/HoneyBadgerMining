@@ -26,6 +26,9 @@ while getopts 't:f:a:l' OPTION; do
       # @TODO - REMOVE REGEX AND MAKE IT FOR A FLOAT INSTEA OF INT  
       nvidia-smi --query-gpu=power.draw --format=csv,noheader -i $OPTARG | grep -Eo "^[0-9]+"
       ;;
+    g)
+      nvidia-smi --query-gpu=clocks.gr --format=csv,noheader -i $OPTARG | grep -Eo "^[0-9]+"
+      ;;
     ?)
       echo "script usage: $(basename \$0) [-l] [-h] [-a somevalue]" >&2
       exit 1
