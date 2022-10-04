@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 
 
+/* RENAME THIS TO temp_analytics or something */
 /* will have to use future builder and can pass down string so I dont have to parse then toString() */
 Future<int> nvidia_get_fan_speed(int _gpuIndex) async {
   // List all files in the current directory in UNIX-like systems.

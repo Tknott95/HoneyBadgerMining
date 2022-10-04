@@ -9,7 +9,7 @@ import 'package:shelf_router/shelf_router.dart' as rtr;
 import 'package:shelf/shelf_io.dart' as io;
 
 /* @TODO - NEED TO CHECK HOW MANY GPUS BEFORE RETURNING. INSTANTIATE CODE ON FLY. */
-
+/* @TODO pass down router then refactor into own files. Refactor the code how it needs to be after MVP. */
 
 void serveAPI() async {
   var app = rtr.Router();
@@ -171,14 +171,27 @@ void serveAPI() async {
       }
     });
 
+    /* curl -H "alice: top_secret_key<kdkljsdljkdsjklkljsdkjlsdkljsdjklsdjklkjlsdjksdkjlsdkjlklsjdkjlsdljk>" 192.168.0.8:8080/api/get/gpuCount  */
+    app.get('/api/get/gpuCount', (Request request) async {
+      var _gpuCount = await gbl.nvidia_get_gpu_count();
+
+      final jsonData = {"gpuCount":  "$_gpuCount" };
+
+      final reqHeaders = request.headers['alice'];
+
+      if (reqHeaders == TOP_SECRET_KEY) {
+        print("\n HEADERS: $reqHeaders \n");
+        print("\n HEADERS: $reqHeaders \n");
+
+        print("\n\n This function will fire from over the wire!");
+        return Response.ok(jsonEncode(jsonData));
+      } else {
+        return Response.forbidden(jsonEncode({'entry': 'DENIED'}));
+      }
+    });
+
     /* curl -H "alice: top_secret_key<kdkljsdljkdsjklkljsdkjlsdkljsdjklsdjklkjlsdjksdkjlsdkjlklsjdkjlsdljk>" 192.168.0.8:8080/api/get/fans  */
     app.get('/api/get/fans', (Request request) async {
-      // var response = {
-      //   'message': 'API is alive',
-      //   'api_routes': ['/api', '/api/id/<id>', '/api/setFans/<fanIndex>/<fanVal>'
-      //   ]
-      // };
-
       var _gpuIndex = 0;
       var _gpuVal = 50;
 
@@ -197,10 +210,33 @@ void serveAPI() async {
         print("\n\n This function will fire from over the wire!");
         return Response.ok(jsonEncode(jsonData));
       } else {
-        // return Response.ok(jsonEncode(jsonData));
         return Response.forbidden(jsonEncode({'entry': 'DENIED'}));
       }
     });
+
+    app.get('/api/get/gpuTemp', (Request request) async {
+      var _gpuIndex = 0;
+      var _gpuVal = 50;
+
+      var _tempGPU00 = await gbl.nvidia_get_gpu_temp(0);
+      var _tempGPU01 = await gbl.nvidia_get_gpu_temp(1);
+
+      final jsonData = {"gpuTemp": [ { "gpuIndex0": "00", "gpuVal": "$_tempGPU00" }, { "gpuIndex1": "01", "gpuVal": "$_tempGPU01" } ]};
+
+
+      final reqHeaders = request.headers['alice'];
+
+      if (reqHeaders == TOP_SECRET_KEY) {
+        print("\n HEADERS: $reqHeaders \n");
+        print("\n HEADERS: $reqHeaders \n");
+
+        print("\n\n This function will fire from over the wire!");
+        return Response.ok(jsonEncode(jsonData));
+      } else {
+        return Response.forbidden(jsonEncode({'entry': 'DENIED'}));
+      }
+    });
+
   }
 
 
