@@ -239,10 +239,9 @@ void serveAPI() async {
 
     app.get('/api/get/powerDraw', (Request request) async {
       var _gpuIndex = 0;
-      var _gpuVal = 50;
 
-      var _tempGPU00 = await gbl.nvidia_get_gpu_temp(0);
-      var _tempGPU01 = await gbl.nvidia_get_gpu_temp(1);
+      var _tempGPU00 = await gbl.nvidia_get_power_draw(0);
+      var _tempGPU01 = await gbl.nvidia_get_power_draw(1);
 
       final jsonData = {"gpuTemp": [ { "gpuIndex0": "00", "gpuVal": "$_tempGPU00" }, { "gpuIndex1": "01", "gpuVal": "$_tempGPU01" } ]};
 
@@ -262,13 +261,11 @@ void serveAPI() async {
 
     app.get('/api/get/memoryClock', (Request request) async {
       var _gpuIndex = 0;
-      var _gpuVal = 50;
 
-      var _tempGPU00 = await gbl.nvidia_get_gpu_temp(0);
-      var _tempGPU01 = await gbl.nvidia_get_gpu_temp(1);
+      var _memClockGPU00 = await gbl.nvidia_get_memory_clock(0);
+      var _memClockGPU01 = await gbl.nvidia_get_memory_clock(1);
 
-      final jsonData = {"gpuTemp": [ { "gpuIndex0": "00", "gpuVal": "$_tempGPU00" }, { "gpuIndex1": "01", "gpuVal": "$_tempGPU01" } ]};
-
+      final jsonData = {"memoryClock": [ { "gpuIndex0": "$_memClockGPU00" }, { "gpuIndex1": "$_memClockGPU01" } ]};
 
       final reqHeaders = request.headers['alice'];
 
@@ -286,12 +283,11 @@ void serveAPI() async {
     app.get('/api/get/graphicsClock', (Request request) async {
       /* this will be called by indexVal prob then code instantiated on fly modular */
       var _gpuIndex = 0;
-      var _gpuVal = 50;
 
-      var _tempGPU00 = await gbl.nvidia_get_graphics_clock(0);
-      var _tempGPU01 = await gbl.nvidia_get_graphics_clock(1);
+      var _graphClockGPU00 = await gbl.nvidia_get_graphics_clock(0);
+      var _graphClockGPU01 = await gbl.nvidia_get_graphics_clock(1);
 
-      final jsonData = {"graphicsClock": [ { "gpuIndex0": "$_tempGPU00" }, { "gpuIndex1": "$_tempGPU01" } ]};
+      final jsonData = {"graphicsClock": [ { "gpuIndex0": "$_graphClockGPU00" }, { "gpuIndex1": "$_graphClockGPU01" } ]};
 
 
       final reqHeaders = request.headers['alice'];
