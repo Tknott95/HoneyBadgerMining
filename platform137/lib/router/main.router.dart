@@ -197,8 +197,8 @@ void serveAPI() async {
         print("\n\n This function will fire from over the wire!");
         return Response.ok(jsonEncode(jsonData));
       } else {
-        return Response.ok(jsonEncode(jsonData));
-        // return Response.forbidden(jsonEncode({'entry': 'DENIED'}));
+        // return Response.ok(jsonEncode(jsonData));
+        return Response.forbidden(jsonEncode({'entry': 'DENIED'}));
       }
     });
   }
