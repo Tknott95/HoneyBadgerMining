@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'dart:convert';
 
 import 'package:platform137/globals/set_globals.dart' as gbl;
+import 'package:platform137/globals/get_globals.dart' as gbl;
 
 import 'package:shelf/shelf.dart';
 import 'package:shelf_router/shelf_router.dart' as rtr;
