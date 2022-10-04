@@ -22,4 +22,18 @@ Future<int>  nvidia_get_gpu_count() async {
   return _gpuCount;
 }
 
+Future<int>  nvidia_get_power_draw(int _gpuIndex) async {
+  var result = await Process.run('./nvidia_get.sh', ['-p $_gpuIndex']); /* second arr takes flags and params? */
+  final _powerDraw = int.parse(result.stdout);
+  
+  return _powerDraw;
+}
+
+Future<int> nvidia_get_memory_clock(int _gpuIndex) async {
+  var result = await Process.run('./nvidia_get.sh', ['-m $_gpuIndex']); /* second arr takes flags and params? */
+  final _memClock = int.parse(result.stdout);
+  
+  return _memClock;
+}
+
 /* NEED GPU POWER - NEED GPU MEMORY */
