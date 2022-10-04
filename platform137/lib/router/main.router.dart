@@ -238,8 +238,6 @@ void serveAPI() async {
     });
 
     app.get('/api/get/powerDraw', (Request request) async {
-      var _gpuIndex = 0;
-
       var _tempGPU00 = await gbl.nvidia_get_power_draw(0);
       var _tempGPU01 = await gbl.nvidia_get_power_draw(1);
 
@@ -264,6 +262,9 @@ void serveAPI() async {
 
       var _memClockGPU00 = await gbl.nvidia_get_memory_clock(0);
       var _memClockGPU01 = await gbl.nvidia_get_memory_clock(1);
+
+      print(_memClockGPU00);
+      print(_memClockGPU01);
 
       final jsonData = {"memoryClock": [ { "gpuIndex0": "$_memClockGPU00" }, { "gpuIndex1": "$_memClockGPU01" } ]};
 

@@ -1,12 +1,14 @@
 #!/bin/bash
 
-Erg
 # f - is fan speed by provding a gpu-index-#
 # l - list amount of GPUs
+# m - memory clock
+# g - graphics clock
+# p - power draw
 
 
 # : after the flag makes you have to have a param
-while getopts 't:f:a:l' OPTION; do
+while getopts 't:f:a:l:m:p:g' OPTION; do
   case "$OPTION" in
     t)
       nvidia-smi --query-gpu=temperature.gpu --format=csv,noheader -i $OPTARG

@@ -36,9 +36,10 @@ Future<int> nvidia_get_memory_clock(int _gpuIndex) async {
   return _memClock;
 }
 
-Future<int> nvidia_get_graphics_clock(int _gpuIndex) async {
+Future<String> nvidia_get_graphics_clock(int _gpuIndex) async {
   var result = await Process.run('./nvidia_get.sh', ['-g $_gpuIndex']); /* second arr takes flags and params? */
-  final _memClock = int.parse(result.stdout);
+  final _memClock = result.stdout;
+  // int.parse(result.stdout);
   
   return _memClock;
 }
