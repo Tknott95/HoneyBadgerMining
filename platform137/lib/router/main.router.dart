@@ -243,7 +243,7 @@ void serveAPI() async {
       var _tempGPU00 = await gbl.nvidia_get_power_draw(0);
       var _tempGPU01 = await gbl.nvidia_get_power_draw(1);
 
-      final jsonData = {"gpuTemp": [ { "gpuIndex0": "00", "gpuVal": "$_tempGPU00" }, { "gpuIndex1": "01", "gpuVal": "$_tempGPU01" } ]};
+      final jsonData = {"gpuTemp": [ { "gpuIndex0": "$_tempGPU00" }, { "gpuIndex1": "$_tempGPU01" } ]};
 
 
       final reqHeaders = request.headers['alice'];
