@@ -178,7 +178,7 @@ void serveAPI() async {
       var _gpuIndex = 0;
       var _gpuVal = 50;
 
-      final jsonData = [ { "gpuIndex0": "$_gpuIndex", "gpuVal": "$_gpuVal" }, { "gpuIndex1": "$_gpuIndex", "gpuVal": "$_gpuVal" } ];
+      final jsonData = {"fans": [ { "gpuIndex0": "$_gpuIndex", "gpuVal": "$_gpuVal" }, { "gpuIndex1": "$_gpuIndex", "gpuVal": "$_gpuVal" } ]};
 
 
       final reqHeaders = request.headers['alice'];
