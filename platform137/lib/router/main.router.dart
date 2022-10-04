@@ -190,8 +190,8 @@ void serveAPI() async {
       }
     });
 
-    /* curl -H "alice: top_secret_key<kdkljsdljkdsjklkljsdkjlsdkljsdjklsdjklkjlsdjksdkjlsdkjlklsjdkjlsdljk>" 192.168.0.8:8080/api/get/fans  */
-    app.get('/api/get/fans', (Request request) async {
+    /* curl -H "alice: top_secret_key<kdkljsdljkdsjklkljsdkjlsdkljsdjklsdjklkjlsdjksdkjlsdkjlklsjdkjlsdljk>" 192.168.0.8:8080/api/get/fanSpeed  */
+    app.get('/api/get/fanSpeed', (Request request) async {
       var _gpuIndex = 0;
       var _gpuVal = 50;
 
