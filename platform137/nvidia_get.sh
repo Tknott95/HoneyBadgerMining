@@ -6,6 +6,8 @@
 # g - graphics clock
 # p - power draw
 
+# @TODO - NEED A SCRIPT TO PULL TEMP LIMIT
+
 
 # : after the flag makes you have to have a param
 while getopts 't:f:a:l:m:p:g:' OPTION; do
