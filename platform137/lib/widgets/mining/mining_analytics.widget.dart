@@ -148,7 +148,7 @@ class _MiningAnalyWidgetState extends State<MiningAnalyWidget> {
   /* @TODO set tto var of type in initState then run a timer and only call var names on type. Set type every time and just run functional code patterns instead of a stream */
   Future<void> _fetchLolMiningData() async {
     var _url =
-        Uri.parse('http://127.0.0.1:1339');
+        Uri.parse('http://127.0.0.1:1339'); /* try this with 192 ip instead and then hook into aisling */
     try {
       var response = await http.get(_url);
       print('Response status: ${response.statusCode}');
