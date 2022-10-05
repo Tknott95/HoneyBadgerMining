@@ -266,7 +266,7 @@ void serveAPI() async {
       print(_memClockGPU00);
       print(_memClockGPU01);
 
-      final jsonData = {"memoryClock": [ { "gpuIndex0": "$_memClockGPU00" }, { "gpuIndex1": "$_memClockGPU01" } ]};
+      final jsonData = {"memoryClock": [ { "gpuVal": "$_memClockGPU00" }, { "gpuVal": "$_memClockGPU01" } ]};
 
       final reqHeaders = request.headers['alice'];
 
@@ -288,7 +288,7 @@ void serveAPI() async {
       var _graphClockGPU00 = await gbl.nvidia_get_graphics_clock(0);
       var _graphClockGPU01 = await gbl.nvidia_get_graphics_clock(1);
 
-      final jsonData = {"graphicsClock": [ { "gpuIndex0": "$_graphClockGPU00" }, { "gpuIndex1": "$_graphClockGPU01" } ]};
+      final jsonData = {"graphicsClock": [ { "gpuVal": "$_graphClockGPU00" }, { "gpuVal": "$_graphClockGPU01" } ]};
 
 
       final reqHeaders = request.headers['alice'];
