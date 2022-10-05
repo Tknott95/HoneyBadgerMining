@@ -185,6 +185,10 @@ class _MiddleSectionState extends State<MiddleSection> {
   }
 }
 
+/* @TODO */
+/* pull this function out then call it in here as a start mining */
+/* create a way to kill the miner from a global function */
+/* hook such to an api to start/stop */
 void start_mining(String _walletAddr, String _pool) async {
   var shell = Shell();
 
