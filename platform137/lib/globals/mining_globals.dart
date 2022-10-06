@@ -23,6 +23,6 @@ void start_mining(String _walletAddr, String _pool) async {
 
     if(stopMiner) {
       shell.kill();
-      this.stopMiner = false;
+      stopMiner = false;
     }
 }
