@@ -6,6 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:platform137/widgets/mining/mining_analytics.widget.dart';
 import 'package:process_run/shell_run.dart';
 
+import 'package:platform137/globals/mining_globals.dart' as miningGlobals;
+
 
 /* NEW FLUTTER UPDATE (from 3.0.3 - 3.3.3) BROKE PROG BUTTON. USE NEW ONE */
 
@@ -148,7 +150,7 @@ class _MiddleSectionState extends State<MiddleSection> {
               //           print("\x1B[1;33m  WALLET ADDR: \x1B[1;37m $walletAddr\x1B[0m");
                         
               //           /* PASS DOWN ADDR AND POOL HERE FOR MVP @TODO */
-              //           start_mining(poolForMining, walletAddr);
+              //           miningGlobals.start_mining(poolForMining, walletAddr);
               //           isMining = true; 
               //         }
               //         await Future.delayed(const Duration(seconds: 3)); // simulated your API requesting time.
@@ -189,20 +191,24 @@ class _MiddleSectionState extends State<MiddleSection> {
 /* pull this function out then call it in here as a start mining */
 /* create a way to kill the miner from a global function */
 /* hook such to an api to start/stop */
-void start_mining(String _walletAddr, String _pool) async {
-  var shell = Shell();
+// void start_mining(String _walletAddr, String _pool) async {
+//   var shell = Shell();
 
-  String minerParams = "$_pool;$_walletAddr";
-  print("STARTING MINER: $minerParams");
+//   String minerParams = "$_pool;$_walletAddr";
+//   print("STARTING MINER: $minerParams");
 
-  shell.run("""
-    #!/bin/bash
-    sudo ./start_miner.sh $minerParams
-    """).then((result){
-      print(result.toString());
-      print('Shell script done!');
-    }).catchError((onError) {
-      print('Shell.run error!');
-      print(onError);
-    });
-}
+//   shell.run("""
+//     #!/bin/bash
+//     sudo ./start_miner.sh $minerParams
+//     """).then((result){
+//       print(result.toString());
+//       print('Shell script done!');
+//     }).catchError((onError) {
+//       print('Shell.run error!');
+//       print(onError);
+//     });
+
+//     if() {
+//       shell.kill();
+//     }
+// }
