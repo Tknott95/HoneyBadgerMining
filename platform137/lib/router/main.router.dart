@@ -304,6 +304,32 @@ void serveAPI() async {
       }
     });
 
+    app.get('/api/shutdown/miner', (Request request) async {
+      /* this will be called by indexVal prob then code instantiated on fly modular */
+      var _gpuIndex = 0;
+
+      /* 
+      - function to shutdown miner here 
+      - will be using the kill method on Shell
+      */
+
+
+      final jsonData = {"SHUTTING_DOWN": "miner00"};
+
+
+      final reqHeaders = request.headers['alice'];
+
+      if (reqHeaders == TOP_SECRET_KEY) {
+        print("\n HEADERS: $reqHeaders \n");
+        print("\n HEADERS: $reqHeaders \n");
+
+        print("\n\n This function will fire from over the wire!");
+        return Response.ok(jsonEncode(jsonData));
+      } else {
+        return Response.forbidden(jsonEncode({'entry': 'DENIED'}));
+      }
+    });
+
   }
 
 
