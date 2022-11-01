@@ -1,6 +1,10 @@
 # HoneyBadgerMining
 HoneyBadgerMining
 
+
+- Finish thw obile app connecting to this
+- There is a mobile extension if wanted to mine from the go
+
  ## platform137 @TODO
   1. Change Futures into Streams
   2. Create a slider to change fans
