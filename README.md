@@ -5,7 +5,8 @@
 HoneyBadgerMining
 
 
-works with AISLING a mobile app that .ets you mine/clock/etc from anywhere. 
+works with AISLING a mobile app that .ets you mine/clock/etc from anywhere.
+you can throw up a server from where you run this, on any iot, and then use Aisling to control it from anywhere. 
 
 
 - Finish thw obile app connecting to this
