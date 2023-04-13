@@ -5,6 +5,9 @@
 HoneyBadgerMining
 
 
+works with AISLING a mobile app that .ets you mine/clock/etc from anywhere. 
+
+
 - Finish thw obile app connecting to this
 - There is a mobile extension if wanted to mine from the go
 
